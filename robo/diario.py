@@ -5,16 +5,15 @@ Roda no GitHub Actions todo dia de madrugada:
 2. baixa cada PDF e extrai o texto (inclusive tabelas);
 3. separa os atos (portarias, resoluções...) e fica só com os que citam o polo,
    as comarcas (Parintins, Nhamundá, Barreirinha) ou um defensor do polo;
-4. pede à Claude um resumo estruturado de cada ato;
-5. confere tudo por regras fixas e marca como "auto" só o que é claro
-   (DP do polo, defensor cadastrado, período válido);
+4. lê cada ato com regras fixas, sem IA e sem custo: separa os incisos,
+   acha a DP do polo, o defensor cadastrado e o período;
+5. marca como "auto" só o que é claro (DESIGNAR + uma DP do polo + defensor
+   cadastrado + período válido); o resto fica para um admin conferir;
 6. grava diario.json, que o site lê.
 
 Variáveis de ambiente:
-  ANTHROPIC_API_KEY  chave da API (segredo do repositório)
   DESDE              opcional: reler a partir desta edição (ex.: 2700)
   MAX_EDICOES        opcional: limite de edições por execução (padrão 40)
-  MODELO             opcional: modelo da Claude (padrão claude-haiku-5-5)
 """
 from __future__ import annotations
 
@@ -35,7 +34,6 @@ RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ARQ_DIARIO = os.path.join(RAIZ, "diario.json")
 ARQ_ESTADO = os.path.join(RAIZ, "robo", "estado.json")
 ARQ_NOMES = os.path.join(RAIZ, "robo", "defensores.json")
-MODELO = os.environ.get("MODELO", "claude-haiku-5-5")
 MAX_EDICOES = int(os.environ.get("MAX_EDICOES") or 40)
 CIDADES = ["baixo amazonas", "parintins", "nhamunda", "barreirinha"]
 OUTROS_POLOS = ["medio amazonas", "medio solimoes", "medio madeira", "alto solimoes", "jurua", "purus",
@@ -200,114 +198,172 @@ def relevante(ato: str, termos: list[str]) -> bool:
     return any(c in n for c in CIDADES) or any(t in n for t in termos)
 
 
-# ---------------------------------------------------------------- Claude
+# ---------------------------------------------------------------- leitura por regras
 
-PROMPT = """Você lê atos do Diário Oficial da Defensoria Pública do Estado do Amazonas (DPE-AM) para o painel interno do POLO DO BAIXO AMAZONAS.
-
-O polo tem sede em Parintins e duas cidades satélites, Nhamundá e Barreirinha (com a Unidade Descentralizada do Interior, UDI). Tem 12 defensorias: 1ª a 6ª em Parintins, 7ª a 9ª em Nhamundá, 10ª a 12ª em Barreirinha. Defensores cadastrados no polo: {defensores}.
-
-Regras:
-- Inclua só atos que afetam o Polo do Baixo Amazonas: suas defensorias, defensores, servidores, comarcas (Parintins, Nhamundá, Barreirinha), plantão ou coordenação. Ignore atos só de outros polos (Médio Amazonas, Médio Solimões, Médio Madeira, Alto Solimões, Juruá, Purus, Rio Negro-Solimões etc.), mesmo que citem alguém conhecido.
-- Não junte incisos de portarias vizinhas. Cada ato é um número de portaria/resolução.
-- Leia o ato inteiro e separe DEFENSOR(A) PÚBLICO(A) de SERVIDOR(A), estagiário ou residente. Servidor designado para apoio (fila, atendimento, secretaria) vai na categoria "servidores" e NÃO gera sugestão de designação.
-- Linhas entre [TABELA ...] e [FIM DA TABELA] são tabelas: cada linha é um registro, colunas separadas por " | ". Respeite origem → destino. Se a tabela e o texto corrido divergirem, confie na tabela.
-- Datas no formato AAAA-MM-DD. "a contar de" sem fim = fim null. Período "de 01/10/26 até 31/12/2026" = início e fim.
-- "dp" é o número da defensoria do POLO DO BAIXO AMAZONAS (1 a 12). Se a DP for de outro polo, não sugira nada.
-- "trecho" é a frase exata do ato que menciona o polo, a comarca ou a pessoa (até 300 caracteres, copiada do texto).
-- Categorias permitidas: designacao, substituicao, afastamento, plantao, lotacao, coordenacao, servidores, geral.
-
-Para cada ato relevante, sugestões (lista, pode ser vazia):
-- {{"tipo":"designacao","dp":N,"pessoa":"nome completo","eh_defensor":true,"inicio":"AAAA-MM-DD","fim":"AAAA-MM-DD ou null"}} para designação, acumulação, substituição ou titularidade numa DP do polo;
-- {{"tipo":"afastamento","pessoa":"nome completo","eh_defensor":true,"afastamento":"ferias|licenca|folga|viagem|outro","inicio":"AAAA-MM-DD","fim":"AAAA-MM-DD"}} para férias, licença, folga, viagem a serviço de defensor do polo;
-- {{"tipo":"cessacao","dp":N,"pessoa":"...","inicio":"AAAA-MM-DD"}} quando o ato torna sem efeito ou cessa uma designação.
-
-Responda SÓ com JSON, sem comentários:
-{{"atos":[{{"numero":"Portaria Nº .../2026-GSPG","categorias":[...],"resumo":"uma frase","trecho":"...","sugestoes":[...]}}]}}
-Se nenhum ato for relevante, responda {{"atos":[]}}.
-
-Edição {edicao}, publicada em {data}. Atos pré-selecionados:
-
-{texto}"""
+def norm1(s: str) -> str:
+    """Minúsculas e sem acento, com o MESMO tamanho do texto original (para recortar trechos)."""
+    out = []
+    for c in s:
+        b = unicodedata.normalize("NFD", c)[0].lower()
+        out.append(b if len(b) == 1 else c)
+    return "".join(out)
 
 
-def perguntar_claude(cliente, edicao: dict, atos: list[str], defensores: list[str]) -> list[dict]:
-    texto = "\n\n=====\n\n".join(atos)
-    if len(texto) > 60000:
-        texto = texto[:60000]
-    prompt = PROMPT.format(defensores=", ".join(defensores) or "(nenhum)", edicao=edicao["numero"],
-                           data=edicao["data"] or "?", texto=texto)
-    for tentativa in range(3):
+def ano4(a: str | None, padrao: int) -> int:
+    if not a:
+        return padrao
+    return 2000 + int(a) if len(a) == 2 else int(a)
+
+
+RE_DATA = re.compile(r"(\d{1,2})[º°o]?\s*/\s*(\d{1,2})\s*/\s*(\d{2,4})")
+RE_DATA_EXT = re.compile(r"(\d{1,2})[º°o]?\s+de\s+(janeiro|fevereiro|marco|abril|maio|junho|julho|agosto|setembro|outubro|novembro|dezembro)(?:\s+de\s+(\d{4}))?")
+
+
+def datas_no_texto(t: str, ano_padrao: int) -> list[dt.date]:
+    """Todas as datas do trecho, na ordem: 01/10/26, 1º/10/2026, 1º de outubro de 2026."""
+    achadas = []
+    for m in RE_DATA.finditer(t):
         try:
-            r = cliente.messages.create(model=MODELO, max_tokens=4000, messages=[{"role": "user", "content": prompt}])
-            bruto = "".join(b.text for b in r.content if getattr(b, "type", "") == "text")
-            ini, fim = bruto.find("{"), bruto.rfind("}")
-            return json.loads(bruto[ini:fim + 1]).get("atos", [])
-        except Exception as e:  # noqa: BLE001
-            log(f"  Claude falhou (tentativa {tentativa + 1}):", e)
-            time.sleep(5 * (tentativa + 1))
-    return []
+            achadas.append((m.start(), dt.date(ano4(m.group(3), ano_padrao), int(m.group(2)), int(m.group(1)))))
+        except ValueError:
+            pass
+    for m in RE_DATA_EXT.finditer(t):
+        try:
+            achadas.append((m.start(), dt.date(ano4(m.group(3), ano_padrao), MESES[m.group(2)], int(m.group(1)))))
+        except ValueError:
+            pass
+    return [d for _, d in sorted(achadas)]
 
 
-# ---------------------------------------------------------------- validação
+def periodo(t: str, ano_padrao: int):
+    """(início, fim) de um inciso; fim None quando é só "a contar de" uma data."""
+    ds = datas_no_texto(t, ano_padrao)
+    if not ds:
+        return None, None
+    if len(ds) == 1:
+        return (ds[0], None) if re.search(r"a contar de|a partir de", t) else (ds[0], ds[0])
+    return min(ds), max(ds)
 
-def data_ok(s) -> bool:
-    try:
-        d = dt.date.fromisoformat(str(s))
-        return 2020 <= d.year <= 2035
-    except Exception:  # noqa: BLE001
-        return False
 
-
-def achar_defensor(nome: str, defensores: list[str]) -> str | None:
-    t = [x for x in norm(nome).split() if x not in ("de", "da", "do", "dos", "das", "e")]
-    if not t:
-        return None
+def defensores_no_texto(t: str, defensores: list[str]) -> list[str]:
+    achados = []
     for d in defensores:
-        dt_ = norm(d).split()
-        if t[0] == dt_[0] and all(x in dt_ for x in t[1:]):
-            return d
-        if len(t) >= 2 and t[0] == dt_[0] and t[-1] == dt_[-1]:
-            return d
-    return None
+        toks = [x for x in norm(d).split() if x not in ("de", "da", "do", "dos", "das", "e")]
+        if norm(d) in t or (len(toks) >= 2 and f"{toks[0]}" in t and toks[-1] in t and re.search(rf"\b{toks[0]}\b[\w\s]{{0,40}}\b{toks[-1]}\b", t)):
+            achados.append(d)
+    return achados
 
 
-def converter(ato: dict, edicao: dict, idx: int, defensores: list[str]) -> list[dict]:
-    """Transforma a resposta da Claude no formato do site, marcando 'auto' só quando é claro."""
-    numero = str(ato.get("numero") or "").strip()
-    trecho = str(ato.get("trecho") or "").strip()[:400]
-    resumo = str(ato.get("resumo") or "").strip()
-    cats = [c for c in (norm(x) for x in ato.get("categorias") or []) if c in CATEGORIAS] or ["geral"]
-    citacao = norm(numero + " " + trecho)
-    # a ligação com o polo tem de estar no texto citado, não só no resumo
-    if not (any(c in citacao for c in CIDADES) or achar_defensor(trecho, defensores) or any(norm(d) in citacao for d in defensores)):
-        if "geral" not in cats:
-            return []
-    if any(p in citacao for p in OUTROS_POLOS) and "baixo amazonas" not in citacao:
-        return []
-    base = {"numero": numero, "categorias": cats, "resumo": resumo, "trecho": trecho}
-    sugestoes = ato.get("sugestoes") or []
-    saida = []
-    for j, s in enumerate(sugestoes or [None]):
-        item = dict(base, id=f"{edicao['numero']}-{idx}-{j}", sugestao=None, auto=False)
-        if s:
-            tipo = s.get("tipo")
-            pessoa = achar_defensor(s.get("pessoa") or "", defensores)
-            nome = pessoa or str(s.get("pessoa") or "").strip()
-            dp = s.get("dp")
-            dp_ok = isinstance(dp, int) and 1 <= dp <= 12 or (isinstance(dp, str) and dp.isdigit() and 1 <= int(dp) <= 12)
-            if tipo == "designacao" and dp_ok and s.get("eh_defensor") is not False and data_ok(s.get("inicio")):
-                fim = s.get("fim") if data_ok(s.get("fim")) else ""
-                item["sugestao"] = {"tipo": "designacao", "dp": f"dp{int(dp)}", "defensor": nome, "inicio": s["inicio"], "fim": fim}
-                item["auto"] = bool(pessoa) and "baixo amazonas" in citacao and (not fim or fim >= s["inicio"])
-            elif tipo == "afastamento" and s.get("eh_defensor") is not False and data_ok(s.get("inicio")) and data_ok(s.get("fim")):
-                af = s.get("afastamento") if s.get("afastamento") in TIPOS_AF else "outro"
-                item["sugestao"] = {"tipo": "afastamento", "defensor": nome, "afastamento": af, "inicio": s["inicio"], "fim": s["fim"]}
-                item["auto"] = bool(pessoa) and s["fim"] >= s["inicio"]
-            elif tipo == "cessacao":
-                item["resumo"] = resumo or f"Cessa designação de {nome}"
-        if j > 0 and not item["sugestao"]:
+RE_DP_POLO = re.compile(r"(\d{1,2})\s*[ªaº°]?\s*defensoria publica do polo do baixo amazonas")
+VERBOS = r"(designar|conceder|cessar|tornar sem efeito|revogar|dispensar|nomear|lotar|remover|alterar|retificar|interromper|suspender|autorizar)"
+
+
+def incisos(texto: str) -> list[tuple[int, int]]:
+    """Divide o ato em incisos/frases que começam com um verbo de comando (posições no texto)."""
+    n = norm1(texto)
+    pos = [m.start() for m in re.finditer(rf"(?:^|[\s;:.\-])(?:[ivxlc]+\s*[-–.]\s*)?{VERBOS}\b", n)]
+    if not pos:
+        return [(0, len(texto))]
+    pos.append(len(texto))
+    return [(pos[i], pos[i + 1]) for i in range(len(pos) - 1)]
+
+
+def numero_do_ato(texto: str) -> str:
+    m = RE_ATO.match(texto.strip()) or RE_ATO.search(texto[:200])
+    return re.sub(r"\s+", " ", m.group(0)).strip(" -–*") if m else "Ato"
+
+
+def categorias_de(n: str) -> list[str]:
+    cats = []
+    if "designar" in n or "acumula" in n or "substitu" in n:
+        cats.append("designacao")
+    if re.search(r"ferias|licenca|folga|afastamento|recesso", n):
+        cats.append("afastamento")
+    if "plantao" in n:
+        cats.append("plantao")
+    if re.search(r"remoc|remover|lotac|lotar", n):
+        cats.append("lotacao")
+    if "coordena" in n:
+        cats.append("coordenacao")
+    if re.search(r"servidor|estagiari|assessor|residente|analista|assistente", n) and "defensor" not in n:
+        cats.append("servidores")
+    return cats or ["geral"]
+
+
+def ler_ato(texto: str, edicao: dict, idx: int, defensores: list[str]) -> list[dict]:
+    """Interpreta um ato por regras. Devolve itens no formato do site."""
+    ano = int((edicao.get("data") or str(dt.date.today()))[:4])
+    numero = numero_do_ato(texto)
+    n_todo = norm1(texto)
+    itens = []
+    # portarias com quadro: cada linha "Nome | Xª Defensoria Pública do Polo do Baixo Amazonas" vira uma designação
+    if re.search(r"\bdesignar\b", n_todo) and not re.search(r"tornar sem efeito|cessar|revogar", n_todo):
+        cab = n_todo.split("[tabela")[0]
+        ini_t, fim_t = periodo(cab, ano)
+        for k, linha in enumerate(l for l in texto.splitlines() if "|" in l):
+            nl = norm1(linha)
+            dps = sorted({int(x) for x in RE_DP_POLO.findall(nl) if 1 <= int(x) <= 12})
+            pessoas = defensores_no_texto(nl, defensores)
+            li, lf = periodo(nl, ano)
+            li, lf = (li, lf) if li else (ini_t, fim_t)
+            if len(dps) == 1 and len(pessoas) == 1 and li:
+                dp, p_ = dps[0], pessoas[0]
+                itens.append({"id": f"{edicao['numero']}-{idx}-t{k}", "numero": numero, "categorias": ["designacao"],
+                              "resumo": f"Designa {p_} para a {dp}ª DP do Polo do Baixo Amazonas" + (f", de {li:%d/%m/%Y} a {lf:%d/%m/%Y}" if lf else f", a contar de {li:%d/%m/%Y}"),
+                              "trecho": re.sub(r"\s+", " ", linha)[:320],
+                              "sugestao": {"tipo": "designacao", "dp": f"dp{dp}", "defensor": p_, "inicio": li.isoformat(), "fim": lf.isoformat() if lf else ""},
+                              "auto": not lf or lf >= li})
+        if itens:
+            return itens
+    for j, (a, b) in enumerate(incisos(texto)):
+        orig = texto[a:b].strip()
+        n = norm1(orig)
+        cita_polo = any(c in n for c in CIDADES)
+        pessoas = defensores_no_texto(n, defensores)
+        if not cita_polo and not pessoas:
             continue
-        saida.append(item)
+        if any(p in n for p in OUTROS_POLOS) and "baixo amazonas" not in n:
+            continue
+        trecho = re.sub(r"\s+", " ", orig)[:320]
+        item = {"id": f"{edicao['numero']}-{idx}-{j}", "numero": numero, "categorias": categorias_de(n),
+                "resumo": "", "trecho": trecho, "sugestao": None, "auto": False}
+        dps = sorted({int(x) for x in RE_DP_POLO.findall(n) if 1 <= int(x) <= 12})
+        ini, fim = periodo(n, ano)
+        eh_servidor = bool(re.search(r"\b(servidor|servidora|estagiari|assessor|residente|analista|assistente)\b", n)) and "defensor" not in n
+        anula = bool(re.search(r"tornar sem efeito|cessar|revogar|dispensar|interromper|suspender", n))
+        if re.search(r"\bdesignar\b", n) and dps and pessoas and ini and not eh_servidor and not anula:
+            p = pessoas[0]
+            fim_iso = fim.isoformat() if fim else ""
+            for dp in dps:
+                it = dict(item, id=f"{item['id']}-{dp}")
+                it["sugestao"] = {"tipo": "designacao", "dp": f"dp{dp}", "defensor": p, "inicio": ini.isoformat(), "fim": fim_iso}
+                it["resumo"] = f"Designa {p} para a {dp}ª DP do Polo do Baixo Amazonas" + (f", de {ini:%d/%m/%Y} a {fim:%d/%m/%Y}" if fim else f", a contar de {ini:%d/%m/%Y}")
+                it["auto"] = len(pessoas) == 1 and (not fim or fim >= ini)
+                itens.append(it)
+            continue
+        if re.search(r"ferias|licenca|folga", n) and pessoas and ini and fim and not eh_servidor and not anula and "conceder" in n:
+            tipo = "ferias" if "ferias" in n else "licenca" if "licenca" in n else "folga"
+            p = pessoas[0]
+            item["sugestao"] = {"tipo": "afastamento", "defensor": p, "afastamento": tipo, "inicio": ini.isoformat(), "fim": fim.isoformat()}
+            item["resumo"] = f"Concede {'férias' if tipo == 'ferias' else 'licença' if tipo == 'licenca' else 'folga'} a {p}, de {ini:%d/%m/%Y} a {fim:%d/%m/%Y}"
+            item["auto"] = len(pessoas) == 1 and fim >= ini
+            itens.append(item)
+            continue
+        # sem padrão claro: mostra para conferir
+        verbo = re.search(VERBOS, n)
+        item["resumo"] = (("Torna sem efeito ou encerra ato" if anula else (verbo.group(1).capitalize() if verbo else "Ato")) +
+                          (f" envolvendo {', '.join(pessoas)}" if pessoas else "") +
+                          (f" — {', '.join(str(d) + 'ª DP' for d in dps)}" if dps else "") +
+                          (" (servidor/estagiário)" if eh_servidor else "")).strip()
+        itens.append(item)
+    # um item por inciso pode repetir o mesmo ato sem nada útil; enxuga
+    vistos, saida = set(), []
+    for it in itens:
+        chave = (it["resumo"], it["trecho"][:80])
+        if chave in vistos:
+            continue
+        vistos.add(chave)
+        saida.append(it)
     return saida
 
 
@@ -332,9 +388,6 @@ def main() -> int:
         return 0
     log(f"Edições a ler: {numeros[0]} a {numeros[-1]} ({len(numeros)})")
 
-    import anthropic
-    cliente = anthropic.Anthropic()
-
     por_numero = {e["edicao"]: e for e in diario}
     ultima_data = ""
     for n in numeros:
@@ -353,9 +406,8 @@ def main() -> int:
         atos = [a for a in separar_atos(texto) if relevante(a, termos)]
         log(f"Edição {n} ({info['data']}): {len(atos)} atos pré-selecionados")
         convertidos = []
-        if atos:
-            for i, ato in enumerate(perguntar_claude(cliente, info, atos, defensores)):
-                convertidos += converter(ato, info, i, defensores)
+        for i, ato in enumerate(atos):
+            convertidos += ler_ato(ato, info, i, defensores)
         if convertidos:
             por_numero[n] = {"edicao": n, "data": info["data"], "url": info["url"], "atos": convertidos}
             log(f"  {len(convertidos)} itens, {sum(1 for c in convertidos if c['auto'])} automáticos")

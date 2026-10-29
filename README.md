@@ -22,7 +22,7 @@ Nenhum dado pessoal fica neste repositório, que é público: pessoas, escalas, 
 
 Aba **Actions** › **Diário Oficial** › **Run workflow**. Em "Reler a partir desta edição" dá para informar um número para reler edições antigas.
 
-O robô precisa do segredo `ANTHROPIC_API_KEY` (Settings › Secrets and variables › Actions).
+O robô não usa IA nem chave paga: lê as portarias com regras fixas. Tudo roda de graça no GitHub Actions.
 
 ## Acesso
 

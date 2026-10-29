@@ -36,7 +36,6 @@ jobs:
 
       - name: Ler o Diário
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           DESDE: ${{ inputs.desde }}
           MAX_EDICOES: ${{ inputs.max_edicoes }}
         run: python robo/diario.py
