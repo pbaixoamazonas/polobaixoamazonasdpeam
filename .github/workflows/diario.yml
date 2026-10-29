@@ -49,5 +49,6 @@ jobs:
             echo "Nada novo."
           else
             git commit -m "Diário: atualização de $(date -u +%d/%m/%Y)"
+            git pull --rebase -X theirs origin main || git pull --rebase origin main
             git push
           fi
