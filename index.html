@@ -330,7 +330,7 @@ const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt
 const uid = () => Math.random().toString(36).slice(2,10);
 
 /* ---------- estado ---------- */
-const S = {defensorias:[], pessoas:[], grade:[], eventos:[], config:[], designacoes:[], afastamentos:[], equipe:[], plantao:[], diario:[], user:null, admin:false};
+const S = {pedidos:[], defensorias:[], pessoas:[], grade:[], eventos:[], config:[], designacoes:[], afastamentos:[], equipe:[], plantao:[], diario:[], user:null, admin:false};
 const ui = {mesAf:null, mesEq:null, semana:null, catDiario:"todas", buscaDiario:""};
 
 /* ---------- dados de exemplo (só no modo demonstração) ---------- */
@@ -422,7 +422,11 @@ async function carregarFirebase(){
       S.user = null; S.admin = false; S.semCadastro = false; S.naoVerificado = false;
       if (u){
         const email = (u.email||"").toLowerCase();
-        if (!u.emailVerified && !ADMINS_INICIAIS.includes(email)){ S.user = {email, uid:u.uid, nome:email}; S.naoVerificado = true; render(); if (primeira){ primeira = false; pronto(); } return; }
+        if (!u.emailVerified && !ADMINS_INICIAIS.includes(email)){
+          let liberado = false;
+          try { const d = await fb.db.collection("pessoas").doc(email).get(); liberado = d.exists && d.data().uid === u.uid; } catch(e){}
+          if (!liberado){ S.user = {email, uid:u.uid, nome:email}; S.naoVerificado = true; render(); if (primeira){ primeira = false; pronto(); } return; }
+        }
         S.user = {email, uid:u.uid, nome:email};
         let p = null;
         try { const d = await fb.db.collection("pessoas").doc(email).get(); if (d.exists) p = d.data(); } catch(e){}
@@ -435,6 +439,7 @@ async function carregarFirebase(){
           if (c === "pessoas"){ const eu = S.pessoas.find(x => x.id === email); S.admin = inicial || eu?.perfil === "admin"; if (eu) S.user.nome = eu.nome; }
           render();
         }, e => console.warn(c, e));
+        if (S.admin) fb.db.collection("pedidos").onSnapshot(q => { S.pedidos = q.docs.map(d=>({id:d.id, ...d.data()})); render(); }, () => {});
         fb.db.collection("diario_lancados").onSnapshot(q => { const st = Object.fromEntries(q.docs.map(d=>[d.id, d.data().status||"lancado"])); for (const ed of S.diario) for (const a of ed.atos){ a.lancado = st[a.id]==="lancado"; a.rejeitado = st[a.id]==="rejeitado"; } render(); });
       }
       render();
@@ -1005,6 +1010,8 @@ function secPessoas(){
   return `
   <div class="cab-secao"><div><h2>Pessoas do polo</h2><p>Defensores, servidores, assessores e estagiários. O e-mail funcional é o login de cada um; o perfil diz quem só vê e quem pode editar. Os nomes também ensinam o robô a achar as portarias de cada pessoa no Diário.</p></div>
   <div class="barra">${adm(`<button class="btn" data-acao="carga-inicial" type="button">Carregar dados iniciais</button><button class="btn btn-pri" data-acao="nova-pessoa" type="button">Nova pessoa</button>`)}</div></div>
+  ${S.admin && S.pedidos.length ? `<section class="aviso-demo" style="flex-direction:column"><b>Pedidos de acesso</b><span class="fonte">Confirme com a pessoa (por exemplo, pelo WhatsApp) antes de liberar.</span>
+    <ul class="lista" style="width:100%">${S.pedidos.map(r => { const p = S.pessoas.find(x => x.id === r.email); return `<li><div><b>${esc(p?.nome || r.email)}</b><br><span class="muted mono" style="font-size:12.5px">${esc(r.email)} · ${br((r.em||"").slice(0,10))}${p ? "" : " · não está no cadastro"}</span></div><div>${p ? `<button class="btn btn-sm btn-pri" data-acao="liberar" data-id="${esc(r.id)}" type="button">Liberar</button>` : ""} <button class="btn btn-sm" data-acao="recusar" data-id="${esc(r.id)}" type="button">Recusar</button></div></li>`; }).join("")}</ul></section>` : ""}
   <div class="tab-scroll"><table><thead><tr><th>Nome</th><th>Cargo</th><th>Lotação</th><th>E-mail funcional</th><th>Aniversário</th><th>Acesso</th>${adm("<th></th>")}</tr></thead><tbody>
   ${lista.map(p=>`<tr><td><b>${esc(p.nome)}</b></td><td>${esc(CARGOS[p.cargo]||"")}</td><td>${esc(p.lotacao||"")}</td><td class="mono" style="font-size:13px">${esc(p.email||"—")}</td><td class="mono">${esc(p.aniversario||"")}</td><td>${p.email?`<span class="pill ${p.perfil==="admin"?"st-acum":"st-ok"}">${PERFIS[p.perfil]||"Leitura"}</span>`:`<span class="muted">sem login</span>`}</td>${adm(`<td><button class="btn btn-sm" data-acao="editar-pessoa" data-id="${esc(p.id)}" type="button">Editar</button></td>`)}</tr>`).join("") || `<tr><td colspan="7" class="vazio">Ninguém cadastrado.</td></tr>`}
   </tbody></table></div>`;
@@ -1128,13 +1135,22 @@ function telaVerificar(){
   <div class="erro" id="v-msg" role="status"></div>
   <button class="btn btn-pri" type="button" id="v-ok">Já confirmei</button>
   <button class="btn" type="button" id="v-reenviar">Reenviar o link</button>
+  <p class="fonte" style="margin:0">O e-mail não chegou? Peça a liberação a um admin do polo:</p>
+  <button class="btn" type="button" id="v-pedir">Pedir liberação a um admin</button>
   <button class="btn" type="button" id="v-sair">Sair</button></form></div>`;
 }
 function ligarVerificar(){
   const msg = document.getElementById("v-msg");
-  document.getElementById("v-ok").onclick = async () => { await fb.auth.currentUser.reload(); if (fb.auth.currentUser.emailVerified){ await fb.auth.currentUser.getIdToken(true); location.reload(); } else { msg.textContent = "Ainda não aparece como confirmado. Toque no link do e-mail e tente de novo."; } };
+  document.getElementById("v-ok").onclick = async () => { await fb.auth.currentUser.reload();
+    let liberado = false; try { const d = await fb.db.collection("pessoas").doc((fb.auth.currentUser.email||"").toLowerCase()).get(); liberado = d.exists && d.data().uid === fb.auth.currentUser.uid; } catch(e){}
+    if (fb.auth.currentUser.emailVerified || liberado){ await fb.auth.currentUser.getIdToken(true); location.reload(); } else { msg.textContent = "Ainda não aparece como confirmado nem liberado. Toque no link do e-mail ou espere a liberação de um admin."; } };
   document.getElementById("v-reenviar").onclick = async () => { try { fb.auth.languageCode = "pt"; await fb.auth.currentUser.sendEmailVerification(); msg.style.color = "var(--ok)"; msg.textContent = "Link reenviado."; } catch(e){ msg.textContent = "Espere um pouco antes de pedir outro link."; } };
   document.getElementById("v-sair").onclick = () => fb.auth.signOut();
+  document.getElementById("v-pedir").onclick = async () => {
+    try { const u = fb.auth.currentUser; await fb.db.collection("pedidos").doc(u.uid).set({email:(u.email||"").toLowerCase(), em:new Date().toISOString()});
+      msg.style.color = "var(--ok)"; msg.textContent = "Pedido enviado. Avise a coordenação do polo; quando liberarem, toque em “Já confirmei”."; }
+    catch(e){ msg.textContent = "Não foi possível enviar o pedido. Tente de novo em instantes."; }
+  };
 }
 
 /* ---------- formulários ---------- */
@@ -1328,6 +1344,9 @@ document.addEventListener("click", ev => {
     case "novo-evento": return formEvento();
     case "editar-evento": return formEvento(acha("eventos"));
     case "carga-inicial": return formCarga();
+    case "liberar": return (async () => { const r = S.pedidos.find(x => x.id === id); const p = S.pessoas.find(x => x.id === r?.email); if (!r || !p) return;
+      await Dados.salvar("pessoas", {...p, uid: r.id}); await fb.db.collection("pedidos").doc(r.id).delete(); toast(`Acesso liberado para ${p.nome}`); })();
+    case "recusar": return fb.db.collection("pedidos").doc(id).delete().then(() => toast("Pedido recusado"));
     case "editar-polo": return formPolo();
     case "nova-pessoa": return formPessoa();
     case "editar-pessoa": return formPessoa(acha("pessoas"));

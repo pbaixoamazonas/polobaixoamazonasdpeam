@@ -1,8 +1,10 @@
 rules_version = '2';
 
 // Painel do Polo do Baixo Amazonas — quem pode ler e quem pode alterar.
-// Ler: quem está em "pessoas" com o próprio e-mail funcional como identificador e já confirmou o e-mail.
+// Ler: quem está em "pessoas" (id = e-mail funcional) e confirmou o e-mail
+//      OU foi liberado por um admin (o campo "uid" da pessoa é o da conta dela).
 // Alterar: quem está em "pessoas" com perfil "admin", ou a conta institucional do polo.
+// Pedidos de liberação: cada um cria só o próprio; só admin lê e apaga.
 service cloud.firestore {
   match /databases/{database}/documents {
 
@@ -15,17 +17,27 @@ service cloud.firestore {
     function contaDoPolo() {
       return logado() && email() == 'polobaixoamazonas@defensoria.am.def.br';
     }
+    function pessoa() {
+      return get(/databases/$(database)/documents/pessoas/$(email())).data;
+    }
     function cadastrado() {
-      return logado() && request.auth.token.email_verified == true &&
-        exists(/databases/$(database)/documents/pessoas/$(email()));
+      return logado() &&
+        exists(/databases/$(database)/documents/pessoas/$(email())) &&
+        (request.auth.token.email_verified == true || pessoa().get('uid', '') == request.auth.uid);
     }
     function admin() {
-      return contaDoPolo() ||
-        (cadastrado() && get(/databases/$(database)/documents/pessoas/$(email())).data.perfil == 'admin');
+      return contaDoPolo() || (cadastrado() && pessoa().perfil == 'admin');
+    }
+
+    match /pedidos/{uid} {
+      allow create, update: if logado() && request.auth.uid == uid
+        && request.resource.data.email == email()
+        && request.resource.data.keys().hasOnly(['email', 'em']);
+      allow read, delete: if admin();
     }
 
     match /{colecao}/{id} {
-      allow read: if contaDoPolo() || cadastrado();
+      allow read: if colecao != 'pedidos' && (contaDoPolo() || cadastrado());
       allow write: if admin() && colecao in [
         'defensorias', 'pessoas', 'grade', 'eventos', 'config', 'designacoes',
         'afastamentos', 'equipe', 'plantao', 'diario_lancados'
