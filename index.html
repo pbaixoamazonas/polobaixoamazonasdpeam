@@ -1297,17 +1297,25 @@ function mostrarAcessos(lista){
 function formSenhaComum(){
   const alvo = S.pessoas.filter(p => p.email && !ADMINS_INICIAIS.includes(p.email) && (!p.uid || p.trocarSenha));
   abrir("Criar acessos com a mesma senha provisória",
-    `<p style="margin:0">Cria a conta de quem ainda não tem acesso, todos com a senha que você digitar. No primeiro login, cada pessoa é obrigada a criar a própria senha.</p>
+    `<p style="margin:0">Marque quem deve receber o acesso. Todos os marcados entram com a senha que você digitar. No primeiro login, cada pessoa é obrigada a criar a própria senha.</p>
      <p class="fonte" style="margin:0">Atenção: até a pessoa trocar, quem souber a senha comum pode entrar na conta dela. Peça a todos que entrem logo.</p>
      <div class="campo"><label for="f-sc">Senha provisória comum (mínimo 8 caracteres)</label><input id="f-sc" type="text" autocomplete="off" spellcheck="false"></div>
-     <div><b>${alvo.length} pessoas</b><ul class="lista">${alvo.map(p=>`<li><span>${esc(p.nome)}</span><span class="mono muted" style="font-size:12.5px">${esc(p.email)}</span></li>`).join("") || `<li class="vazio">Ninguém pendente.</li>`}</ul></div>`,
+     <div><div class="barra" style="justify-content:space-between"><b>Quem recebe o acesso</b><span class="barra"><button class="btn btn-sm" type="button" id="sc-todos">Marcar todos</button><button class="btn btn-sm" type="button" id="sc-nenhum">Desmarcar todos</button></span></div>
+       <ul class="lista" style="margin-top:6px">${alvo.map((p,i)=>`<li><label style="display:flex;gap:10px;align-items:center;cursor:pointer;min-width:0"><input type="checkbox" class="sc-pessoa" id="sc-${i}" data-i="${i}"><span style="min-width:0"><b>${esc(p.nome)}</b><br><span class="mono muted" style="font-size:12.5px">${esc(p.email)}</span></span></label><span class="muted" style="font-size:12.5px">${esc(CARGOS[p.cargo]||"")}</span></li>`).join("") || `<li class="vazio">Ninguém pendente.</li>`}</ul>
+       <p class="fonte" id="sc-cont" style="margin:6px 0 0">Nenhuma pessoa marcada.</p></div>`,
     async () => {
-      const senha = v("f-sc"); if (senha.length < 8) return "A senha precisa ter pelo menos 8 caracteres."; if (!alvo.length) return "Ninguém pendente.";
+      const senha = v("f-sc"); if (senha.length < 8) return "A senha precisa ter pelo menos 8 caracteres.";
+      const escolhidos = [...document.querySelectorAll(".sc-pessoa:checked")].map(c => alvo[+c.dataset.i]);
+      if (!escolhidos.length) return "Marque pelo menos uma pessoa.";
       document.getElementById("f-salvar").textContent = "Criando…";
-      const out = []; for (const p of alvo) out.push({p, ...(await criarAcesso({...p, uid:""}, senha))});
+      const out = []; for (const p of escolhidos) out.push({p, ...(await criarAcesso({...p, uid:""}, senha))});
       setTimeout(() => mostrarSenhaComum(out, senha), 50);
     });
   document.getElementById("f-salvar").textContent = "Criar acessos";
+  const conta = () => { const n = document.querySelectorAll(".sc-pessoa:checked").length; document.getElementById("sc-cont").textContent = n ? `${n} ${n === 1 ? "pessoa marcada" : "pessoas marcadas"}.` : "Nenhuma pessoa marcada."; };
+  document.querySelectorAll(".sc-pessoa").forEach(c => c.addEventListener("change", conta));
+  document.getElementById("sc-todos").onclick = () => { document.querySelectorAll(".sc-pessoa").forEach(c => c.checked = true); conta(); };
+  document.getElementById("sc-nenhum").onclick = () => { document.querySelectorAll(".sc-pessoa").forEach(c => c.checked = false); conta(); };
 }
 function mostrarSenhaComum(out, senha){
   const ok = out.filter(x => x.ok), falha = out.filter(x => !x.ok);
