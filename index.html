@@ -1295,7 +1295,7 @@ function mostrarAcessos(lista){
   dlgForm.querySelectorAll("[data-copiar]").forEach(b => b.onclick = async () => { const x = lista[+b.dataset.copiar]; const t = mensagemAcesso(x.p, x.senha); try { await navigator.clipboard.writeText(t); b.textContent = "Copiada"; } catch(e){ b.textContent = "Copie manualmente"; } });
 }
 function formSenhaComum(){
-  const alvo = S.pessoas.filter(p => p.email && (!p.uid || p.trocarSenha));
+  const alvo = S.pessoas.filter(p => p.email && !ADMINS_INICIAIS.includes(p.email) && (!p.uid || p.trocarSenha));
   abrir("Criar acessos com a mesma senha provisória",
     `<p style="margin:0">Cria a conta de quem ainda não tem acesso, todos com a senha que você digitar. No primeiro login, cada pessoa é obrigada a criar a própria senha.</p>
      <p class="fonte" style="margin:0">Atenção: até a pessoa trocar, quem souber a senha comum pode entrar na conta dela. Peça a todos que entrem logo.</p>
@@ -1497,7 +1497,7 @@ document.addEventListener("click", ev => {
         const r = await criarAcesso({...p, uid:""});
         out.push(r.ok ? {p, ...r} : {p, ok:false, motivo:"senha provisória não guardada (criada antes desta versão): apague esta conta no Firebase › Authentication › Usuários e toque em “Mensagens de acesso” de novo"}); }
       if (!out.length) return toast("Nenhuma mensagem pendente"); mostrarAcessos(out); })();
-    case "criar-acessos": return (async () => { const pend = S.pessoas.filter(p => p.email && !p.uid); if (!pend.length) return toast("Ninguém pendente"); toast(`Criando ${pend.length} acessos…`); const out = []; for (const p of pend) out.push({p, ...(await criarAcesso(p))}); mostrarAcessos(out); })();
+    case "criar-acessos": return (async () => { const pend = S.pessoas.filter(p => p.email && !p.uid && !ADMINS_INICIAIS.includes(p.email)); if (!pend.length) return toast("Ninguém pendente"); toast(`Criando ${pend.length} acessos…`); const out = []; for (const p of pend) out.push({p, ...(await criarAcesso(p))}); mostrarAcessos(out); })();
     case "nova-senha": return toast("Para uma senha nova, a pessoa usa “Esqueci a senha”; se o e-mail não chegar, exclua a conta dela em Firebase › Authentication e use “Criar acesso”.");
     case "liberar": return (async () => { const r = S.pedidos.find(x => x.id === id); const p = S.pessoas.find(x => x.id === r?.email); if (!r || !p) return;
       await Dados.salvar("pessoas", {...p, uid: r.id}); await fb.db.collection("pedidos").doc(r.id).delete(); toast(`Acesso liberado para ${p.nome}`); })();
