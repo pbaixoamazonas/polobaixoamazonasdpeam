@@ -36,6 +36,13 @@ service cloud.firestore {
       allow read, delete: if admin();
     }
 
+    // a própria pessoa só pode desligar o aviso de troca da senha provisória
+    match /pessoas/{id} {
+      allow update: if cadastrado() && id == email()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['trocarSenha'])
+        && request.resource.data.trocarSenha == false;
+    }
+
     match /{colecao}/{id} {
       allow read: if colecao != 'pedidos' && (contaDoPolo() || cadastrado());
       allow write: if admin() && colecao in [

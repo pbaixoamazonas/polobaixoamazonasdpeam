@@ -434,6 +434,7 @@ async function carregarFirebase(){
         if (!p && !inicial){ S.semCadastro = true; render(); if (primeira){ primeira = false; pronto(); } return; }
         S.user.nome = p?.nome || email;
         S.admin = inicial || p?.perfil === "admin";
+        S.trocarSenha = !!p?.trocarSenha;
         for (const c of COLECOES) fb.db.collection(c).onSnapshot(q => {
           S[c] = q.docs.map(d=>({id:d.id, ...d.data()}));
           if (c === "pessoas"){ const eu = S.pessoas.find(x => x.id === email); S.admin = inicial || eu?.perfil === "admin"; if (eu) S.user.nome = eu.nome; }
@@ -795,6 +796,7 @@ function render(){
   ql.textContent = S.user ? `${S.user.nome}${S.admin ? " · admin" : ""}` : "";
   document.getElementById("btn-login").textContent = S.user ? "Sair" : "Entrar";
   const main = document.getElementById("conteudo");
+  if (!DEMO && S.trocarSenha && sec !== "ajuda"){ main.innerHTML = telaTrocarSenha(); ligarTrocarSenha(); return; }
   if (!DEMO && S.naoVerificado && sec !== "ajuda"){ main.innerHTML = telaVerificar(); ligarVerificar(); return; }
   if (!DEMO && S.semCadastro && sec !== "ajuda"){ main.innerHTML = `<div class="login"><form><h2>E-mail sem cadastro</h2><p class="muted" style="margin:0">${esc(S.user?.email||"")} ainda não está em Pessoas do polo. Peça a um admin para incluir você e entre de novo.</p></form></div>`; return; }
   if (!DEMO && !S.user && sec !== "ajuda"){ main.innerHTML = telaLogin(); ligarLogin(); return; }
@@ -1009,11 +1011,11 @@ function secPessoas(){
   const lista = [...S.pessoas].sort((a,b)=>ordem.indexOf(a.cargo)-ordem.indexOf(b.cargo) || a.nome.localeCompare(b.nome));
   return `
   <div class="cab-secao"><div><h2>Pessoas do polo</h2><p>Defensores, servidores, assessores e estagiários. O e-mail funcional é o login de cada um; o perfil diz quem só vê e quem pode editar. Os nomes também ensinam o robô a achar as portarias de cada pessoa no Diário.</p></div>
-  <div class="barra">${adm(`<button class="btn" data-acao="carga-inicial" type="button">Carregar dados iniciais</button><button class="btn btn-pri" data-acao="nova-pessoa" type="button">Nova pessoa</button>`)}</div></div>
+  <div class="barra">${adm(`${!DEMO ? `<button class="btn" data-acao="criar-acessos" type="button">Criar acessos pendentes</button>` : ""}<button class="btn" data-acao="carga-inicial" type="button">Carregar dados iniciais</button><button class="btn btn-pri" data-acao="nova-pessoa" type="button">Nova pessoa</button>`)}</div></div>
   ${S.admin && S.pedidos.length ? `<section class="aviso-demo" style="flex-direction:column"><b>Pedidos de acesso</b><span class="fonte">Confirme com a pessoa (por exemplo, pelo WhatsApp) antes de liberar.</span>
     <ul class="lista" style="width:100%">${S.pedidos.map(r => { const p = S.pessoas.find(x => x.id === r.email); return `<li><div><b>${esc(p?.nome || r.email)}</b><br><span class="muted mono" style="font-size:12.5px">${esc(r.email)} · ${br((r.em||"").slice(0,10))}${p ? "" : " · não está no cadastro"}</span></div><div>${p ? `<button class="btn btn-sm btn-pri" data-acao="liberar" data-id="${esc(r.id)}" type="button">Liberar</button>` : ""} <button class="btn btn-sm" data-acao="recusar" data-id="${esc(r.id)}" type="button">Recusar</button></div></li>`; }).join("")}</ul></section>` : ""}
   <div class="tab-scroll"><table><thead><tr><th>Nome</th><th>Cargo</th><th>Lotação</th><th>E-mail funcional</th><th>Aniversário</th><th>Acesso</th>${adm("<th></th>")}</tr></thead><tbody>
-  ${lista.map(p=>`<tr><td><b>${esc(p.nome)}</b></td><td>${esc(CARGOS[p.cargo]||"")}</td><td>${esc(p.lotacao||"")}</td><td class="mono" style="font-size:13px">${esc(p.email||"—")}</td><td class="mono">${esc(p.aniversario||"")}</td><td>${p.email?`<span class="pill ${p.perfil==="admin"?"st-acum":"st-ok"}">${PERFIS[p.perfil]||"Leitura"}</span>`:`<span class="muted">sem login</span>`}</td>${adm(`<td><button class="btn btn-sm" data-acao="editar-pessoa" data-id="${esc(p.id)}" type="button">Editar</button></td>`)}</tr>`).join("") || `<tr><td colspan="7" class="vazio">Ninguém cadastrado.</td></tr>`}
+  ${lista.map(p=>`<tr><td><b>${esc(p.nome)}</b></td><td>${esc(CARGOS[p.cargo]||"")}</td><td>${esc(p.lotacao||"")}</td><td class="mono" style="font-size:13px">${esc(p.email||"—")}</td><td class="mono">${esc(p.aniversario||"")}</td><td>${p.email?`<span class="pill ${p.perfil==="admin"?"st-acum":"st-ok"}">${PERFIS[p.perfil]||"Leitura"}</span>${!DEMO && S.admin && !p.uid ? '<span class="nota">acesso não criado</span>' : ""}`:`<span class="muted">sem login</span>`}</td>${adm(`<td><div class="barra"><button class="btn btn-sm" data-acao="editar-pessoa" data-id="${esc(p.id)}" type="button">Editar</button>${!DEMO && p.email ? (p.uid ? `<button class="btn btn-sm" data-acao="nova-senha" data-id="${esc(p.id)}" type="button">Nova senha provisória</button>` : `<button class="btn btn-sm btn-pri" data-acao="criar-acesso" data-id="${esc(p.id)}" type="button">Criar acesso</button>`) : ""}</div></td>`)}</tr>`).join("") || `<tr><td colspan="7" class="vazio">Ninguém cadastrado.</td></tr>`}
   </tbody></table></div>`;
 }
 
@@ -1130,6 +1132,21 @@ function ligarLogin(){
     }
   });
 }
+function telaTrocarSenha(){
+  return `<div class="login"><form id="form-troca" novalidate><h2>Crie a sua senha</h2><p class="muted" style="margin:0">Você entrou com a senha provisória. Escolha agora uma senha só sua para continuar.</p>
+  <div class="campo"><label for="t-s1">Nova senha (mínimo 8 caracteres)</label><input id="t-s1" type="password" autocomplete="new-password" required></div>
+  <div class="campo"><label for="t-s2">Repita a nova senha</label><input id="t-s2" type="password" autocomplete="new-password" required></div>
+  <div class="erro" id="t-erro" role="alert"></div><button class="btn btn-pri" type="submit">Salvar senha e entrar</button></form></div>`;
+}
+function ligarTrocarSenha(){
+  document.getElementById("form-troca").addEventListener("submit", async ev => {
+    ev.preventDefault(); const s1 = document.getElementById("t-s1").value, s2 = document.getElementById("t-s2").value, out = document.getElementById("t-erro");
+    if (s1.length < 8){ out.textContent = "A senha precisa ter pelo menos 8 caracteres."; return; }
+    if (s1 !== s2){ out.textContent = "As duas senhas não são iguais."; return; }
+    try { await fb.auth.currentUser.updatePassword(s1); await fb.db.collection("pessoas").doc(S.user.email).update({trocarSenha:false}); S.trocarSenha = false; toast("Senha criada"); render(); }
+    catch(e){ out.textContent = (e.code||"").includes("requires-recent-login") ? "Por segurança, saia e entre de novo com a senha provisória, e crie a nova senha em seguida." : "Não foi possível salvar. Tente de novo."; }
+  });
+}
 function telaVerificar(){
   return `<div class="login"><form id="form-verif"><h2>Confirme o seu e-mail</h2><p style="margin:0">Enviamos um link para <b>${esc(S.user?.email||"")}</b>. Abra o e-mail (veja também o spam), toque no link e volte aqui.</p>
   <div class="erro" id="v-msg" role="status"></div>
@@ -1182,6 +1199,29 @@ function formPolo(){
     `${campo("f-coord","Coordenador(a)",P.coordenacao,"text",'list="dl-def"')}${datalist()}${campo("f-pcoord","Portaria da coordenação",P.portariaCoord)}
      <div class="linha2">${campo("f-wpp","WhatsApp",P.whatsapp)}${campo("f-tel","Ligações",P.ligacoes)}</div>${campo("f-mail","E-mail do polo",P.email,"email")}${campo("f-end","Endereço da sede",P.endereco)}`,
     async () => { await Dados.salvar("config", {...config(), id:"polo", coordenacao:v("f-coord"), portariaCoord:v("f-pcoord"), whatsapp:v("f-wpp"), ligacoes:v("f-tel"), email:v("f-mail"), endereco:v("f-end")}); });
+}
+const URL_PAINEL = "https://pbaixoamazonas.github.io/polobaixoamazonasdpeam/";
+function senhaProvisoria(){ const a = "ABCDEFGHJKMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789"; const r = new Uint32Array(10); crypto.getRandomValues(r); return [...r].map(x => a[x % a.length]).join("") + "!7"; }
+function mensagemAcesso(p, senha){ return `Olá, ${p.nome.split(" ")[0]}! Seu acesso ao painel do Polo do Baixo Amazonas está pronto.\n\nEndereço: ${URL_PAINEL}\nE-mail: ${p.email}\nSenha provisória: ${senha}\n\nNo primeiro acesso o painel pede para você criar a sua própria senha. Dúvidas: botão “Como funciona”, no topo do painel.`; }
+async function criarAcesso(p){
+  const senha = senhaProvisoria();
+  let app2 = firebase.apps.find(a => a.name === "criador") || firebase.initializeApp(FIREBASE_CONFIG, "criador");
+  try {
+    const r = await app2.auth().createUserWithEmailAndPassword(p.email, senha);
+    const uid = r.user.uid; await app2.auth().signOut();
+    await Dados.salvar("pessoas", {...p, uid, trocarSenha:true});
+    return {ok:true, senha};
+  } catch(e){
+    return {ok:false, motivo: (e.code||"").includes("email-already-in-use") ? "já criou a própria senha: peça para tocar em “Pedir liberação” e libere aqui" : "não foi possível criar agora"};
+  }
+}
+function mostrarAcessos(lista){
+  const linhas = lista.map((x,i) => x.ok ? `<li><div><b>${esc(x.p.nome)}</b><br><span class="mono" style="font-size:12.5px">${esc(x.p.email)} · senha provisória <b>${esc(x.senha)}</b></span></div>
+    <div class="barra"><button class="btn btn-sm" type="button" data-copiar="${i}">Copiar mensagem</button><a class="btn btn-sm" target="_blank" rel="noopener" href="mailto:${encodeURIComponent(x.p.email)}?subject=${encodeURIComponent("Acesso ao painel do Polo do Baixo Amazonas")}&body=${encodeURIComponent(mensagemAcesso(x.p,x.senha))}">E-mail</a><a class="btn btn-sm" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(mensagemAcesso(x.p,x.senha))}">WhatsApp</a></div></li>`
+    : `<li><div><b>${esc(x.p.nome)}</b><br><span class="muted">${esc(x.motivo)}</span></div></li>`).join("");
+  dlgForm.innerHTML = `<div class="dlg-cab"><h3>Acessos criados</h3></div><div class="dlg-corpo"><p style="margin:0">Mande a mensagem de cada pessoa só para ela. As senhas não ficam guardadas: anote ou envie agora. Se perder a senha antes de enviar, use “Nova senha provisória”.</p><ul class="lista">${linhas}</ul></div><div class="dlg-pe"><button class="btn btn-pri" value="cancel" type="submit">Concluir</button></div>`;
+  dlg.showModal();
+  dlgForm.querySelectorAll("[data-copiar]").forEach(b => b.onclick = async () => { const x = lista[+b.dataset.copiar]; const t = mensagemAcesso(x.p, x.senha); try { await navigator.clipboard.writeText(t); b.textContent = "Copiada"; } catch(e){ b.textContent = "Copie manualmente"; } });
 }
 function formCarga(){
   let dados = null;
@@ -1344,6 +1384,9 @@ document.addEventListener("click", ev => {
     case "novo-evento": return formEvento();
     case "editar-evento": return formEvento(acha("eventos"));
     case "carga-inicial": return formCarga();
+    case "criar-acesso": return (async () => { const p = acha("pessoas"); toast("Criando acesso…"); mostrarAcessos([{p, ...(await criarAcesso(p))}]); })();
+    case "criar-acessos": return (async () => { const pend = S.pessoas.filter(p => p.email && !p.uid && p.id !== "polobaixoamazonas@defensoria.am.def.br"); if (!pend.length) return toast("Ninguém pendente"); toast(`Criando ${pend.length} acessos…`); const out = []; for (const p of pend) out.push({p, ...(await criarAcesso(p))}); mostrarAcessos(out); })();
+    case "nova-senha": return toast("Para uma senha nova, a pessoa usa “Esqueci a senha”; se o e-mail não chegar, exclua a conta dela em Firebase › Authentication e use “Criar acesso”.");
     case "liberar": return (async () => { const r = S.pedidos.find(x => x.id === id); const p = S.pessoas.find(x => x.id === r?.email); if (!r || !p) return;
       await Dados.salvar("pessoas", {...p, uid: r.id}); await fb.db.collection("pedidos").doc(r.id).delete(); toast(`Acesso liberado para ${p.nome}`); })();
     case "recusar": return fb.db.collection("pedidos").doc(id).delete().then(() => toast("Pedido recusado"));
