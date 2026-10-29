@@ -1038,7 +1038,7 @@ function secPessoas(){
   const lista = [...S.pessoas].sort((a,b)=>ordem.indexOf(a.cargo)-ordem.indexOf(b.cargo) || a.nome.localeCompare(b.nome));
   return `
   <div class="cab-secao"><div><h2>Pessoas do polo</h2><p>Defensores, servidores, assessores e estagiários. O e-mail funcional é o login de cada um; o perfil diz quem só vê e quem pode editar. Os nomes também ensinam o robô a achar as portarias de cada pessoa no Diário.</p></div>
-  <div class="barra">${adm(`${!DEMO ? `<button class="btn" data-acao="mensagens-pendentes" type="button">Mensagens de acesso</button><button class="btn" data-acao="criar-acessos" type="button">Criar acessos pendentes</button>` : ""}<button class="btn" data-acao="carga-inicial" type="button">Carregar dados iniciais</button><button class="btn btn-pri" data-acao="nova-pessoa" type="button">Nova pessoa</button>`)}</div></div>
+  <div class="barra">${adm(`${!DEMO ? `<button class="btn" data-acao="mensagens-pendentes" type="button">Mensagens de acesso</button><button class="btn" data-acao="criar-acessos" type="button">Criar acessos pendentes</button><button class="btn btn-pri" data-acao="acessos-senha-comum" type="button">Criar acessos com senha comum</button>` : ""}<button class="btn" data-acao="carga-inicial" type="button">Carregar dados iniciais</button><button class="btn btn-pri" data-acao="nova-pessoa" type="button">Nova pessoa</button>`)}</div></div>
   ${S.admin && S.pedidos.length ? `<section class="aviso-demo" style="flex-direction:column"><b>Pedidos de acesso</b><span class="fonte">Confirme com a pessoa (por exemplo, pelo WhatsApp) antes de liberar.</span>
     <ul class="lista" style="width:100%">${S.pedidos.map(r => { const p = S.pessoas.find(x => x.id === r.email); return `<li><div><b>${esc(p?.nome || r.email)}</b><br><span class="muted mono" style="font-size:12.5px">${esc(r.email)} · ${br((r.em||"").slice(0,10))}${p ? "" : " · não está no cadastro"}</span></div><div>${p ? `<button class="btn btn-sm btn-pri" data-acao="liberar" data-id="${esc(r.id)}" type="button">Liberar</button>` : ""} <button class="btn btn-sm" data-acao="recusar" data-id="${esc(r.id)}" type="button">Recusar</button></div></li>`; }).join("")}</ul></section>` : ""}
   <div class="tab-scroll"><table><thead><tr><th>Nome</th><th>Cargo</th><th>Lotação</th><th>E-mail funcional</th><th>Aniversário</th><th>Acesso</th>${adm("<th></th>")}</tr></thead><tbody>
@@ -1249,7 +1249,7 @@ function abrir(titulo, corpo, aoSalvar, aoRemover, origem){
   dlg.showModal();
   document.getElementById("f-salvar").onclick = async () => {
     const err = await aoSalvar(); if (err){ document.getElementById("f-erro").textContent = err; return; }
-    dlg.close(); toast("Salvo");
+    dlg.close(); toast("Salvo"); render();
   };
   if (aoRemover){ const b = document.getElementById("f-remover"); b.onclick = async () => {
     if (b.dataset.conf !== "1"){ b.dataset.conf = "1"; b.textContent = "Confirmar exclusão"; return; }
@@ -1273,14 +1273,14 @@ function formPolo(){
 const URL_PAINEL = "https://pbaixoamazonas.github.io/polobaixoamazonasdpeam/";
 function senhaProvisoria(){ const a = "ABCDEFGHJKMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789"; const r = new Uint32Array(10); crypto.getRandomValues(r); return [...r].map(x => a[x % a.length]).join("") + "!7"; }
 function mensagemAcesso(p, senha){ return `Olá, ${p.nome.split(" ")[0]}! Seu acesso ao painel do Polo do Baixo Amazonas está pronto.\n\nEndereço: ${URL_PAINEL}\nE-mail: ${p.email}\nSenha provisória: ${senha}\n\nNo primeiro acesso o painel pede para você criar a sua própria senha. Dúvidas: botão “Como funciona”, no topo do painel.`; }
-async function criarAcesso(p){
-  const senha = senhaProvisoria();
+async function criarAcesso(p, senhaFixa){
+  const senha = senhaFixa || senhaProvisoria();
   let app2 = firebase.apps.find(a => a.name === "criador") || firebase.initializeApp(FIREBASE_CONFIG, "criador");
   try {
     const r = await app2.auth().createUserWithEmailAndPassword(p.email, senha);
     const uid = r.user.uid; await app2.auth().signOut();
     await Dados.salvar("pessoas", {...p, uid, trocarSenha:true});
-    try { await fb.db.collection("acessos").doc(p.email).set({senha, em:new Date().toISOString(), por:S.user?.email||""}); } catch(e){}
+    if (!senhaFixa) try { await fb.db.collection("acessos").doc(p.email).set({senha, em:new Date().toISOString(), por:S.user?.email||""}); } catch(e){}
     return {ok:true, senha};
   } catch(e){
     return {ok:false, motivo: (e.code||"").includes("email-already-in-use") ? (p.trocarSenha ? "a conta já existe com senha provisória. Use “Mensagem de acesso”; se ela não aparecer, apague a conta no Firebase (Authentication › Usuários) e crie de novo" : "já criou a própria senha: peça para tocar em “Pedir liberação” e libere aqui") : "não foi possível criar agora"};
@@ -1293,6 +1293,33 @@ function mostrarAcessos(lista){
   dlgForm.innerHTML = `<div class="dlg-cab"><h3>Acessos criados</h3></div><div class="dlg-corpo"><p style="margin:0">Mande a mensagem de cada pessoa só para ela. Até a pessoa criar a própria senha, a mensagem fica guardada em <b>Pessoas do polo › Mensagem de acesso</b> (só admins veem).</p><ul class="lista">${linhas}</ul></div><div class="dlg-pe"><button class="btn btn-pri" value="cancel" type="submit">Concluir</button></div>`;
   dlg.showModal();
   dlgForm.querySelectorAll("[data-copiar]").forEach(b => b.onclick = async () => { const x = lista[+b.dataset.copiar]; const t = mensagemAcesso(x.p, x.senha); try { await navigator.clipboard.writeText(t); b.textContent = "Copiada"; } catch(e){ b.textContent = "Copie manualmente"; } });
+}
+function formSenhaComum(){
+  const alvo = S.pessoas.filter(p => p.email && (!p.uid || p.trocarSenha));
+  abrir("Criar acessos com a mesma senha provisória",
+    `<p style="margin:0">Cria a conta de quem ainda não tem acesso, todos com a senha que você digitar. No primeiro login, cada pessoa é obrigada a criar a própria senha.</p>
+     <p class="fonte" style="margin:0">Atenção: até a pessoa trocar, quem souber a senha comum pode entrar na conta dela. Peça a todos que entrem logo.</p>
+     <div class="campo"><label for="f-sc">Senha provisória comum (mínimo 8 caracteres)</label><input id="f-sc" type="text" autocomplete="off" spellcheck="false"></div>
+     <div><b>${alvo.length} pessoas</b><ul class="lista">${alvo.map(p=>`<li><span>${esc(p.nome)}</span><span class="mono muted" style="font-size:12.5px">${esc(p.email)}</span></li>`).join("") || `<li class="vazio">Ninguém pendente.</li>`}</ul></div>`,
+    async () => {
+      const senha = v("f-sc"); if (senha.length < 8) return "A senha precisa ter pelo menos 8 caracteres."; if (!alvo.length) return "Ninguém pendente.";
+      document.getElementById("f-salvar").textContent = "Criando…";
+      const out = []; for (const p of alvo) out.push({p, ...(await criarAcesso({...p, uid:""}, senha))});
+      setTimeout(() => mostrarSenhaComum(out, senha), 50);
+    });
+  document.getElementById("f-salvar").textContent = "Criar acessos";
+}
+function mostrarSenhaComum(out, senha){
+  const ok = out.filter(x => x.ok), falha = out.filter(x => !x.ok);
+  const msg = `Olá, equipe! O painel do Polo do Baixo Amazonas está no ar.\n\nEndereço: ${URL_PAINEL}\nEntre com o seu e-mail funcional e a senha provisória: ${senha}\n\nNo primeiro acesso o painel pede para você criar a sua própria senha. Faça isso hoje, por favor. Dúvidas: botão “Como funciona”, no topo do painel.`;
+  dlgForm.innerHTML = `<div class="dlg-cab"><h3>Acessos criados</h3></div><div class="dlg-corpo">
+    <p style="margin:0"><b>${ok.length}</b> contas criadas${falha.length?`; <b>${falha.length}</b> não`:""}.</p>
+    <div class="campo"><label for="f-msg">Mensagem para a equipe</label><textarea id="f-msg" rows="8" readonly>${esc(msg)}</textarea></div>
+    <div class="barra"><button class="btn btn-pri" type="button" id="f-copiar">Copiar mensagem</button><a class="btn" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(msg)}">WhatsApp</a></div>
+    ${falha.length ? `<div><b>Não criadas</b><ul class="lista">${falha.map(x=>`<li><div><b>${esc(x.p.nome)}</b><br><span class="muted">${esc(x.motivo)}</span></div></li>`).join("")}</ul></div>` : ""}
+  </div><div class="dlg-pe"><button class="btn" value="cancel" type="submit">Concluir</button></div>`;
+  if (!dlg.open) dlg.showModal();
+  document.getElementById("f-copiar").onclick = async ev => { const t = document.getElementById("f-msg"); try { await navigator.clipboard.writeText(t.value); ev.target.textContent = "Copiada"; } catch(e){ t.select(); ev.target.textContent = "Texto selecionado: Ctrl+C"; } };
 }
 function formCarga(){
   let dados = null;
@@ -1460,6 +1487,7 @@ document.addEventListener("click", ev => {
     case "editar-evento": return formEvento(acha("eventos"));
     case "carga-inicial": return formCarga();
     case "criar-acesso": return (async () => { const p = acha("pessoas"); toast("Criando acesso…"); mostrarAcessos([{p, ...(await criarAcesso(p))}]); })();
+    case "acessos-senha-comum": return formSenhaComum();
     case "msg-acesso": return (async () => { const p = acha("pessoas"); let senha = null; try { const d = await fb.db.collection("acessos").doc(p.email).get(); if (d.exists) senha = d.data().senha; } catch(e){}
       if (senha) return mostrarAcessos([{p, ok:true, senha}]);
       const r = await criarAcesso({...p, uid:""}); mostrarAcessos([{p, ...r}]); })();
@@ -1469,7 +1497,7 @@ document.addEventListener("click", ev => {
         const r = await criarAcesso({...p, uid:""});
         out.push(r.ok ? {p, ...r} : {p, ok:false, motivo:"senha provisória não guardada (criada antes desta versão): apague esta conta no Firebase › Authentication › Usuários e toque em “Mensagens de acesso” de novo"}); }
       if (!out.length) return toast("Nenhuma mensagem pendente"); mostrarAcessos(out); })();
-    case "criar-acessos": return (async () => { const pend = S.pessoas.filter(p => p.email && !p.uid && p.id !== "polobaixoamazonas@defensoria.am.def.br"); if (!pend.length) return toast("Ninguém pendente"); toast(`Criando ${pend.length} acessos…`); const out = []; for (const p of pend) out.push({p, ...(await criarAcesso(p))}); mostrarAcessos(out); })();
+    case "criar-acessos": return (async () => { const pend = S.pessoas.filter(p => p.email && !p.uid); if (!pend.length) return toast("Ninguém pendente"); toast(`Criando ${pend.length} acessos…`); const out = []; for (const p of pend) out.push({p, ...(await criarAcesso(p))}); mostrarAcessos(out); })();
     case "nova-senha": return toast("Para uma senha nova, a pessoa usa “Esqueci a senha”; se o e-mail não chegar, exclua a conta dela em Firebase › Authentication e use “Criar acesso”.");
     case "liberar": return (async () => { const r = S.pedidos.find(x => x.id === id); const p = S.pessoas.find(x => x.id === r?.email); if (!r || !p) return;
       await Dados.salvar("pessoas", {...p, uid: r.id}); await fb.db.collection("pedidos").doc(r.id).delete(); toast(`Acesso liberado para ${p.nome}`); })();
