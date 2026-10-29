@@ -5,114 +5,140 @@
   "url": "https://diario.defensoria.am.def.br/wp-content/uploads/2026/09/Edicao_2741-2026__publicada_em_29_setembro_de_2026.pdf",
   "atos": [
    {
-    "id": "2741-1-0",
-    "numero": "Portaria nº 456/2026- de",
-    "categorias": [
-     "geral"
-    ],
-    "resumo": "Torna sem efeito ou encerra ato envolvendo Monalysa Helena Lima Façanha",
-    "trecho": "XI - CESSAR OS EFEITOS, a contar do dia 01 de Ano 12, Edição 2643 Pág. 14 de 19, quanto à outubro de 2026, do inciso III da Portaria nº designação da Defensora Pública de 4ª Classe 883/2026GSPG/DPE/AM, publicada no dia 24 de Monalysa Helena Lima Façanha para atuar na 8ª agosto de 2026, Ano 12, Edição 2716 Pág. 8 de 15,",
-    "sugestao": null,
-    "auto": false
-   },
-   {
-    "id": "2741-2-0",
-    "numero": "Portaria nº 456/2026- Paulo",
-    "categorias": [
-     "geral"
-    ],
-    "resumo": "Torna sem efeito ou encerra ato envolvendo Monalysa Helena Lima Façanha",
-    "trecho": "XII - CESSAR OS EFEITOS, a contar do dia 01 de designação da Defensora Pública de 4ª Classe outubro de 2026, do inciso II da Portaria nº Monalysa Helena Lima Façanha para atuar na 9ª 1211/2025GSPG/DPE/AM, publicada no dia 17 de Defensoria do Polo Baixo Amazonas (Nhamundá); novembro de 2025, Ano 11, Edição 2536 Pág. 3 d",
-    "sugestao": null,
-    "auto": false
-   },
-   {
-    "id": "2741-5-0",
-    "numero": "Portaria nº 456/2026- Madeira",
-    "categorias": [
-     "geral"
-    ],
-    "resumo": "Torna sem efeito ou encerra ato",
-    "trecho": "XV - CESSAR OS EFEITOS, a contar do dia 01 de designação da Defensora Pública de 4ª Classe Stefany outubro de 2026, do inciso V da Portaria nº Coimbra Schmidt para atuar na 12ª Defensoria do Polo 827/2026GSPG/DPE/AM, publicada no dia 13 de Baixo Amazonas (Barreirinha), a contar do dia 13 de agosto de 2026, Ano 12, Ediç",
-    "sugestao": null,
-    "auto": false
-   },
-   {
-    "id": "2741-6-5",
-    "numero": "Portaria nº 403/2026- GSPG/DPE/AM",
+    "id": "2741-6-2-8-0",
+    "numero": "Portaria nº 514/2026- GSPG/DPE/AM",
     "categorias": [
      "designacao"
     ],
-    "resumo": "Designar envolvendo Monalysa Helena Lima Façanha",
-    "trecho": "XXXIII - DESIGNAR, cumulativamente, a Defensora Público de 2ª Classe Bruno Henrique Sore para atuar Pública de 4ª Classe Monalysa Helena Lima Façanha na 9ª Defensoria Pública do Polo do Juruá (Envira), no para atuar na 8ª Defensoria do Polo Baixo Amazonas período de 01 de outubro a 31 de dezembro de 2026; (Nhamundá), n",
-    "sugestao": null,
-    "auto": false
+    "resumo": "Designa Monalysa Helena Lima Façanha para a 8ª DP do Polo do Baixo Amazonas, de 01/10/2026 a 31/12/2026",
+    "trecho": "XXXIII - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Monalysa Helena Lima Façanha para atuar na 8ª Defensoria do Polo Baixo Amazonas (Nhamundá), no período de 01 de outubro a 31 de dezembro de 2026;",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp8",
+     "defensor": "Monalysa Helena Lima Façanha",
+     "inicio": "2026-10-01",
+     "fim": "2026-12-31"
+    },
+    "auto": true
    },
    {
-    "id": "2741-6-7",
-    "numero": "Portaria nº 403/2026- GSPG/DPE/AM",
+    "id": "2741-6-3-9-0",
+    "numero": "Portaria nº 514/2026- GSPG/DPE/AM",
     "categorias": [
      "designacao"
     ],
-    "resumo": "Designar envolvendo Monalysa Helena Lima Façanha",
-    "trecho": "XXXIV - DESIGNAR, cumulativamente, a Defensora na 10ª Defensoria Pública do Polo do Juruá (Guajará), Pública de 4ª Classe Monalysa Helena Lima Façanha no período de 01 de outubro a 31 de dezembro de para atuar na 9ª Defensoria do Polo Baixo Amazonas 2026; (Nhamundá), no período de 01 de outubro a 31 de dezembro de 2026",
-    "sugestao": null,
-    "auto": false
+    "resumo": "Designa Monalysa Helena Lima Façanha para a 9ª DP do Polo do Baixo Amazonas, de 01/10/2026 a 31/12/2026",
+    "trecho": "XXXIV - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Monalysa Helena Lima Façanha para atuar na 9ª Defensoria do Polo Baixo Amazonas (Nhamundá), no período de 01 de outubro a 31 de dezembro de 2026;",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp9",
+     "defensor": "Monalysa Helena Lima Façanha",
+     "inicio": "2026-10-01",
+     "fim": "2026-12-31"
+    },
+    "auto": true
    },
    {
-    "id": "2741-6-11",
-    "numero": "Portaria nº 403/2026- GSPG/DPE/AM",
+    "id": "2741-6-4-10-0",
+    "numero": "Portaria nº 514/2026- GSPG/DPE/AM",
     "categorias": [
      "designacao"
     ],
-    "resumo": "Designar envolvendo Camila Assunção Cavalcante",
-    "trecho": "XXXVI - DESIGNAR, cumulativamente, a Defensora na 6ª Defensoria Pública do Polo Médio Madeira Pública de 4ª Classe Camila Assunção Cavalcante para (Borba), no período de 01 de outubro a 31 de dezembro atuar na 11ª Defensoria do Polo Baixo Amazonas de 2026; (Barreirinha), no período de 01 de outubro a 31 de dezembro de ",
-    "sugestao": null,
-    "auto": false
+    "resumo": "Designa Gabriela Carvalho Calheiros Falcão para a 10ª DP do Polo do Baixo Amazonas, de 01/10/2026 a 31/12/2026",
+    "trecho": "XXXV - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Gabriela Carvalho Calheiros Falcão para atuar na 10ª Defensoria do Polo Baixo Amazonas (Barreirinha), no período de 01 de outubro a 31 de dezembro de 2026;",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp10",
+     "defensor": "Gabriela Carvalho Calheiros Falcão",
+     "inicio": "2026-10-01",
+     "fim": "2026-12-31"
+    },
+    "auto": true
    },
    {
-    "id": "2741-6-13",
-    "numero": "Portaria nº 403/2026- GSPG/DPE/AM",
+    "id": "2741-6-5-11-0",
+    "numero": "Portaria nº 514/2026- GSPG/DPE/AM",
     "categorias": [
      "designacao"
     ],
-    "resumo": "Designar envolvendo Stefany Coimbra Schmidt",
-    "trecho": "XXXVII - DESIGNAR, cumulativamente, a Defensora atuar na 7ª Defensoria Pública do Polo do Médio Pública de 4ª Classe Stefany Coimbra Schmidt para Madeira (Nova Olinda do Norte), no período de 01 de atuar na 12ª Defensoria do Polo Baixo Amazonas outubro a 31 de dezembro de 2026; (Barreirinha), no período de 01 de outubr",
-    "sugestao": null,
-    "auto": false
+    "resumo": "Designa Camila Assunção Cavalcante para a 11ª DP do Polo do Baixo Amazonas, de 01/10/2026 a 31/12/2026",
+    "trecho": "XXXVI - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Camila Assunção Cavalcante para atuar na 11ª Defensoria do Polo Baixo Amazonas (Barreirinha), no período de 01 de outubro a 31 de dezembro de 2026;",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp11",
+     "defensor": "Camila Assunção Cavalcante",
+     "inicio": "2026-10-01",
+     "fim": "2026-12-31"
+    },
+    "auto": true
    },
    {
-    "id": "2741-7-1",
-    "numero": "Resolução n.º 13/2023- CS/DPE/AM",
+    "id": "2741-6-6-12-0",
+    "numero": "Portaria nº 514/2026- GSPG/DPE/AM",
     "categorias": [
      "designacao"
     ],
-    "resumo": "Designar envolvendo Rachel Phanuelly Marinho e Silva",
-    "trecho": "I - DESIGNAR, cumulativamente, a Defensora Pública 2025, em complemento com o art. 40, § 3º, da Lei de 3ª Classe Rachel Phanuelly Marinho e Silva para Complementar Estadual nº 01, de 30 de março de atuar na 7ª Defensoria Público do Polo do Baixo 1990, alterado pela Lei Complementar n.º 288, de 02 de Amazonas (Nhamundá)",
-    "sugestao": null,
-    "auto": false
+    "resumo": "Designa Stefany Coimbra Schmidt para a 12ª DP do Polo do Baixo Amazonas, de 01/10/2026 a 31/12/2026",
+    "trecho": "XXXVII - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Stefany Coimbra Schmidt para atuar na 12ª Defensoria do Polo Baixo Amazonas (Barreirinha), no período de 01 de outubro a 31 de dezembro de 2026;",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp12",
+     "defensor": "Stefany Coimbra Schmidt",
+     "inicio": "2026-10-01",
+     "fim": "2026-12-31"
+    },
+    "auto": true
    },
    {
-    "id": "2741-8-0",
-    "numero": "Resolução nº 31 de",
+    "id": "2741-7-0-7-0",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
     "categorias": [
      "designacao"
     ],
-    "resumo": "Designar envolvendo Rachel Phanuelly Marinho e Silva",
-    "trecho": "II - DESIGNAR, cumulativamente, a Defensora Pública de 3ª Classe Rachel Phanuelly Marinho e Silva para CERTIFIQUE-SE, PUBLIQUE-SE E CUMPRA-SE. atuar na 10ª Defensoria Público do Polo do Baixo Amazonas (Barreirinha), no período de 01 de outubro a GABINETE DO PRIMEIRO SUBDEFENSOR 31 de dezembro de 2026; PÚBLICO GERAL DO ",
-    "sugestao": null,
-    "auto": false
+    "resumo": "Designa Rachel Phanuelly Marinho e Silva para a 7ª DP do Polo do Baixo Amazonas, de 01/10/2026 a 31/12/2026",
+    "trecho": "I - DESIGNAR, cumulativamente, a Defensora Pública de 3ª Classe Rachel Phanuelly Marinho e Silva para atuar na 7ª Defensoria Público do Polo do Baixo Amazonas (Nhamundá), no período de 01 de outubro a 31 de dezembro de 2026;",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp7",
+     "defensor": "Rachel Phanuelly Marinho e Silva",
+     "inicio": "2026-10-01",
+     "fim": "2026-12-31"
+    },
+    "auto": true
    },
    {
-    "id": "2741-9-0",
-    "numero": "Resolução n. 43/2014-CSDPE/AM",
+    "id": "2741-7-1-10-0",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
     "categorias": [
-     "geral"
+     "designacao"
     ],
-    "resumo": "Ato envolvendo Rachel Phanuelly Marinho e Silva",
-    "trecho": "Resolução n. 43/2014-CSDPE/AM, de 19 de setembro de 3ª Classe Rachel Phanuelly Marinho e Silva para de 2014, alterada pela Resolução nº atuar na 2ª Defensoria Pública do Polo do Baixo 14/2025CSDPEAM, de 18 de junho de 2025, para Amazonas, no período de 01 de outubro a 30 de abril custear pequenas despesas de Serviços d",
-    "sugestao": null,
-    "auto": false
+    "resumo": "Designa Rachel Phanuelly Marinho e Silva para a 10ª DP do Polo do Baixo Amazonas, de 01/10/2026 a 31/12/2026",
+    "trecho": "II - DESIGNAR, cumulativamente, a Defensora Pública de 3ª Classe Rachel Phanuelly Marinho e Silva para atuar na 10ª Defensoria Público do Polo do Baixo Amazonas (Barreirinha), no período de 01 de outubro a 31 de dezembro de 2026; III - ATRIBUIR a contraprestação na forma do Ato Normativo nº 3/2025-GDPG/DPE/AM, de 22 de",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp10",
+     "defensor": "Rachel Phanuelly Marinho e Silva",
+     "inicio": "2026-10-01",
+     "fim": "2026-12-31"
+    },
+    "auto": true
+   },
+   {
+    "id": "2741-8-0-2-0",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designa Rachel Phanuelly Marinho e Silva para a 2ª DP do Polo do Baixo Amazonas, de 01/10/2027 a 30/04/2028",
+    "trecho": "I - DESIGNAR, cumulativamente, a Defensora Pública de 3ª Classe Rachel Phanuelly Marinho e Silva para atuar na 2ª Defensoria Pública do Polo do Baixo Amazonas, no período de 01 de outubro a 30 de abril de 2027; II - ATRIBUIR a contraprestação na forma do Ato Normativo nº 3/2025-GDPG/DPE/AM, de 22 de maio de 2025, em co",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp2",
+     "defensor": "Rachel Phanuelly Marinho e Silva",
+     "inicio": "2027-10-01",
+     "fim": "2028-04-30"
+    },
+    "auto": true
    }
   ]
  },
@@ -122,107 +148,216 @@
   "url": "https://diario.defensoria.am.def.br/wp-content/uploads/2026/09/Edicao_2742-2026__publicada_em_30_setembro_de_2026.pdf",
   "atos": [
    {
-    "id": "2742-0-1",
-    "numero": "Portaria n.º 603/2024- PORTARIA",
+    "id": "2742-0-0",
+    "numero": "Resolução n.º 002/2017 – CSDPE/AM",
     "categorias": [
-     "coordenacao",
-     "servidores"
+     "coordenacao"
     ],
-    "resumo": "Autorizar (servidor/estagiário)",
-    "trecho": "I - AUTORIZAR o deslocamento dos servidores Juan Pública do Estado do Amazonas, na forma do art. 9.º, Pedro Chenini de Carvalho Reis, Chefe Adjunto de inciso XI, da Lei Complementar Estadual n.º 01, de 30 Cerimonial DPE-3 e Yone Alves de Macêdo, Assessor de março de 1990; de Cerimonial II DPE-2, no trecho Manaus/Parint",
+    "resumo": "Autorizar",
+    "trecho": "I - AUTORIZAR o deslocamento dos servidores Juan Pedro Chenini de Carvalho Reis, Chefe Adjunto de Cerimonial DPE-3 e Yone Alves de Macêdo, Assessor de Cerimonial II DPE-2, no trecho Manaus/Parintins/Manaus, no período de 01 a 06 de outubro de 2026, a fim de coordenar e executar a organização do Mutirão Previdenciário n",
     "sugestao": null,
     "auto": false
    },
    {
     "id": "2742-1-0",
-    "numero": "Resolução n.º 002/2017- CSDPE/AM",
+    "numero": "Resolução n.º 002/2017 – CSDPE/AM",
     "categorias": [
      "geral"
     ],
     "resumo": "Autorizar",
-    "trecho": "I - AUTORIZAR o deslocamento de Laércio Timóteo da Silva Junior, Assessor Tecnico I DPE-2, no trecho Cientifique-se, cumpra-se e publique-se. Manaus/Parintins/Manaus, no período de 02 até 09 de outubro de 2026, a fim de prestar suporte técnico no GABINETE DO DEFENSOR PÚBLICO GERAL DO Mutirão de Atendimento Previdenciár",
+    "trecho": "I - AUTORIZAR o deslocamento de Laércio Timóteo da Silva Junior, Assessor Tecnico I DPE-2, no trecho Manaus/Parintins/Manaus, no período de 02 até 09 de outubro de 2026, a fim de prestar suporte técnico no Mutirão de Atendimento Previdenciário no referido município. II - DETERMINAR o pagamento de diárias ao servidor pú",
     "sugestao": null,
     "auto": false
    },
    {
-    "id": "2742-2-1",
+    "id": "2742-2-0-3-0",
     "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
     "categorias": [
      "designacao"
     ],
-    "resumo": "Designar envolvendo Rachel Phanuelly Marinho e Silva",
-    "trecho": "I - DESIGNAR, cumulativamente, a Defensora Pública serviço prestado à Defensoria Pública do Estado do de 3ª Classe Rachel Phanuelly Marinho e Silva para Amazonas, empenhado por meio da Nota de Empenho atuar na 3ª Defensoria Pública do Polo do Baixo 2026NE0002673, relativo ao Processo SEI n.º Amazonas, nos dias 05, 06, ",
-    "sugestao": null,
-    "auto": false
+    "resumo": "Designa Rachel Phanuelly Marinho e Silva para a 3ª DP do Polo do Baixo Amazonas, de 05/10/2026 a 09/10/2026",
+    "trecho": "I - DESIGNAR, cumulativamente, a Defensora Pública de 3ª Classe Rachel Phanuelly Marinho e Silva para atuar na 3ª Defensoria Pública do Polo do Baixo Amazonas, nos dias 05, 06, 07, 08 e 09 de outubro de 2026;",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp3",
+     "defensor": "Rachel Phanuelly Marinho e Silva",
+     "inicio": "2026-10-05",
+     "fim": "2026-10-09"
+    },
+    "auto": true
    },
    {
-    "id": "2742-2-2",
+    "id": "2742-2-1-3-0",
     "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
     "categorias": [
      "designacao"
     ],
-    "resumo": "Designar envolvendo Stefany Coimbra Schmidt",
-    "trecho": "II - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Stefany Coimbra Schmidt para atuar na 3ª GABINETE DO PRIMEIRO SUBDEFENSOR Defensoria Pública do Polo do Baixo Amazonas, nos PÚBLICO GERAL DO ESTADO DO dias 13, 14 e 16 de outubro de 2026; AMAZONAS, em Manaus, 30 de setembro de 2026.",
-    "sugestao": null,
-    "auto": false
+    "resumo": "Designa Stefany Coimbra Schmidt para a 3ª DP do Polo do Baixo Amazonas, de 13/10/2026 a 14/10/2026",
+    "trecho": "II - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Stefany Coimbra Schmidt para atuar na 3ª Defensoria Pública do Polo do Baixo Amazonas, nos dias 13, 14 e 16 de outubro de 2026;",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp3",
+     "defensor": "Stefany Coimbra Schmidt",
+     "inicio": "2026-10-13",
+     "fim": "2026-10-14"
+    },
+    "auto": true
    },
    {
-    "id": "2742-2-3",
+    "id": "2742-2-1-3-1",
     "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
     "categorias": [
      "designacao"
     ],
-    "resumo": "Designar envolvendo Camila Assunção Cavalcante — 8ª DP",
-    "trecho": "III - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Camila Assunção Cavalcante para atuar Helom César da Silva Nunes na 8ª Defensoria Pública do Polo do Baixo Amazonas Primeiro Subdefensor Público Geral do Estado do (Nhamundá), nos dias 05, 06, 07, 08, 09, 13, 14 e 16 de Amazonas outubro de 2026; Ordenado",
-    "sugestao": null,
-    "auto": false
+    "resumo": "Designa Stefany Coimbra Schmidt para a 3ª DP do Polo do Baixo Amazonas, em 16/10/2026",
+    "trecho": "II - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Stefany Coimbra Schmidt para atuar na 3ª Defensoria Pública do Polo do Baixo Amazonas, nos dias 13, 14 e 16 de outubro de 2026;",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp3",
+     "defensor": "Stefany Coimbra Schmidt",
+     "inicio": "2026-10-16",
+     "fim": "2026-10-16"
+    },
+    "auto": true
+   },
+   {
+    "id": "2742-2-2-8-0",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designa Camila Assunção Cavalcante para a 8ª DP do Polo do Baixo Amazonas, de 05/10/2026 a 09/10/2026",
+    "trecho": "III - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Camila Assunção Cavalcante para atuar na 8ª Defensoria Pública do Polo do Baixo Amazonas (Nhamundá), nos dias 05, 06, 07, 08, 09, 13, 14 e 16 de outubro de 2026;",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp8",
+     "defensor": "Camila Assunção Cavalcante",
+     "inicio": "2026-10-05",
+     "fim": "2026-10-09"
+    },
+    "auto": true
+   },
+   {
+    "id": "2742-2-2-8-1",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designa Camila Assunção Cavalcante para a 8ª DP do Polo do Baixo Amazonas, de 13/10/2026 a 14/10/2026",
+    "trecho": "III - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Camila Assunção Cavalcante para atuar na 8ª Defensoria Pública do Polo do Baixo Amazonas (Nhamundá), nos dias 05, 06, 07, 08, 09, 13, 14 e 16 de outubro de 2026;",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp8",
+     "defensor": "Camila Assunção Cavalcante",
+     "inicio": "2026-10-13",
+     "fim": "2026-10-14"
+    },
+    "auto": true
+   },
+   {
+    "id": "2742-2-2-8-2",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designa Camila Assunção Cavalcante para a 8ª DP do Polo do Baixo Amazonas, em 16/10/2026",
+    "trecho": "III - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Camila Assunção Cavalcante para atuar na 8ª Defensoria Pública do Polo do Baixo Amazonas (Nhamundá), nos dias 05, 06, 07, 08, 09, 13, 14 e 16 de outubro de 2026;",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp8",
+     "defensor": "Camila Assunção Cavalcante",
+     "inicio": "2026-10-16",
+     "fim": "2026-10-16"
+    },
+    "auto": true
+   },
+   {
+    "id": "2742-2-3-9-0",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designa Camila Assunção Cavalcante para a 9ª DP do Polo do Baixo Amazonas, de 05/10/2026 a 09/10/2026",
+    "trecho": "IV - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Camila Assunção Cavalcante para atuar na 9ª Defensoria Pública do Polo do Baixo Amazonas (Nhamundá), nos dias 05, 06, 07, 08, 09, 13, 14 e 16 de outubro de 2026; V - ATRIBUIR a contraprestação na forma do Ato Normativo nº 3/2025-GDPG/DPE/AM, de 22 de maio",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp9",
+     "defensor": "Camila Assunção Cavalcante",
+     "inicio": "2026-10-05",
+     "fim": "2026-10-09"
+    },
+    "auto": true
+   },
+   {
+    "id": "2742-2-3-9-1",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designa Camila Assunção Cavalcante para a 9ª DP do Polo do Baixo Amazonas, de 13/10/2026 a 14/10/2026",
+    "trecho": "IV - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Camila Assunção Cavalcante para atuar na 9ª Defensoria Pública do Polo do Baixo Amazonas (Nhamundá), nos dias 05, 06, 07, 08, 09, 13, 14 e 16 de outubro de 2026; V - ATRIBUIR a contraprestação na forma do Ato Normativo nº 3/2025-GDPG/DPE/AM, de 22 de maio",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp9",
+     "defensor": "Camila Assunção Cavalcante",
+     "inicio": "2026-10-13",
+     "fim": "2026-10-14"
+    },
+    "auto": true
+   },
+   {
+    "id": "2742-2-3-9-2",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designa Camila Assunção Cavalcante para a 9ª DP do Polo do Baixo Amazonas, em 16/10/2026",
+    "trecho": "IV - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Camila Assunção Cavalcante para atuar na 9ª Defensoria Pública do Polo do Baixo Amazonas (Nhamundá), nos dias 05, 06, 07, 08, 09, 13, 14 e 16 de outubro de 2026; V - ATRIBUIR a contraprestação na forma do Ato Normativo nº 3/2025-GDPG/DPE/AM, de 22 de maio",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp9",
+     "defensor": "Camila Assunção Cavalcante",
+     "inicio": "2026-10-16",
+     "fim": "2026-10-16"
+    },
+    "auto": true
    },
    {
     "id": "2742-3-0",
-    "numero": "PORTARIA Nº 1027/2026-GSPG/DPE/AM",
-    "categorias": [
-     "designacao"
-    ],
-    "resumo": "Ato envolvendo Camila Assunção Cavalcante — 9ª DP",
-    "trecho": "PORTARIA Nº 1027/2026-GSPG/DPE/AM de 4ª Classe Camila Assunção Cavalcante para atuar na 9ª Defensoria Pública do Polo do Baixo Amazonas O PRIMEIRO SUBDEFENSOR PÚBLICO GERAL DO (Nhamundá), nos dias 05, 06, 07, 08, 09, 13, 14 e 16 de ESTADO DO AMAZONAS, no uso das atribuições que outubro de 2026; lhe são conferidas pelo ",
-    "sugestao": null,
-    "auto": false
-   },
-   {
-    "id": "2742-4-2",
-    "numero": "Resolução n.º 13/2023- n",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
     "categorias": [
      "coordenacao"
     ],
     "resumo": "Torna sem efeito ou encerra ato envolvendo Monalysa Helena Lima Façanha",
-    "trecho": "I - CESSAR OS EFEITOS, no período de 05 a 18 de outubro de 2026, a FGD-6 (Coordenadoria do Interior), Helom César da Silva Nunes nos termos da Lei n.º 4.831 de 13 de maio de 2019, Primeiro Subdefensor Público Geral do Estado do concedida à Defensora Pública Monalysa Helena Lima Amazonas Façanha;",
+    "trecho": "I - CESSAR OS EFEITOS, no período de 05 a 18 de outubro de 2026, a FGD-6 (Coordenadoria do Interior), nos termos da Lei n.º 4.831 de 13 de maio de 2019, concedida à Defensora Pública Monalysa Helena Lima Façanha;",
+    "sugestao": null,
+    "auto": false
+   },
+   {
+    "id": "2742-3-1",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
+    "categorias": [
+     "designacao",
+     "coordenacao"
+    ],
+    "resumo": "Designar envolvendo Camila Assunção Cavalcante",
+    "trecho": "II - DESIGNAR, no período de 05 a 18 de outubro de 2026, a Defensora Pública Camila Assunção Cavalcante como Coordenadora do Polo do Baixo Amazonas, atribuindo-lhe a FGD-6 (Coordenadoria do Interior), nos termos da Lei nº 4.831 de 13 de maio de 2019. CERTIFIQUE-SE, PUBLIQUE-SE E CUMPRA-SE. GABINETE DO PRIMEIRO SUBDEFEN",
+    "sugestao": null,
+    "auto": false
+   },
+   {
+    "id": "2742-4-0",
+    "numero": "Resolução nº 14/2025CSDPEAM",
+    "categorias": [
+     "geral"
+    ],
+    "resumo": "Autorizar envolvendo Monalysa Helena Lima Façanha",
+    "trecho": "I - AUTORIZAR a liberação de adiantamento para Monalysa Helena Lima Façanha, Defensora Pública, matrícula nº 000.937-7A, no valor de R$ 1.000,00 (mil reais), por meio de depósito em conta bancária vinculada ao Tomador, conforme o artigo 2° da",
     "sugestao": null,
     "auto": false
    },
    {
     "id": "2742-5-0",
-    "numero": "PORTARIA Nº 1035/2026-GSPG/DPE/AM",
-    "categorias": [
-     "coordenacao"
-    ],
-    "resumo": "Ato envolvendo Camila Assunção Cavalcante",
-    "trecho": "PORTARIA Nº 1035/2026-GSPG/DPE/AM 2026, a Defensora Pública Camila Assunção Cavalcante como Coordenadora do Polo do Baixo O PRIMEIRO SUBDEFENSOR PÚBLICO GERAL DO Amazonas, atribuindo-lhe a FGD-6 (Coordenadoria do ESTADO DO AMAZONAS, no uso das atribuições que Interior), nos termos da Lei nº 4.831 de 13 de maio de lhe s",
-    "sugestao": null,
-    "auto": false
-   },
-   {
-    "id": "2742-6-0",
-    "numero": "PORTARIA Nº 368/2026-2GSPG/DPE/AM",
-    "categorias": [
-     "geral"
-    ],
-    "resumo": "Autorizar envolvendo Monalysa Helena Lima Façanha",
-    "trecho": "I - AUTORIZAR a liberação de adiantamento para Estadual n.º 01, de 30 de março de 1990; Monalysa Helena Lima Façanha, Defensora Pública, matrícula nº 000.937-7A, no valor de R$ 1.000,00 (mil CONSIDERANDO o Ato Normativo nº 3/2025- reais), por meio de depósito em conta bancária GDPG/DPE/AM, que dispõe sobre a regulament",
-    "sugestao": null,
-    "auto": false
-   },
-   {
-    "id": "2742-7-0",
     "numero": "Resolução nº 11/2018-CSDPE/AM",
     "categorias": [
      "designacao",
@@ -243,130 +378,130 @@
   "url": "https://diario.defensoria.am.def.br/wp-content/uploads/2026/10/Edicao_2743-2026__publicada_em_01_outubro_de_2026.pdf",
   "atos": [
    {
-    "id": "2743-0-2",
+    "id": "2743-1-1",
     "numero": "PORTARIA Nº 1788/2026-GDPG/DPE/AM",
     "categorias": [
      "afastamento",
      "coordenacao"
     ],
-    "resumo": "Concede folga a Fernando Figueiredo Prestes, de 01/10/2026 a 02/10/2026",
-    "trecho": "II - CONCEDER 1 (uma) folga mensal a cada membro Silva Braz, em razão de sua participação na IV Expo da Comissão, inclusive ao Presidente, aos demais Mulher OAB/AM 2026 e I Conferência Estadual da membros titulares, ao membro suplente e aos Mulher Advogada, nos dias 1º e 2 de outubro de 2026, Secretários Executivos, co",
+    "resumo": "Concede folga a Fernando Figueiredo Prestes, de 30/09/2026 a 02/10/2026",
+    "trecho": "III - CONCEDER à Defensora Pública Caroline da Silva Braz, em razão de sua participação na IV Expo Mulher OAB/AM 2026 e I Conferência Estadual da Mulher Advogada, nos dias 1º e 2 de outubro de 2026, 01 (uma) folga, correspondente à sua participação integral na totalidade dos eventos. Cientifique-se, Cumpra-se e Publiqu",
     "sugestao": {
      "tipo": "afastamento",
      "defensor": "Fernando Figueiredo Prestes",
      "afastamento": "folga",
-     "inicio": "2026-10-01",
+     "inicio": "2026-09-30",
      "fim": "2026-10-02"
     },
     "auto": true
    },
    {
-    "id": "2743-1-1",
-    "numero": "Portaria n.º 603/2024- I",
-    "categorias": [
-     "geral"
-    ],
-    "resumo": "Autorizar",
-    "trecho": "I - AUTORIZAR o deslocamento de Luana do Nascimento Jucá, Assessor de Defensor Público DPE- Cientifique-se, cumpra-se e publique-se. 3, no trecho Manaus/Parintins/Manaus, no período de 04 a 09 de outubro de 2026, a fim de atuar no Mutirão GABINETE DO DEFENSOR PÚBLICO GERAL DO de Atendimento Previdenciário no referido m",
-    "sugestao": null,
-    "auto": false
-   },
-   {
     "id": "2743-2-0",
-    "numero": "Portaria n.º 603/2024- I",
+    "numero": "Resolução n.º 002/2017 – CSDPE/AM",
     "categorias": [
      "geral"
     ],
     "resumo": "Autorizar",
-    "trecho": "I - AUTORIZAR o deslocamento de Max do Nascimento GDPG/DPE/AM que alterou as tabelas de valores de Coelho, Assistente Técnico de Defensoria, no trecho diárias constantes dos anexos I e II da Resolução n.º Manaus/Parintins/Manaus, no período de 04 a 09 de 002/2017 – CSDPE/AM; outubro de 2026, a fim de atuar no Mutirão d",
-    "sugestao": null,
-    "auto": false
-   },
-   {
-    "id": "2743-2-1",
-    "numero": "Portaria n.º 603/2024- I",
-    "categorias": [
-     "geral"
-    ],
-    "resumo": "Autorizar",
-    "trecho": "I - AUTORIZAR o deslocamento de Lucas da Silva e Cientifique-se, cumpra-se e publique-se. Silva, Assessor Técnico II DPE - 1, no trecho GABINETE DO DEFENSOR PÚBLICO GERAL DO Manaus/Parintins/Manaus, no período de 04 a 07 de ESTADO DO AMAZONAS, em Manaus, 01 de outubro outubro de 2026, a fim de realizar a cobertura de 2",
+    "trecho": "I - AUTORIZAR o deslocamento de Luana do Nascimento Jucá, Assessor de Defensor Público DPE- 3, no trecho Manaus/Parintins/Manaus, no período de 04 a 09 de outubro de 2026, a fim de atuar no Mutirão de Atendimento Previdenciário no referido município. Assinado digitalmente por - DEFENSORIA PUBLICA DO ESTADO DO AMAZONAS:",
     "sugestao": null,
     "auto": false
    },
    {
     "id": "2743-3-0",
-    "numero": "Portaria n.º 603/2024- n",
+    "numero": "Resolução n.º 002/2017 – CSDPE/AM",
     "categorias": [
      "geral"
     ],
     "resumo": "Autorizar",
-    "trecho": "I - AUTORIZAR o deslocamento de Rafael Pereira de 002/2017 – CSDPE/AM; Freitas, Assessor de Defensor Público, no trecho Manaus/Parintins/Manaus, no período de 04 a 09 de CONSIDERANDO o teor do Processo SEI n.º outubro de 2026, a fim de atuar no Mutirão de 26.0.000013834-6, datado de 01.10.2026, e Solicitação Atendiment",
+    "trecho": "I - AUTORIZAR o deslocamento de Lucas da Silva e Silva, Assessor Técnico II DPE - 1, no trecho Manaus/Parintins/Manaus, no período de 04 a 07 de outubro de 2026, a fim de realizar a cobertura jornalística do Mutirão Previdenciário, no município de Parintins. II - DETERMINAR o pagamento de diárias ao servidor público ac",
     "sugestao": null,
     "auto": false
    },
    {
     "id": "2743-4-0",
-    "numero": "Portaria n.º 603/2024- GDPG/DPE/AM",
+    "numero": "Resolução n.º 002/2017 – CSDPE/AM",
     "categorias": [
      "geral"
     ],
     "resumo": "Autorizar",
-    "trecho": "I - AUTORIZAR o deslocamento de Georgia do diárias constantes dos anexos I e II da Resolução n.º Nascimento Jucá, Assessora de Defensor Público, no 002/2017 – CSDPE/AM; trecho Manaus/Parintins/Manaus, no período de 04 a 09 de outubro de 2026, a fim de atuar no Mutirão de CONSIDERANDO o teor do Processo SEI n.º Atendime",
+    "trecho": "I - AUTORIZAR o deslocamento de Max do Nascimento Coelho, Assistente Técnico de Defensoria, no trecho Manaus/Parintins/Manaus, no período de 04 a 09 de outubro de 2026, a fim de atuar no Mutirão de Atendimento Previdenciário no município de Parintins/AM. II - DETERMINAR o pagamento de diárias ao servidor público acima ",
     "sugestao": null,
     "auto": false
    },
    {
     "id": "2743-5-0",
-    "numero": "Portaria n.º 603/2024- GDPG/DPE/AM",
+    "numero": "Resolução n.º 002/2017 – CSDPE/AM",
     "categorias": [
      "geral"
     ],
     "resumo": "Autorizar",
-    "trecho": "I - AUTORIZAR o deslocamento de João Coelho de 002/2017 – CSDPE/AM; Souza, Assessor Jurídico, no trecho CONSIDERANDO o teor do Processo SEI n.º Manaus/Parintins/Manaus, no período de 04 a 09 de 26.0.000013846-0, datado de 01.10.2026, e Solicitação outubro de 2026, a fim de atuar no Mutirão de SGI nº. 2601974, datada de",
+    "trecho": "I - AUTORIZAR o deslocamento de Rafael Pereira de Freitas, Assessor de Defensor Público, no trecho Manaus/Parintins/Manaus, no período de 04 a 09 de outubro de 2026, a fim de atuar no Mutirão de Atendimento Previdenciário no município de Parintins. II - DETERMINAR o pagamento de diárias ao servidor público acima relaci",
     "sugestao": null,
     "auto": false
    },
    {
     "id": "2743-6-0",
-    "numero": "Portaria n.º 603/2024- GDPG/DPE/AM",
+    "numero": "Resolução n.º 002/2017 – CSDPE/AM",
     "categorias": [
      "geral"
     ],
     "resumo": "Autorizar",
-    "trecho": "I - AUTORIZAR o deslocamento de Camila Cristina de diárias constantes dos anexos I e II da Resolução n.º Andrade Rodrigues, Assessora Tecnica I DPE - 2, no 002/2017 – CSDPE/AM; trecho Manaus/Parintins/Manaus, no período de 04 a 07 de outubro de 2026, a fim de realizar a cobertura Assinado digitalmente por - DEFENSORIA ",
+    "trecho": "I - AUTORIZAR o deslocamento de Georgia do Nascimento Jucá, Assessora de Defensor Público, no trecho Manaus/Parintins/Manaus, no período de 04 a 09 de outubro de 2026, a fim de atuar no Mutirão de Atendimento Previdenciário no município de Parintins, II - DETERMINAR o pagamento de diárias à servidora pública acima rela",
     "sugestao": null,
     "auto": false
    },
    {
     "id": "2743-7-0",
-    "numero": "Portaria n.º 603/2024- I",
+    "numero": "Resolução n.º 002/2017 – CSDPE/AM",
     "categorias": [
      "geral"
     ],
     "resumo": "Autorizar",
-    "trecho": "I - AUTORIZAR o deslocamento de Eliaquim Antunes GDPG/DPE/AM que alterou as tabelas de valores de de Souza Santos, Defensor Público de 3ª Classe, no diárias constantes dos anexos I e II da Resolução n.º trecho Manaus/Parintins/Manaus, no período de 04 a 002/2017 – CSDPE/AM; 09 de outubro de 2026, a fim de atuar no Muti",
+    "trecho": "I - AUTORIZAR o deslocamento de João Coelho de Souza, Assessor Jurídico, no trecho Manaus/Parintins/Manaus, no período de 04 a 09 de outubro de 2026, a fim de atuar no Mutirão de Atendimento Previdenciário no município de Parintins. II - DETERMINAR o pagamento de diárias ao servidor público acima relacionado. Cientifiq",
     "sugestao": null,
     "auto": false
    },
    {
     "id": "2743-8-0",
-    "numero": "Portaria n.º 603/2024- GDPG/DPE/AM",
+    "numero": "Resolução n.º 002/2017 – CSDPE/AM",
     "categorias": [
      "geral"
     ],
-    "resumo": "Autorizar envolvendo Fernando Figueiredo Prestes",
-    "trecho": "I - AUTORIZAR o deslocamento de Fernando Figueiredo Prestes, Defensor Público de 2ª Classe, no Cientifique-se, cumpra-se e publique-se. trecho Manaus/São Paulo/Manaus, no período de 04 a 06 de novembro de 2026, a fim de participar do evento GABINETE DO DEFENSOR PÚBLICO GERAL DO HSM+ 2026. ESTADO DO AMAZONAS, em Manaus,",
+    "resumo": "Autorizar",
+    "trecho": "I - AUTORIZAR o deslocamento de Camila Cristina de Andrade Rodrigues, Assessora Tecnica I DPE - 2, no trecho Manaus/Parintins/Manaus, no período de 04 a 07 de outubro de 2026, a fim de realizar a cobertura pla, 52400403000121, Presencial, Certificado Digital PJ A1; Organization: ICP-Brasil; Country: BR QUINTA-FEIRA, 1 ",
     "sugestao": null,
     "auto": false
    },
    {
     "id": "2743-9-0",
-    "numero": "Resolução nº 14/2025CSDPEAM",
+    "numero": "Resolução n.º 002/2017 – CSDPE/AM",
     "categorias": [
      "geral"
     ],
     "resumo": "Autorizar",
-    "trecho": "I - AUTORIZAR o deslocamento de Rafael Vinheiro Monteiro Barbosa, Defensor Público Geral, nos trechos II - ESTABELECER, nos termos do artigo 7º, da Manaus/Parintins/Manaus, no período de 04 a 05 de",
+    "trecho": "I - AUTORIZAR o deslocamento de Eliaquim Antunes de Souza Santos, Defensor Público de 3ª Classe, no trecho Manaus/Parintins/Manaus, no período de 04 a 09 de outubro de 2026, a fim de atuar no Mutirão de Atendimento Previdenciário no município de Parintins. II - DETERMINAR o pagamento de diárias ao defensor público acim",
+    "sugestao": null,
+    "auto": false
+   },
+   {
+    "id": "2743-10-0",
+    "numero": "Resolução n.º 002/2017 – CSDPE/AM",
+    "categorias": [
+     "geral"
+    ],
+    "resumo": "Autorizar envolvendo Fernando Figueiredo Prestes",
+    "trecho": "I - AUTORIZAR o deslocamento de Fernando Figueiredo Prestes, Defensor Público de 2ª Classe, no trecho Manaus/São Paulo/Manaus, no período de 04 a 06 de novembro de 2026, a fim de participar do evento HSM+ 2026. II - DETERMINAR o pagamento de diárias ao defensor público acima relacionado. Cientifique-se, cumpra-se e pub",
+    "sugestao": null,
+    "auto": false
+   },
+   {
+    "id": "2743-11-0",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
+    "categorias": [
+     "geral"
+    ],
+    "resumo": "Autorizar",
+    "trecho": "I - AUTORIZAR o deslocamento de Rafael Vinheiro Monteiro Barbosa, Defensor Público Geral, nos trechos Manaus/Parintins/Manaus, no período de 04 a 05 de outubro de 2026, a fim de participar do evento de abertua do Mutirão de Atendimento Previdenciário na referida comarca; II - DETERMINAR o pagamento de diárias ao Defens",
     "sugestao": null,
     "auto": false
    }
@@ -384,18 +519,18 @@
      "designacao"
     ],
     "resumo": "Designar",
-    "trecho": "DESIGNAR os(as) Defensores(as) Públicos(as) e da Lei nº 4.077/2014, Servidores(as) abaixo relacionados(as) para atuarem João Coelho 05 a no valor no Mutirão de Atendimento Previdenciário no município de Souza 08/10/2026 corresponde de Parintins/AM, no período de 05 de outubro de 2026 nte ao nível a 08 de outubro de 202",
+    "trecho": "DESIGNAR os(as) Defensores(as) Públicos(as) e Servidores(as) abaixo relacionados(as) para atuarem no Mutirão de Atendimento Previdenciário no município de Parintins/AM, no período de 05 de outubro de 2026 a 08 de outubro de 2026, atribuindo-lhes as contraprestações indicadas no Anexo Único. Cientifique-se, cumpra-se e ",
     "sugestao": null,
     "auto": false
    },
    {
     "id": "2744-1-0",
-    "numero": "Portaria n.º 603/2024- especifica",
+    "numero": "Resolução n.º 002/2017 – CSDPE/AM",
     "categorias": [
      "coordenacao"
     ],
     "resumo": "Autorizar",
-    "trecho": "I - AUTORIZAR o deslocamento dos servidores Juan desconto de 25% (vinte e cinco por cento), conforme Pedro Chenini de Carvalho Reis, Chefe Adjunto de condições comerciais apresentadas pela Cerimonial DPE-3 e Yone Alves de Macêdo, Assessor CONTRATADA. Em razão do desconto concedido, o de Cerimonial II DPE-1, no trecho v",
+    "trecho": "I - AUTORIZAR o deslocamento dos servidores Juan Pedro Chenini de Carvalho Reis, Chefe Adjunto de Cerimonial DPE-3 e Yone Alves de Macêdo, Assessor de Cerimonial II DPE-1, no trecho Manaus/Parintins/Manaus, no período de 01 a 06 de outubro de 2026, a fim de coordenar e executar a organização do Mutirão Previdenciário n",
     "sugestao": null,
     "auto": false
    }
@@ -407,30 +542,30 @@
   "url": "https://diario.defensoria.am.def.br/wp-content/uploads/2026/10/Edicao_2746-2026__publicada_em_06_outubro_de_2026.pdf",
   "atos": [
    {
-    "id": "2746-0-2-5",
-    "numero": "Resolução n.º 13/2023- CONSIDERANDO",
+    "id": "2746-0-0-5-0",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
     "categorias": [
      "designacao"
     ],
-    "resumo": "Designa Camila Assunção Cavalcante para a 5ª DP do Polo do Baixo Amazonas, de 09/10/2026 a 05/12/2026",
-    "trecho": "I - DESIGNAR, cumulativamente, a Defensora Pública trecho Coari/Codajás/Coari, no período de 30 de de 4ª Classe Camila Assunção Cavalcante para atuar novembro a 05 de dezembro de 2026, a fim de auxiliar na 5ª Defensoria Pública do Polo do Baixo Amazonas, o Defensor Público acima relacionado na realização de nos dias 07",
+    "resumo": "Designa Camila Assunção Cavalcante para a 5ª DP do Polo do Baixo Amazonas, de 07/10/2026 a 09/10/2026",
+    "trecho": "I - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Camila Assunção Cavalcante para atuar na 5ª Defensoria Pública do Polo do Baixo Amazonas, nos dias 07, 08 e 09 de outubro de 2026;",
     "sugestao": {
      "tipo": "designacao",
      "dp": "dp5",
      "defensor": "Camila Assunção Cavalcante",
-     "inicio": "2026-10-09",
-     "fim": "2026-12-05"
+     "inicio": "2026-10-07",
+     "fim": "2026-10-09"
     },
     "auto": true
    },
    {
-    "id": "2746-0-3",
-    "numero": "Resolução n.º 13/2023- CONSIDERANDO",
+    "id": "2746-0-1",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
     "categorias": [
      "designacao"
     ],
-    "resumo": "Designar",
-    "trecho": "II - DESIGNAR, cumulativamente, a Defensora Pública III - DETERMINAR o pagamento de diárias ao defensor de 4ª Classe Catarina Lopes Maia para atuar na 12ª público e à servidora pública acima relacionados. Defensoria Pública do Polo do Baixo Amazonas (Barreirinha), nos dias 07, 08 e 09 de outubro de 2026; CERTIFIQUE-SE,",
+    "resumo": "Designar — 12ª DP",
+    "trecho": "II - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Catarina Lopes Maia para atuar na 12ª Defensoria Pública do Polo do Baixo Amazonas (Barreirinha), nos dias 07, 08 e 09 de outubro de 2026; III - ATRIBUIR a contraprestação na forma do Ato Normativo nº 3/2025-GDPG/DPE/AM, de 22 de maio de 2025, em compleme",
     "sugestao": null,
     "auto": false
    }
@@ -443,35 +578,24 @@
   "atos": [
    {
     "id": "2748-0-0",
-    "numero": "Portaria n.º 603/2024- Especial",
+    "numero": "Resolução n.º 002/2017 – CSDPE/AM",
     "categorias": [
      "geral"
     ],
     "resumo": "Ato envolvendo Christiano Pinheiro da Costa",
-    "trecho": "Portaria n.º 603/2024- Especial de Petra Sofia Métodos Portugal GDPG/DPE/AM que alterou as tabelas de valores de Consensuais de Mendonça Vitor Kikuda diárias constantes dos anexos I e II da Resolução n.º Tratamento de Ferreira 002/2017 – CSDPE/AM; Conflitos Comissão de CONSIDERANDO o teor do Processo SEI n.º Ana Karoli",
-    "sugestao": null,
-    "auto": false
-   },
-   {
-    "id": "2748-2-4",
-    "numero": "Resolução nº 002/2013 CSDPE/AM",
-    "categorias": [
-     "plantao"
-    ],
-    "resumo": "Autorizar",
-    "trecho": "XI - AUTORIZAR a inclusão da Defensora Pública Polo do Médio Solimões Polo do Baixo Amazonas Mariana Silva Paixão que assumirá o Plantão da Polo do Médio Madeira Polo do Madeira Semana 11 do Polo do Rio Negro-Solimões, pelo Iranduba, Careiro da período de 07/11 a 13/12; Várzea, Careiro Castanho, Manaquiri, Autazes, Pol",
+    "trecho": "Resolução n.º 002/2017 – CSDPE/AM; CONSIDERANDO o teor do Processo SEI n.º 26.0.000014267-0, datado de 08.10.2026, e Solicitação SGI nº 2602086, datada de 06.10.2026; RESOLVE: I - CONSIDERAR AUTORIZADO o deslocamento de Michelle Cerqueira da Rosa, Assessor de Defensor Público DPE-3, no trecho Manaus/São Gabriel da Cach",
     "sugestao": null,
     "auto": false
    },
    {
     "id": "2748-2-12",
-    "numero": "Resolução nº 002/2013 CSDPE/AM",
+    "numero": "Portaria nº 377/2024-GDPG/DPE/AM",
     "categorias": [
      "designacao",
      "plantao"
     ],
     "resumo": "Autorizar envolvendo Rachel Phanuelly Marinho e Silva, Stefany Coimbra Schmidt",
-    "trecho": "XIX - AUTORIZAR a substituição do servidor João Alberto Elaine Rosse Pereira Lopes, designado para a semana 05 do Márcia Lucio Márcia Cristina Plantão do Polo do Juruá, pelo período de 26/10 a Assess Gilvana de Gilvana da Silva 01/11, pelo servidor Felipe Adriel de Oliveira; oria Nascim Pachec Souza Pachec o Peres Simo",
+    "trecho": "XIX - AUTORIZAR a substituição do servidor João Rosse Pereira Lopes, designado para a semana 05 do Plantão do Polo do Juruá, pelo período de 26/10 a 01/11, pelo servidor Felipe Adriel de Oliveira; XX - DETERMINAR a seguinte escala de substituição entre os Polos e Unidades do Interior para atuarem reciprocamente como su",
     "sugestao": null,
     "auto": false
    }
@@ -483,38 +607,36 @@
   "url": "https://diario.defensoria.am.def.br/wp-content/uploads/2026/10/Edicao_2753-2026__publicada_em_16_outubro_de_2026.pdf",
   "atos": [
    {
-    "id": "2753-0-1",
-    "numero": "Resolução n.º 13/2023- Amazonas",
+    "id": "2753-0-0",
+    "numero": "Resolução n.º 002/2017 – CSDPE/AM",
     "categorias": [
-     "plantao",
-     "servidores"
+     "geral"
     ],
-    "resumo": "Autorizar",
-    "trecho": "II - AUTORIZAR a permuta entre servidores Rafaela Polo do Rio Negro- Polo do Médio Amazonas Christine Belfort Mar de Almeida e Francisco Solimões Cuesta de Oliveira, designados, respectivamente, para Polo do Médio Solimões Polo do Baixo Amazonas as semanas 06 e 07 do Plantão do Polo Alto Solimões Polo do Médio Madeira ",
+    "resumo": "Autorizar envolvendo Fernando Figueiredo Prestes",
+    "trecho": "I - AUTORIZAR o deslocamento de Fernando Figueiredo Prestes, Defensor Público de 2ª Classe, no trecho Manaus/São Paulo/Manaus, no período de 03 a 06 de novembro de 2026, a fim de participar do evento HSM+ 2026. II - DETERMINAR o pagamento de diárias ao defensor público acima relacionado. Cientifique-se, cumpra-se e pub",
     "sugestao": null,
     "auto": false
    },
    {
-    "id": "2753-0-7",
-    "numero": "Resolução n.º 13/2023- Amazonas",
+    "id": "2753-1-7",
+    "numero": "Portaria n.º 1038/2026- GSPG/DPE/AM",
     "categorias": [
      "designacao",
      "plantao"
     ],
     "resumo": "Autorizar envolvendo Rachel Phanuelly Marinho e Silva, Stefany Coimbra Schmidt",
-    "trecho": "IX - AUTORIZAR a inclusão da Defensora Pública Torres Torres Polo de Cível e Martins Martins Daiane Ayumi Kassada que assumirá o Plantão da Coari de Cordeir Palmeir Palmeir Cordeir o o Semana 08 do Polo do Rio Negro-Solimões, pelo Família a a (R) (F) período de 16/11 a 22/11; (R) (R) Plantão Ian Ian Thiago Thiago X - D",
+    "trecho": "IX - AUTORIZAR a inclusão da Defensora Pública Daiane Ayumi Kassada que assumirá o Plantão da Semana 08 do Polo do Rio Negro-Solimões, pelo período de 16/11 a 22/11; X - DETERMINAR a seguinte escala de substituição entre os Polos e Unidades do Interior para atuarem reciprocamente como substitutos automáticos em casos d",
     "sugestao": null,
     "auto": false
    },
    {
-    "id": "2753-1-2",
-    "numero": "Resolução n.º 13/2023- GDPG/DPE/AM",
+    "id": "2753-2-0",
+    "numero": "PORTARIA Nº 1022/2026-GSPG/DPE/AM",
     "categorias": [
-     "designacao",
-     "afastamento"
+     "geral"
     ],
-    "resumo": "Designar envolvendo Rachel Phanuelly Marinho e Silva",
-    "trecho": "I - DESIGNAR, em caráter especial, o Defensor Público outubro de 2026, do inciso I da PORTARIA Nº de 3ª Classe Daniel Bettanin e Silva, para atuar nas 1022/2026-GSPG/DPE/AM, publicada no dia 29 de Sessões de Julgamento do Tribunal do Júri da Vara da setembro de 2026, Ano 12, Edição 2741 Pág. 14 de 20, Comarca de Anori,",
+    "resumo": "Ato envolvendo Rachel Phanuelly Marinho e Silva — 10ª DP",
+    "trecho": "PORTARIA Nº 1022/2026-GSPG/DPE/AM, publicada no dia 29 de setembro de 2026, Ano 12, Edição 2741 Pág. 14 de 20, quanto à designação da Defensora Pública de 3ª Classe Rachel Phanuelly Marinho e Silva para atuar na 10ª Defensoria Público do Polo do Baixo Amazonas (Barreirinha). CERTIFIQUE-SE, PUBLIQUE-SE E CUMPRA-SE. GABI",
     "sugestao": null,
     "auto": false
    }
@@ -526,77 +648,202 @@
   "url": "https://diario.defensoria.am.def.br/wp-content/uploads/2026/10/Edicao_2754-2026__publicada_em_19_outubro_de_2026.pdf",
   "atos": [
    {
-    "id": "2754-0-2",
-    "numero": "Portaria n.º 603/2024- P",
+    "id": "2754-0-0",
+    "numero": "PORTARIA Nº 1022/2026-GSPG/DPE/AM",
     "categorias": [
      "geral"
     ],
-    "resumo": "Torna sem efeito ou encerra ato envolvendo Rachel Phanuelly Marinho e Silva",
-    "trecho": "I - CESSAR OS EFEITOS, no período de 09 a 31 de Moura Freitas, Auxiliar I de Defensoria, no trecho outubro de 2026, do inciso II da PORTARIA Nº Manaus/Manacapuru/Manaus, no dia 23 de outubro de 1022/2026-GSPG/DPE/AM, publicada no dia 29 de 2026, a fim de realizar o transporte do Defensor setembro de 2026, Ano 12, Ediçã",
+    "resumo": "Ato envolvendo Rachel Phanuelly Marinho e Silva — 10ª DP",
+    "trecho": "PORTARIA Nº 1022/2026-GSPG/DPE/AM, publicada no dia 29 de setembro de 2026, Ano 12, Edição 2741 Pág. 14 de 20, quanto à designação da Defensora Pública de 3ª Classe Rachel Phanuelly Marinho e Silva para atuar na 10ª Defensoria Público do Polo do Baixo Amazonas (Barreirinha). CERTIFIQUE-SE, PUBLIQUE-SE E CUMPRA-SE. GABI",
     "sugestao": null,
     "auto": false
    },
    {
-    "id": "2754-1-0",
-    "numero": "Resolução n.º 13/2023- CS/DPE/AM",
+    "id": "2754-1-0-5-0",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
     "categorias": [
      "designacao"
     ],
-    "resumo": "Designar envolvendo Camila Assunção Cavalcante",
-    "trecho": "I - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Camila Assunção Cavalcante para atuar CONSIDERANDO o constante na Portaria n.º na 5ª Defensoria Pública do Polo Baixo Amazonas, nos 231/2026-GDPG/DPE/AM, Ano 12, Edição 2.601, pág. dias 26, 27, 29, 30 de outubro de 2026 e 03 de 10, datada de 27 de fevereir",
-    "sugestao": null,
-    "auto": false
-   },
-   {
-    "id": "2754-1-1",
-    "numero": "Resolução n.º 13/2023- CS/DPE/AM",
-    "categorias": [
-     "designacao",
-     "afastamento"
-    ],
-    "resumo": "Designar envolvendo Monalysa Helena Lima Façanha",
-    "trecho": "II - DESIGNAR, cumulativamente, a Defensora Pública de férias, folgas, licenças e demais casos de de 4ª Classe Monalysa Helena Lima Façanha para afastamentos previstos em lei; atuar na 12ª Defensoria Pública do Polo Baixo Amazonas (Barreirinha), nos dias 26, 27, 29, 30 de CONSIDERANDO o teor do processo SEI outubro de ",
-    "sugestao": null,
-    "auto": false
-   },
-   {
-    "id": "2754-2-0",
-    "numero": "PORTARIA Nº 457/2026- 1990",
-    "categorias": [
-     "geral"
-    ],
-    "resumo": "Ato",
-    "trecho": "PORTARIA Nº 457/2026- 1990, alterado pela Lei Complementar n.º 288, de 02 de GSPG/DPE/AM, publicada no dia 05 de maio de 2026, Assinado digitalmente por - DEFENSORIA PUBLICA DO ESTADO DO AMAZONAS:19421427000191. Data: 19/10/2026 20:51:43 ND= Common Name: DEFENSORIA PUBLICA DO ESTADO DO AMAZONAS:19421427000191; Organiza",
-    "sugestao": null,
-    "auto": false
-   },
-   {
-    "id": "2754-3-1-2",
-    "numero": "PORTARIA Nº 1023/2026- Eletr",
-    "categorias": [
-     "designacao"
-    ],
-    "resumo": "Designa Fernando Figueiredo Prestes para a 2ª DP do Polo do Baixo Amazonas, de 30/04/2026 a 20/10/2026",
-    "trecho": "III - DESIGNAR, cumulativamente, o Defensor Público Arthur de Oliveira Cavalcante, Defensor de 2ª Classe Fernando Figueiredo Prestes para atuar Público, matrícula 001.493-1A, no valor de R$ 2.000,00 na 2ª Defensoria Pública do Polo do Baixo Amazonas, (dois mil reais), por meio de depósito em conta no período de 20 de o",
+    "resumo": "Designa Camila Assunção Cavalcante para a 5ª DP do Polo do Baixo Amazonas, de 26/10/2026 a 27/10/2026",
+    "trecho": "I - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Camila Assunção Cavalcante para atuar na 5ª Defensoria Pública do Polo Baixo Amazonas, nos dias 26, 27, 29, 30 de outubro de 2026 e 03 de novembro de 2026.",
     "sugestao": {
      "tipo": "designacao",
-     "dp": "dp2",
-     "defensor": "Fernando Figueiredo Prestes",
-     "inicio": "2026-04-30",
-     "fim": "2026-10-20"
+     "dp": "dp5",
+     "defensor": "Camila Assunção Cavalcante",
+     "inicio": "2026-10-26",
+     "fim": "2026-10-27"
     },
     "auto": true
    },
    {
-    "id": "2754-4-0",
-    "numero": "Resolução n. 43/2014-CSDPE/AM",
+    "id": "2754-1-0-5-1",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
     "categorias": [
      "designacao"
     ],
-    "resumo": "Designar envolvendo Rachel Phanuelly Marinho e Silva",
-    "trecho": "IV - DESIGNAR, cumulativamente, a Defensora Pública 14/2025CSDPEAM, de 18 de junho de 2025, para de 3ª Classe Rachel Phanuelly Marinho e Silva para custear pequenas despesas de Serviços de Terceiros atuar na 4ª Defensoria Pública do Polo do Baixo Pessoa Jurídica, no elemento de despesas Amazonas, no período de 20 de ou",
-    "sugestao": null,
-    "auto": false
+    "resumo": "Designa Camila Assunção Cavalcante para a 5ª DP do Polo do Baixo Amazonas, de 29/10/2026 a 30/10/2026",
+    "trecho": "I - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Camila Assunção Cavalcante para atuar na 5ª Defensoria Pública do Polo Baixo Amazonas, nos dias 26, 27, 29, 30 de outubro de 2026 e 03 de novembro de 2026.",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp5",
+     "defensor": "Camila Assunção Cavalcante",
+     "inicio": "2026-10-29",
+     "fim": "2026-10-30"
+    },
+    "auto": true
+   },
+   {
+    "id": "2754-1-0-5-2",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designa Camila Assunção Cavalcante para a 5ª DP do Polo do Baixo Amazonas, em 03/11/2026",
+    "trecho": "I - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Camila Assunção Cavalcante para atuar na 5ª Defensoria Pública do Polo Baixo Amazonas, nos dias 26, 27, 29, 30 de outubro de 2026 e 03 de novembro de 2026.",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp5",
+     "defensor": "Camila Assunção Cavalcante",
+     "inicio": "2026-11-03",
+     "fim": "2026-11-03"
+    },
+    "auto": true
+   },
+   {
+    "id": "2754-1-1-12-0",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designa Monalysa Helena Lima Façanha para a 12ª DP do Polo do Baixo Amazonas, em 30/03/1990",
+    "trecho": "II - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Monalysa Helena Lima Façanha para atuar na 12ª Defensoria Pública do Polo Baixo Amazonas (Barreirinha), nos dias 26, 27, 29, 30 de outubro de 2026 e 03 de novembro de 2026. III - ATRIBUIR a contraprestação na forma do Ato Normativo nº 3/2025-GDPG/DPE/AM, ",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp12",
+     "defensor": "Monalysa Helena Lima Façanha",
+     "inicio": "1990-03-30",
+     "fim": "1990-03-30"
+    },
+    "auto": true
+   },
+   {
+    "id": "2754-1-1-12-1",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designa Monalysa Helena Lima Façanha para a 12ª DP do Polo do Baixo Amazonas, em 22/05/2025",
+    "trecho": "II - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Monalysa Helena Lima Façanha para atuar na 12ª Defensoria Pública do Polo Baixo Amazonas (Barreirinha), nos dias 26, 27, 29, 30 de outubro de 2026 e 03 de novembro de 2026. III - ATRIBUIR a contraprestação na forma do Ato Normativo nº 3/2025-GDPG/DPE/AM, ",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp12",
+     "defensor": "Monalysa Helena Lima Façanha",
+     "inicio": "2025-05-22",
+     "fim": "2025-05-22"
+    },
+    "auto": true
+   },
+   {
+    "id": "2754-1-1-12-2",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designa Monalysa Helena Lima Façanha para a 12ª DP do Polo do Baixo Amazonas, em 19/10/2026",
+    "trecho": "II - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Monalysa Helena Lima Façanha para atuar na 12ª Defensoria Pública do Polo Baixo Amazonas (Barreirinha), nos dias 26, 27, 29, 30 de outubro de 2026 e 03 de novembro de 2026. III - ATRIBUIR a contraprestação na forma do Ato Normativo nº 3/2025-GDPG/DPE/AM, ",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp12",
+     "defensor": "Monalysa Helena Lima Façanha",
+     "inicio": "2026-10-19",
+     "fim": "2026-10-19"
+    },
+    "auto": true
+   },
+   {
+    "id": "2754-1-1-12-3",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designa Monalysa Helena Lima Façanha para a 12ª DP do Polo do Baixo Amazonas, de 26/10/2026 a 27/10/2026",
+    "trecho": "II - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Monalysa Helena Lima Façanha para atuar na 12ª Defensoria Pública do Polo Baixo Amazonas (Barreirinha), nos dias 26, 27, 29, 30 de outubro de 2026 e 03 de novembro de 2026. III - ATRIBUIR a contraprestação na forma do Ato Normativo nº 3/2025-GDPG/DPE/AM, ",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp12",
+     "defensor": "Monalysa Helena Lima Façanha",
+     "inicio": "2026-10-26",
+     "fim": "2026-10-27"
+    },
+    "auto": true
+   },
+   {
+    "id": "2754-1-1-12-4",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designa Monalysa Helena Lima Façanha para a 12ª DP do Polo do Baixo Amazonas, de 29/10/2026 a 30/10/2026",
+    "trecho": "II - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Monalysa Helena Lima Façanha para atuar na 12ª Defensoria Pública do Polo Baixo Amazonas (Barreirinha), nos dias 26, 27, 29, 30 de outubro de 2026 e 03 de novembro de 2026. III - ATRIBUIR a contraprestação na forma do Ato Normativo nº 3/2025-GDPG/DPE/AM, ",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp12",
+     "defensor": "Monalysa Helena Lima Façanha",
+     "inicio": "2026-10-29",
+     "fim": "2026-10-30"
+    },
+    "auto": true
+   },
+   {
+    "id": "2754-1-1-12-5",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designa Monalysa Helena Lima Façanha para a 12ª DP do Polo do Baixo Amazonas, em 03/11/2026",
+    "trecho": "II - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Monalysa Helena Lima Façanha para atuar na 12ª Defensoria Pública do Polo Baixo Amazonas (Barreirinha), nos dias 26, 27, 29, 30 de outubro de 2026 e 03 de novembro de 2026. III - ATRIBUIR a contraprestação na forma do Ato Normativo nº 3/2025-GDPG/DPE/AM, ",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp12",
+     "defensor": "Monalysa Helena Lima Façanha",
+     "inicio": "2026-11-03",
+     "fim": "2026-11-03"
+    },
+    "auto": true
+   },
+   {
+    "id": "2754-3-0-2-0",
+    "numero": "PORTARIA Nº 1023/2026- GSPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designa Fernando Figueiredo Prestes para a 2ª DP do Polo do Baixo Amazonas, de 20/10/2026 a 30/04/2027",
+    "trecho": "III - DESIGNAR, cumulativamente, o Defensor Público de 2ª Classe Fernando Figueiredo Prestes para atuar na 2ª Defensoria Pública do Polo do Baixo Amazonas, no período de 20 de outubro de 2026 a 30 de abril de 2027;",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp2",
+     "defensor": "Fernando Figueiredo Prestes",
+     "inicio": "2026-10-20",
+     "fim": "2027-04-30"
+    },
+    "auto": true
+   },
+   {
+    "id": "2754-3-1-4-0",
+    "numero": "PORTARIA Nº 1023/2026- GSPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designa Rachel Phanuelly Marinho e Silva para a 4ª DP do Polo do Baixo Amazonas, de 20/10/2026 a 31/12/2026",
+    "trecho": "IV - DESIGNAR, cumulativamente, a Defensora Pública de 3ª Classe Rachel Phanuelly Marinho e Silva para atuar na 4ª Defensoria Pública do Polo do Baixo Amazonas, no período de 20 de outubro a 31 de dezembro de 2026; V - ATRIBUIR a contraprestação na forma do Ato Normativo nº 3/2025-GDPG/DPE/AM, de 22 de maio de 2025, em",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp4",
+     "defensor": "Rachel Phanuelly Marinho e Silva",
+     "inicio": "2026-10-20",
+     "fim": "2026-12-31"
+    },
+    "auto": true
    }
   ]
  },
@@ -606,16 +853,72 @@
   "url": "https://diario.defensoria.am.def.br/wp-content/uploads/2026/10/Edicao_2756-2026__publicada_em_21_outubro_de_2026.pdf",
   "atos": [
    {
-    "id": "2756-0-1",
-    "numero": "PORTARIA Nº 1925/2026-GDPG/DPE/AM",
+    "id": "2756-0-0-2-0",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
     "categorias": [
-     "designacao",
-     "afastamento"
+     "designacao"
     ],
-    "resumo": "Designar envolvendo Camila Assunção Cavalcante",
-    "trecho": "I - DESIGNAR, cumulativamente, a Defensora Pública Ciências Contábeis, matrícula nº 000.759-5 A, 90 de 4ª Classe Camila Assunção Cavalcante para atuar (noventa) dias de licença especial, referente ao na 2ª Defensoria Pública do Polo Baixo Amazonas, nos quinquênio de 03/09/2021 a 02/09/2026, para usufruto dias 22 e 23 d",
-    "sugestao": null,
-    "auto": false
+    "resumo": "Designa Camila Assunção Cavalcante para a 2ª DP do Polo do Baixo Amazonas, em 30/03/1990",
+    "trecho": "I - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Camila Assunção Cavalcante para atuar na 2ª Defensoria Pública do Polo Baixo Amazonas, nos dias 22 e 23 de outubro de 2026. II - ATRIBUIR a contraprestação na forma do Ato Normativo nº 3/2025-GDPG/DPE/AM, de 22 de maio de 2025, em complemento com o art. 40",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp2",
+     "defensor": "Camila Assunção Cavalcante",
+     "inicio": "1990-03-30",
+     "fim": "1990-03-30"
+    },
+    "auto": true
+   },
+   {
+    "id": "2756-0-0-2-1",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designa Camila Assunção Cavalcante para a 2ª DP do Polo do Baixo Amazonas, em 22/05/2025",
+    "trecho": "I - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Camila Assunção Cavalcante para atuar na 2ª Defensoria Pública do Polo Baixo Amazonas, nos dias 22 e 23 de outubro de 2026. II - ATRIBUIR a contraprestação na forma do Ato Normativo nº 3/2025-GDPG/DPE/AM, de 22 de maio de 2025, em complemento com o art. 40",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp2",
+     "defensor": "Camila Assunção Cavalcante",
+     "inicio": "2025-05-22",
+     "fim": "2025-05-22"
+    },
+    "auto": true
+   },
+   {
+    "id": "2756-0-0-2-2",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designa Camila Assunção Cavalcante para a 2ª DP do Polo do Baixo Amazonas, em 02/06/2026",
+    "trecho": "I - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Camila Assunção Cavalcante para atuar na 2ª Defensoria Pública do Polo Baixo Amazonas, nos dias 22 e 23 de outubro de 2026. II - ATRIBUIR a contraprestação na forma do Ato Normativo nº 3/2025-GDPG/DPE/AM, de 22 de maio de 2025, em complemento com o art. 40",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp2",
+     "defensor": "Camila Assunção Cavalcante",
+     "inicio": "2026-06-02",
+     "fim": "2026-06-02"
+    },
+    "auto": true
+   },
+   {
+    "id": "2756-0-0-2-3",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designa Camila Assunção Cavalcante para a 2ª DP do Polo do Baixo Amazonas, de 22/10/2026 a 23/10/2026",
+    "trecho": "I - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Camila Assunção Cavalcante para atuar na 2ª Defensoria Pública do Polo Baixo Amazonas, nos dias 22 e 23 de outubro de 2026. II - ATRIBUIR a contraprestação na forma do Ato Normativo nº 3/2025-GDPG/DPE/AM, de 22 de maio de 2025, em complemento com o art. 40",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp2",
+     "defensor": "Camila Assunção Cavalcante",
+     "inicio": "2026-10-22",
+     "fim": "2026-10-23"
+    },
+    "auto": true
    }
   ]
  },
@@ -625,26 +928,123 @@
   "url": "https://diario.defensoria.am.def.br/wp-content/uploads/2026/10/Edicao_2757-2026__publicada_em_22_outubro_de_2026.pdf",
   "atos": [
    {
-    "id": "2757-0-0",
-    "numero": "Resolução n.º 002/2017 – CSDPE/AM",
+    "id": "2757-1-0-5-0",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
     "categorias": [
      "designacao"
     ],
-    "resumo": "Designar envolvendo Camila Assunção Cavalcante",
-    "trecho": "I - DESIGNAR, cumulativamente, a Defensora Pública CONSIDERANDO o constante na Portaria n.º de 4ª Classe Camila Assunção Cavalcante para atuar 231/2026-GDPG/DPE/AM, Ano 12, edição 2.601, pág. na 5ª Defensoria Pública do Polo Baixo Amazonas, nos 10, datada de 27 de fevereiro de 2026, que delegou a dias 26, 27, 28 e 29 d",
-    "sugestao": null,
-    "auto": false
+    "resumo": "Designa Camila Assunção Cavalcante para a 5ª DP do Polo do Baixo Amazonas, de 26/10/2026 a 29/10/2026",
+    "trecho": "I - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Camila Assunção Cavalcante para atuar na 5ª Defensoria Pública do Polo Baixo Amazonas, nos dias 26, 27, 28 e 29 de outubro de 2026 e 03 de novembro de 2026.",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp5",
+     "defensor": "Camila Assunção Cavalcante",
+     "inicio": "2026-10-26",
+     "fim": "2026-10-29"
+    },
+    "auto": true
    },
    {
-    "id": "2757-0-1",
-    "numero": "Resolução n.º 002/2017 – CSDPE/AM",
+    "id": "2757-1-0-5-1",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
     "categorias": [
      "designacao"
     ],
-    "resumo": "Designar envolvendo Monalysa Helena Lima Façanha",
-    "trecho": "II - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Monalysa Helena Lima Façanha para CONSIDERANDO o teor do Processo SEI n.º atuar na 12ª Defensoria Pública do Polo Baixo 26.0.000014940-2, datado de 22.10.2026, e da Amazonas (Barreirinha), nos dias 26, 27, 28 e 29 de Solicitação SGI nº. 2602125, datada de",
-    "sugestao": null,
-    "auto": false
+    "resumo": "Designa Camila Assunção Cavalcante para a 5ª DP do Polo do Baixo Amazonas, em 03/11/2026",
+    "trecho": "I - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Camila Assunção Cavalcante para atuar na 5ª Defensoria Pública do Polo Baixo Amazonas, nos dias 26, 27, 28 e 29 de outubro de 2026 e 03 de novembro de 2026.",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp5",
+     "defensor": "Camila Assunção Cavalcante",
+     "inicio": "2026-11-03",
+     "fim": "2026-11-03"
+    },
+    "auto": true
+   },
+   {
+    "id": "2757-1-1-12-0",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designa Monalysa Helena Lima Façanha para a 12ª DP do Polo do Baixo Amazonas, em 30/03/1990",
+    "trecho": "II - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Monalysa Helena Lima Façanha para atuar na 12ª Defensoria Pública do Polo Baixo Amazonas (Barreirinha), nos dias 26, 27, 28 e 29 de outubro de 2026 e 03 de novembro de 2026. III - ATRIBUIR a contraprestação na forma do Ato Normativo nº 3/2025-GDPG/DPE/AM,",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp12",
+     "defensor": "Monalysa Helena Lima Façanha",
+     "inicio": "1990-03-30",
+     "fim": "1990-03-30"
+    },
+    "auto": true
+   },
+   {
+    "id": "2757-1-1-12-1",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designa Monalysa Helena Lima Façanha para a 12ª DP do Polo do Baixo Amazonas, em 22/05/2025",
+    "trecho": "II - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Monalysa Helena Lima Façanha para atuar na 12ª Defensoria Pública do Polo Baixo Amazonas (Barreirinha), nos dias 26, 27, 28 e 29 de outubro de 2026 e 03 de novembro de 2026. III - ATRIBUIR a contraprestação na forma do Ato Normativo nº 3/2025-GDPG/DPE/AM,",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp12",
+     "defensor": "Monalysa Helena Lima Façanha",
+     "inicio": "2025-05-22",
+     "fim": "2025-05-22"
+    },
+    "auto": true
+   },
+   {
+    "id": "2757-1-1-12-2",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designa Monalysa Helena Lima Façanha para a 12ª DP do Polo do Baixo Amazonas, em 02/06/2026",
+    "trecho": "II - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Monalysa Helena Lima Façanha para atuar na 12ª Defensoria Pública do Polo Baixo Amazonas (Barreirinha), nos dias 26, 27, 28 e 29 de outubro de 2026 e 03 de novembro de 2026. III - ATRIBUIR a contraprestação na forma do Ato Normativo nº 3/2025-GDPG/DPE/AM,",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp12",
+     "defensor": "Monalysa Helena Lima Façanha",
+     "inicio": "2026-06-02",
+     "fim": "2026-06-02"
+    },
+    "auto": true
+   },
+   {
+    "id": "2757-1-1-12-3",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designa Monalysa Helena Lima Façanha para a 12ª DP do Polo do Baixo Amazonas, de 26/10/2026 a 29/10/2026",
+    "trecho": "II - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Monalysa Helena Lima Façanha para atuar na 12ª Defensoria Pública do Polo Baixo Amazonas (Barreirinha), nos dias 26, 27, 28 e 29 de outubro de 2026 e 03 de novembro de 2026. III - ATRIBUIR a contraprestação na forma do Ato Normativo nº 3/2025-GDPG/DPE/AM,",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp12",
+     "defensor": "Monalysa Helena Lima Façanha",
+     "inicio": "2026-10-26",
+     "fim": "2026-10-29"
+    },
+    "auto": true
+   },
+   {
+    "id": "2757-1-1-12-4",
+    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designa Monalysa Helena Lima Façanha para a 12ª DP do Polo do Baixo Amazonas, em 03/11/2026",
+    "trecho": "II - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Monalysa Helena Lima Façanha para atuar na 12ª Defensoria Pública do Polo Baixo Amazonas (Barreirinha), nos dias 26, 27, 28 e 29 de outubro de 2026 e 03 de novembro de 2026. III - ATRIBUIR a contraprestação na forma do Ato Normativo nº 3/2025-GDPG/DPE/AM,",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp12",
+     "defensor": "Monalysa Helena Lima Façanha",
+     "inicio": "2026-11-03",
+     "fim": "2026-11-03"
+    },
+    "auto": true
    }
   ]
  },
@@ -654,49 +1054,38 @@
   "url": "https://diario.defensoria.am.def.br/wp-content/uploads/2026/10/Edicao_2758-2026__publicada_em_23_outubro_de_2026.pdf",
   "atos": [
    {
-    "id": "2758-0-0",
-    "numero": "Portaria n.º 231/2026- reciprocamente",
+    "id": "2758-0-1",
+    "numero": "Portaria n.º 926/2026- GSPG/DPE/AM",
     "categorias": [
      "designacao",
-     "afastamento"
-    ],
-    "resumo": "Ato",
-    "trecho": "Portaria n.º 231/2026- reciprocamente como substitutos automáticos em GDPG/DPE/AM, publicada no Diário Oficial Eletrônico casos de impedimento e suspeição de seus membros da DPE/AM, Ano 12, Edição 2.601, de 27 de fevereiro plantonistas, definindo que a atuação com base nesta de 2026, pág. 10, que delegou ao Subdefensor",
-    "sugestao": null,
-    "auto": false
-   },
-   {
-    "id": "2758-1-0",
-    "numero": "Portaria n.º 926/2026- desta",
-    "categorias": [
-     "designacao",
-     "plantao"
-    ],
-    "resumo": "Ato",
-    "trecho": "Portaria n.º 926/2026- desta Portaria, disponibilizado no sítio eletrônico da GSPG/DPE/AM, publicada no Diário Oficial Eletrônico Defensoria Pública do Estado do Amazonas, no link da DPE/AM, Ano 12, Edição 2.731, de 15 de setembro “Escala de Plantão - Atendimento e Custódia”. de 2026, pág. 18-24, que promoveu a 7ª Alte",
-    "sugestao": null,
-    "auto": false
-   },
-   {
-    "id": "2758-2-1",
-    "numero": "Resolução n.º 13/2023- Amazonas",
-    "categorias": [
      "plantao"
     ],
     "resumo": "Autorizar",
-    "trecho": "II - AUTORIZAR a permuta entre os servidores Defensoria Pública do Estado do Amazonas, no link Gustavo Braga de Souza e Yuna Barreto Cedeira, “Escala de Plantão - Atendimento e Custódia”. designados, respectivamente, para as semanas 05 e 06 do Plantão do Polo Baixo Amazonas, correspondentes CERTIFIQUE-SE, PUBLIQUE-SE E",
+    "trecho": "II - AUTORIZAR a substituição da Servidora Joelma Pinto de Almeida, designado para a semana 13 do Plantão do Polo do Médio Madeira, pelo período de 21/09 a 27/09, por Guilherme Messias do Nascimento Soares; III - DETERMINAR a seguinte escala de substituição entre os Polos e Unidades do Interior para atuarem reciprocame",
     "sugestao": null,
     "auto": false
    },
    {
-    "id": "2758-2-5",
-    "numero": "Resolução n.º 13/2023- Amazonas",
+    "id": "2758-1-1",
+    "numero": "Portaria n.º 1093/2026- GSPG/DPE/AM",
+    "categorias": [
+     "plantao",
+     "servidores"
+    ],
+    "resumo": "Autorizar",
+    "trecho": "II - AUTORIZAR a permuta entre os servidores Gustavo Braga de Souza e Yuna Barreto Cedeira, designados, respectivamente, para as semanas 05 e 06 do Plantão do Polo Baixo Amazonas, correspondentes aos períodos de 26/10 a 01/11 e 02/11 a 08/11;",
+    "sugestao": null,
+    "auto": false
+   },
+   {
+    "id": "2758-1-5",
+    "numero": "Portaria n.º 1093/2026- GSPG/DPE/AM",
     "categorias": [
      "designacao",
      "plantao"
     ],
     "resumo": "Autorizar envolvendo Rachel Phanuelly Marinho e Silva, Stefany Coimbra Schmidt",
-    "trecho": "VI - AUTORIZAR a substituição do Defensor Público Plantão Marcos Marcos Torres Torres Danilo Justino Garcia, designado para a semana 04 Cível e Martins Martins Cordeir Cordeir do Plantão do Polo do Rio Negro-Solimões, pelo de o Palmeir Palmeir o Família a a período de 22/10 a 25/10, pelo Defensor Público Enio (R) (F) (",
+    "trecho": "VI - AUTORIZAR a substituição do Defensor Público Danilo Justino Garcia, designado para a semana 04 do Plantão do Polo do Rio Negro-Solimões, pelo período de 22/10 a 25/10, pelo Defensor Público Enio Jorge Lima Barbalho Júnior; VII - DETERMINAR a seguinte escala de substituição entre os Polos e Unidades do Interior par",
     "sugestao": null,
     "auto": false
    }
@@ -711,11 +1100,10 @@
     "id": "2759-0-0",
     "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
     "categorias": [
-     "designacao",
-     "afastamento"
+     "geral"
     ],
-    "resumo": "Autorizar",
-    "trecho": "I - AUTORIZAR o deslocamento da Monalysa Helena 10, datada de 27 de fevereiro de 2026, que delegou ao Lima Façanha, Defensora Pública de 3ª classe, no Subdefensor Público Geral, as funções de organização trecho Parintins/Nhamundá/Parintins, no período de 26 e designação de membros para substituição em casos à 30 de out",
+    "resumo": "Autorizar envolvendo Monalysa Helena Lima Façanha",
+    "trecho": "I - AUTORIZAR o deslocamento da Monalysa Helena Lima Façanha, Defensora Pública de 3ª classe, no trecho Parintins/Nhamundá/Parintins, no período de 26 à 30 de outubro de 2026, a fim de realizar atendimentos à população e inspeção carcerária na comarca de Nhamundá/AM;",
     "sugestao": null,
     "auto": false
    },
@@ -725,30 +1113,19 @@
     "categorias": [
      "geral"
     ],
-    "resumo": "Autorizar",
-    "trecho": "II - AUTORIZAR o deslocamento de Gustavo Braga de n. 26.0.000014838-4; Souza, Assistente Técnico de Defensoria, e Danilon RESOLVE: Ribeiro Pontes, Analista Jurídico de Defensoria, no trecho Parintins/Nhamundá/Parintins, no período de 26",
+    "resumo": "Autorizar envolvendo Monalysa Helena Lima Façanha",
+    "trecho": "II - AUTORIZAR o deslocamento de Gustavo Braga de Souza, Assistente Técnico de Defensoria, e Danilon Ribeiro Pontes, Analista Jurídico de Defensoria, no trecho Parintins/Nhamundá/Parintins, no período de 26 à 30 de outubro de 2026, a fim de auxiliar a Defensora Pública Monalysa Helena Lima Façanha nos atendimentos à po",
     "sugestao": null,
     "auto": false
    },
    {
-    "id": "2759-0-2",
-    "numero": "Portaria n.º 231/2026-GDPG/DPE/AM",
-    "categorias": [
-     "designacao"
-    ],
-    "resumo": "Designar envolvendo Monalysa Helena Lima Façanha",
-    "trecho": "I - DESIGNAR, cumulativamente, o Defensor Público à 30 de outubro de 2026, a fim de auxiliar a Defensora de 3ª Classe Eliaquim Antunes de Souza Santos para Pública Monalysa Helena Lima Façanha atuar na 5ª Defensoria Pública do Polo do Médio nos atendimentos à população e inspeção carcerária na Amazonas, nos dias 07, 08",
-    "sugestao": null,
-    "auto": false
-   },
-   {
-    "id": "2759-1-1",
-    "numero": "PORTARIA Nº 391/2026-2GSPG/DPE/AM",
+    "id": "2759-1-3",
+    "numero": "Portaria n.º 260/2026-GDPG/DPE/AM",
     "categorias": [
      "designacao"
     ],
     "resumo": "Designar envolvendo Gabriela Carvalho Calheiros Falcão",
-    "trecho": "IV - DESIGNAR, cumulativamente, a Defensora Pública forma do art. 9.º, inciso XII, da Lei Complementar de 4ª Classe Gabriela Carvalho Cavalheiros Falcão Estadual n.º 01, de 30 de março de 1990; para atuar na 1ª Defensoria Pública de 1ª Instância Especializada em Meio Ambiente e Questões Agrárias, CONSIDERANDO o Ato Nor",
+    "trecho": "IV - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Gabriela Carvalho Cavalheiros Falcão para atuar na 1ª Defensoria Pública de 1ª Instância Especializada em Meio Ambiente e Questões Agrárias, no período de 03 a 06 de novembro de 2026;",
     "sugestao": null,
     "auto": false
    }
