@@ -79,7 +79,8 @@ button,input,select,textarea{font:inherit;color:inherit}
 
 /* Abas */
 .abas{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
-.abas .wrap{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+.abas .wrap{display:flex;flex-wrap:wrap;gap:0 2px}
+@media (max-width:700px){.abas .wrap{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;scrollbar-color:var(--line) transparent;padding-bottom:2px}}
 .abas a{flex:none;display:block;padding:13px 14px 11px;color:var(--muted);text-decoration:none;font-weight:700;border-bottom:3px solid transparent;white-space:nowrap}
 .abas a:hover{color:var(--ink)}
 .abas a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--garantido)}
@@ -818,6 +819,7 @@ function secaoAtual(){ const h = location.hash.replace("#",""); return SECOES[h]
 function render(){
   const sec = secaoAtual();
   document.querySelectorAll("#abas a").forEach(a => { if (a.getAttribute("href")==="#"+sec) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current"); });
+  try { document.querySelector('#abas a[aria-current="page"]')?.scrollIntoView({block:"nearest", inline:"nearest"}); } catch(e){}
   document.getElementById("pill-modo").hidden = !DEMO;
   const ql = document.getElementById("quem-logado");
   ql.textContent = S.user ? `${S.user.nome}${S.admin ? " · admin" : ""}` : "";
