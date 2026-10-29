@@ -278,7 +278,14 @@ dialog::backdrop{background:rgba(10,20,14,.55)}
    Enquanto for null, o site roda em modo demonstração (dados de exemplo,
    gravados só neste navegador).
    ========================================================================= */
-const FIREBASE_CONFIG = null;
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyBdW5UmZ4j9p5FcI4p32A-NVeG-DEFX4-4",
+  authDomain: "polobaixoasdpeam.firebaseapp.com",
+  projectId: "polobaixoasdpeam",
+  storageBucket: "polobaixoasdpeam.firebasestorage.app",
+  messagingSenderId: "507060949479",
+  appId: "1:507060949479:web:f6c3b579e614660266ed42"
+};
 const DEMO = !FIREBASE_CONFIG;
 /* Contas que são admin mesmo antes de existir o cadastro de pessoas (servem para a carga inicial). */
 const ADMINS_INICIAIS = ["polobaixoamazonas@defensoria.am.def.br"];
