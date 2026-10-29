@@ -1,7 +1,7 @@
 rules_version = '2';
 
 // Painel do Polo do Baixo Amazonas — quem pode ler e quem pode alterar.
-// Ler: quem está em "pessoas" com o próprio e-mail funcional como identificador.
+// Ler: quem está em "pessoas" com o próprio e-mail funcional como identificador e já confirmou o e-mail.
 // Alterar: quem está em "pessoas" com perfil "admin", ou a conta institucional do polo.
 service cloud.firestore {
   match /databases/{database}/documents {
@@ -16,7 +16,8 @@ service cloud.firestore {
       return logado() && email() == 'polobaixoamazonas@defensoria.am.def.br';
     }
     function cadastrado() {
-      return logado() && exists(/databases/$(database)/documents/pessoas/$(email()));
+      return logado() && request.auth.token.email_verified == true &&
+        exists(/databases/$(database)/documents/pessoas/$(email()));
     }
     function admin() {
       return contaDoPolo() ||

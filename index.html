@@ -419,9 +419,10 @@ async function carregarFirebase(){
   await new Promise(pronto => {
     let primeira = true;
     fb.auth.onAuthStateChanged(async u => {
-      S.user = null; S.admin = false; S.semCadastro = false;
+      S.user = null; S.admin = false; S.semCadastro = false; S.naoVerificado = false;
       if (u){
         const email = (u.email||"").toLowerCase();
+        if (!u.emailVerified && !ADMINS_INICIAIS.includes(email)){ S.user = {email, uid:u.uid, nome:email}; S.naoVerificado = true; render(); if (primeira){ primeira = false; pronto(); } return; }
         S.user = {email, uid:u.uid, nome:email};
         let p = null;
         try { const d = await fb.db.collection("pessoas").doc(email).get(); if (d.exists) p = d.data(); } catch(e){}
@@ -789,6 +790,7 @@ function render(){
   ql.textContent = S.user ? `${S.user.nome}${S.admin ? " · admin" : ""}` : "";
   document.getElementById("btn-login").textContent = S.user ? "Sair" : "Entrar";
   const main = document.getElementById("conteudo");
+  if (!DEMO && S.naoVerificado && sec !== "ajuda"){ main.innerHTML = telaVerificar(); ligarVerificar(); return; }
   if (!DEMO && S.semCadastro && sec !== "ajuda"){ main.innerHTML = `<div class="login"><form><h2>E-mail sem cadastro</h2><p class="muted" style="margin:0">${esc(S.user?.email||"")} ainda não está em Pessoas do polo. Peça a um admin para incluir você e entre de novo.</p></form></div>`; return; }
   if (!DEMO && !S.user && sec !== "ajuda"){ main.innerHTML = telaLogin(); ligarLogin(); return; }
   if (DEMO && sec !== "ajuda"){ main.innerHTML = `<div class="login"><form><h2>Configuração pendente</h2><p class="muted" style="margin:0">O painel ainda não está ligado ao banco de dados (Firebase). Assim que a configuração for colada no arquivo index.html, a tela de entrada aparece aqui.</p><p class="fonte" style="margin:0"><a href="#ajuda">Como funciona o painel</a></p></form></div>`; return; }
@@ -1016,7 +1018,7 @@ function secAjuda(){
   <div class="ajuda">
   <section><h3>Para todos</h3>
     <h4>Entrar</h4>
-    <ol><li>O login é o seu e-mail funcional (@defensoria.am.def.br).</li><li>No primeiro acesso, ou se esquecer a senha, toque em <b>Primeiro acesso ou esqueci a senha</b> na tela de entrada. Chega um link no seu e-mail para criar a senha.</li><li>Se aparecer que o e-mail não está cadastrado, peça a um admin para incluir você em <b>Pessoas do polo</b>.</li></ol>
+    <ol><li>O login é o seu e-mail funcional (@defensoria.am.def.br).</li><li>No primeiro acesso, toque em <b>Primeiro acesso</b>, escreva o e-mail funcional e crie uma senha. Chega um link no seu e-mail: toque nele para confirmar e volte ao painel. Se esquecer a senha, use <b>Esqueci a senha</b>.</li><li>Se aparecer que o e-mail não está cadastrado, peça a um admin para incluir você em <b>Pessoas do polo</b>.</li></ol>
     <h4>O que cada aba mostra</h4>
     <ul>
       <li><b>Designações hoje:</b> quem responde por cada uma das 12 defensorias hoje, separadas em Sede (Parintins), Nhamundá e UDI Barreirinha. Também mostra a coordenação, o contato do polo, as designações em vigor, quem acumula mais de uma DP e os aniversariantes do mês.</li>
@@ -1067,7 +1069,7 @@ function secAjuda(){
     <p>Corrigir um item que veio do planejamento cria uma versão manual que continua valendo nas próximas atualizações. Excluir no site um item do planejamento não basta: ele volta na próxima colagem; para tirar de vez, apague no documento.</p>
 
     <h4>Dar ou tirar acesso</h4>
-    <ol><li>Em <b>Pessoas do polo</b>, toque em <b>Nova pessoa</b> (ou <b>Editar</b>).</li><li>Preencha nome, cargo, lotação e o e-mail funcional. Sem e-mail, a pessoa aparece no painel mas não entra.</li><li>Em <b>Acesso ao site</b>, escolha <b>Leitura</b> ou <b>Admin</b>. Defensores já vêm sugeridos como admin.</li><li>A conta de login é criada no Firebase (Authentication › Adicionar usuário, com o mesmo e-mail e uma senha qualquer). A pessoa depois usa <b>Primeiro acesso ou esqueci a senha</b> para criar a dela.</li><li>Para tirar o acesso, mude para Leitura ou apague o e-mail do cadastro.</li></ol>
+    <ol><li>Em <b>Pessoas do polo</b>, toque em <b>Nova pessoa</b> (ou <b>Editar</b>).</li><li>Preencha nome, cargo, lotação e o e-mail funcional. Sem e-mail, a pessoa aparece no painel mas não entra.</li><li>Em <b>Acesso ao site</b>, escolha <b>Leitura</b> ou <b>Admin</b>. Defensores já vêm sugeridos como admin.</li><li>Não é preciso criar conta no Firebase: a pessoa entra em <b>Primeiro acesso</b>, cria a senha e confirma pelo e-mail funcional. Só entra quem está cadastrado aqui.</li><li>Para tirar o acesso, mude para Leitura ou apague o e-mail do cadastro.</li></ol>
 
     <h4>Defensorias</h4>
     <p>Em <b>Designações hoje</b>, o botão <b>Editar</b> de cada cartão muda o titular, a portaria da titularidade, a atribuição, os substitutos e a colidente. Se uma resolução nova mudar a estrutura do polo, ajuste aqui.</p>
@@ -1075,26 +1077,64 @@ function secAjuda(){
   </div>`;
 }
 
+const DOMINIO = "@defensoria.am.def.br";
 function telaLogin(){
-  return `<div class="login"><form id="form-login"><h2>Entrar</h2><p class="muted" style="margin:0">Acesso restrito à equipe do Polo do Baixo Amazonas.</p>
-  <div class="campo"><label for="l-email">E-mail</label><input id="l-email" type="email" autocomplete="username" required></div>
-  <div class="campo"><label for="l-senha">Senha</label><input id="l-senha" type="password" autocomplete="current-password" required></div>
-  <div class="erro" id="l-erro"></div><button class="btn btn-pri" type="submit">Entrar</button>
-  <button class="btn" type="button" id="l-reset">Primeiro acesso ou esqueci a senha</button>
+  const modo = ui.modoLogin || "entrar";
+  const titulo = {entrar:"Entrar", criar:"Primeiro acesso", esqueci:"Esqueci a senha"}[modo];
+  const texto = {entrar:"Acesso restrito à equipe do Polo do Baixo Amazonas. Use o seu e-mail funcional.", criar:"Crie a sua senha. Depois confirme pelo link que chega no seu e-mail funcional.", esqueci:"Enviaremos um link para o seu e-mail funcional para criar uma senha nova."}[modo];
+  return `<div class="login"><form id="form-login" novalidate><h2>${titulo}</h2><p class="muted" style="margin:0">${texto}</p>
+  <div class="campo"><label for="l-email">E-mail funcional</label><input id="l-email" type="email" autocomplete="username" placeholder="nome${DOMINIO}" value="${esc(ui.emailLogin||"")}" required></div>
+  ${modo !== "esqueci" ? `<div class="campo"><label for="l-senha">${modo==="criar"?"Crie uma senha (mínimo 8 caracteres)":"Senha"}</label><input id="l-senha" type="password" autocomplete="${modo==="criar"?"new-password":"current-password"}" required></div>` : ""}
+  ${modo === "criar" ? `<div class="campo"><label for="l-senha2">Repita a senha</label><input id="l-senha2" type="password" autocomplete="new-password" required></div>` : ""}
+  <div class="erro" id="l-erro" role="alert"></div>
+  <button class="btn btn-pri" type="submit">${{entrar:"Entrar", criar:"Criar senha", esqueci:"Enviar link"}[modo]}</button>
+  <div class="barra" style="justify-content:space-between">${modo!=="entrar"?`<a href="#" data-login="entrar">Já tenho senha</a>`:`<a href="#" data-login="criar">Primeiro acesso</a>`}${modo!=="esqueci"?`<a href="#" data-login="esqueci">Esqueci a senha</a>`:""}</div>
   <p class="fonte" style="margin:0"><a href="#ajuda">Como funciona o painel</a></p></form></div>`;
 }
 function ligarLogin(){
-  document.getElementById("form-login").addEventListener("submit", async ev => {
-    ev.preventDefault();
-    try { await fb.auth.signInWithEmailAndPassword(document.getElementById("l-email").value, document.getElementById("l-senha").value); }
-    catch(e){ document.getElementById("l-erro").textContent = "E-mail ou senha incorretos. Se é o primeiro acesso ou esqueceu a senha, use o botão abaixo."; }
+  const form = document.getElementById("form-login"), out = document.getElementById("l-erro");
+  form.querySelectorAll("[data-login]").forEach(a => a.addEventListener("click", ev => { ev.preventDefault(); ui.emailLogin = document.getElementById("l-email").value; ui.modoLogin = a.dataset.login; render(); }));
+  form.addEventListener("submit", async ev => {
+    ev.preventDefault(); out.style.color = "";
+    const modo = ui.modoLogin || "entrar";
+    const email = document.getElementById("l-email").value.trim().toLowerCase();
+    const senha = document.getElementById("l-senha")?.value || "";
+    if (!email.endsWith(DOMINIO)){ out.textContent = `Use o seu e-mail funcional, que termina em ${DOMINIO}.`; return; }
+    fb.auth.languageCode = "pt";
+    try {
+      if (modo === "entrar") await fb.auth.signInWithEmailAndPassword(email, senha);
+      else if (modo === "criar"){
+        if (senha.length < 8){ out.textContent = "A senha precisa ter pelo menos 8 caracteres."; return; }
+        if (senha !== document.getElementById("l-senha2").value){ out.textContent = "As duas senhas não são iguais."; return; }
+        const r = await fb.auth.createUserWithEmailAndPassword(email, senha);
+        await r.user.sendEmailVerification();
+      } else {
+        await fb.auth.sendPasswordResetEmail(email);
+        out.style.color = "var(--ok)"; out.textContent = `Se ${email} tiver senha cadastrada, chega em instantes um link. Veja também a caixa de spam.`;
+      }
+    } catch(e){
+      const c = e.code || "";
+      out.textContent = c.includes("email-already-in-use") ? "Esse e-mail já tem senha. Use “Já tenho senha” ou “Esqueci a senha”."
+        : c.includes("weak-password") ? "Senha fraca. Use pelo menos 8 caracteres, misturando letras e números."
+        : c.includes("too-many-requests") ? "Muitas tentativas. Espere alguns minutos e tente de novo."
+        : c.includes("operation-not-allowed") || c.includes("admin-restricted") ? "O cadastro está fechado no momento. Fale com a coordenação do polo."
+        : modo === "entrar" ? "E-mail ou senha incorretos. No primeiro acesso, use “Primeiro acesso”."
+        : "Não foi possível concluir. Confira o e-mail e tente de novo.";
+    }
   });
-  document.getElementById("l-reset").addEventListener("click", async () => {
-    const email = document.getElementById("l-email").value.trim().toLowerCase(), out = document.getElementById("l-erro");
-    if (!email){ out.textContent = "Escreva o seu e-mail funcional no campo acima e toque de novo."; return; }
-    try { fb.auth.languageCode = "pt"; await fb.auth.sendPasswordResetEmail(email); out.style.color = "var(--ok)"; out.textContent = `Se ${email} tiver acesso, chega em instantes um link para criar a senha. Veja também a caixa de spam.`; }
-    catch(e){ out.textContent = "Não foi possível enviar agora. Confira o e-mail e tente de novo."; }
-  });
+}
+function telaVerificar(){
+  return `<div class="login"><form id="form-verif"><h2>Confirme o seu e-mail</h2><p style="margin:0">Enviamos um link para <b>${esc(S.user?.email||"")}</b>. Abra o e-mail (veja também o spam), toque no link e volte aqui.</p>
+  <div class="erro" id="v-msg" role="status"></div>
+  <button class="btn btn-pri" type="button" id="v-ok">Já confirmei</button>
+  <button class="btn" type="button" id="v-reenviar">Reenviar o link</button>
+  <button class="btn" type="button" id="v-sair">Sair</button></form></div>`;
+}
+function ligarVerificar(){
+  const msg = document.getElementById("v-msg");
+  document.getElementById("v-ok").onclick = async () => { await fb.auth.currentUser.reload(); if (fb.auth.currentUser.emailVerified){ await fb.auth.currentUser.getIdToken(true); location.reload(); } else { msg.textContent = "Ainda não aparece como confirmado. Toque no link do e-mail e tente de novo."; } };
+  document.getElementById("v-reenviar").onclick = async () => { try { fb.auth.languageCode = "pt"; await fb.auth.currentUser.sendEmailVerification(); msg.style.color = "var(--ok)"; msg.textContent = "Link reenviado."; } catch(e){ msg.textContent = "Espere um pouco antes de pedir outro link."; } };
+  document.getElementById("v-sair").onclick = () => fb.auth.signOut();
 }
 
 /* ---------- formulários ---------- */

@@ -28,4 +28,4 @@ O robô precisa do segredo `ANTHROPIC_API_KEY` (Settings › Secrets and variabl
 
 - Quem lê: quem está em **Pessoas do polo** com o e-mail funcional.
 - Quem edita: perfil **Admin** em Pessoas do polo, e a conta polobaixoamazonas@defensoria.am.def.br.
-- Contas de login: Firebase › Authentication › Adicionar usuário (mesmo e-mail, senha qualquer). A pessoa cria a própria senha em **Primeiro acesso ou esqueci a senha**.
+- Contas de login: cada pessoa cria a própria senha em **Primeiro acesso** e confirma pelo link enviado ao e-mail funcional. Só lê quem está em Pessoas do polo e confirmou o e-mail. A conta do polo foi criada no Firebase pelo console.
