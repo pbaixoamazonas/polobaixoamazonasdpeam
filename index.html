@@ -503,7 +503,21 @@ function quemResponde(dp, dia){
 }
 const DIAS_REMESSA = 3; // remessas do Projudi: 3 dias corridos antes do início da designação
 const inicioRemessas = d => iso(somaDias(deIso(d), -DIAS_REMESSA));
-const quemRecebeRemessas = (dp, dia) => quemResponde(dp, iso(somaDias(deIso(dia), DIAS_REMESSA)));
+function proximaDesignacao(g){
+  if (!g.fim) return null;
+  const dia1 = iso(somaDias(deIso(g.fim), 1));
+  return desigs().filter(x => x.dp === g.dp && x.defensor !== g.defensor && x.inicio > g.inicio && x.inicio <= dia1)
+    .sort((a,b) => a.inicio.localeCompare(b.inicio))[0] || null;
+}
+function periodoRemessas(g){
+  const prox = proximaDesignacao(g);
+  return {inicio: inicioRemessas(g.inicio), fim: prox ? iso(somaDias(deIso(inicioRemessas(prox.inicio)), -1)) : (g.fim || ""), prox};
+}
+function quemRecebeRemessas(dp, dia){
+  const cand = desigs().filter(g => g.dp === dp.id).map(g => ({g, r: periodoRemessas(g)})).filter(({r}) => r.inicio <= dia && (!r.fim || r.fim >= dia))
+    .sort((a,b) => b.g.inicio.localeCompare(a.g.inicio))[0];
+  return cand ? {nome: cand.g.defensor, desig: cand.g} : {nome: quemResponde(dp, dia).nome};
+}
 const defensoriasOrdenadas = () => [...S.defensorias].sort((a,b)=>(a.ordem||0)-(b.ordem||0));
 
 /* ---------- planejamento trimestral (colado do Word) ---------- */
@@ -1024,11 +1038,11 @@ function secPessoas(){
   const lista = [...S.pessoas].sort((a,b)=>ordem.indexOf(a.cargo)-ordem.indexOf(b.cargo) || a.nome.localeCompare(b.nome));
   return `
   <div class="cab-secao"><div><h2>Pessoas do polo</h2><p>Defensores, servidores, assessores e estagiários. O e-mail funcional é o login de cada um; o perfil diz quem só vê e quem pode editar. Os nomes também ensinam o robô a achar as portarias de cada pessoa no Diário.</p></div>
-  <div class="barra">${adm(`${!DEMO ? `<button class="btn" data-acao="criar-acessos" type="button">Criar acessos pendentes</button>` : ""}<button class="btn" data-acao="carga-inicial" type="button">Carregar dados iniciais</button><button class="btn btn-pri" data-acao="nova-pessoa" type="button">Nova pessoa</button>`)}</div></div>
+  <div class="barra">${adm(`${!DEMO ? `<button class="btn" data-acao="mensagens-pendentes" type="button">Mensagens de acesso</button><button class="btn" data-acao="criar-acessos" type="button">Criar acessos pendentes</button>` : ""}<button class="btn" data-acao="carga-inicial" type="button">Carregar dados iniciais</button><button class="btn btn-pri" data-acao="nova-pessoa" type="button">Nova pessoa</button>`)}</div></div>
   ${S.admin && S.pedidos.length ? `<section class="aviso-demo" style="flex-direction:column"><b>Pedidos de acesso</b><span class="fonte">Confirme com a pessoa (por exemplo, pelo WhatsApp) antes de liberar.</span>
     <ul class="lista" style="width:100%">${S.pedidos.map(r => { const p = S.pessoas.find(x => x.id === r.email); return `<li><div><b>${esc(p?.nome || r.email)}</b><br><span class="muted mono" style="font-size:12.5px">${esc(r.email)} · ${br((r.em||"").slice(0,10))}${p ? "" : " · não está no cadastro"}</span></div><div>${p ? `<button class="btn btn-sm btn-pri" data-acao="liberar" data-id="${esc(r.id)}" type="button">Liberar</button>` : ""} <button class="btn btn-sm" data-acao="recusar" data-id="${esc(r.id)}" type="button">Recusar</button></div></li>`; }).join("")}</ul></section>` : ""}
   <div class="tab-scroll"><table><thead><tr><th>Nome</th><th>Cargo</th><th>Lotação</th><th>E-mail funcional</th><th>Aniversário</th><th>Acesso</th>${adm("<th></th>")}</tr></thead><tbody>
-  ${lista.map(p=>`<tr><td><b>${esc(p.nome)}</b></td><td>${esc(CARGOS[p.cargo]||"")}</td><td>${esc(p.lotacao||"")}</td><td class="mono" style="font-size:13px">${esc(p.email||"—")}</td><td class="mono">${esc(p.aniversario||"")}</td><td>${p.email?`<span class="pill ${p.perfil==="admin"?"st-acum":"st-ok"}">${PERFIS[p.perfil]||"Leitura"}</span>${!DEMO && S.admin && !p.uid ? '<span class="nota">acesso não criado</span>' : ""}`:`<span class="muted">sem login</span>`}</td>${adm(`<td><div class="barra"><button class="btn btn-sm" data-acao="editar-pessoa" data-id="${esc(p.id)}" type="button">Editar</button>${!DEMO && p.email ? (p.uid ? `<button class="btn btn-sm" data-acao="nova-senha" data-id="${esc(p.id)}" type="button">Nova senha provisória</button>` : `<button class="btn btn-sm btn-pri" data-acao="criar-acesso" data-id="${esc(p.id)}" type="button">Criar acesso</button>`) : ""}</div></td>`)}</tr>`).join("") || `<tr><td colspan="7" class="vazio">Ninguém cadastrado.</td></tr>`}
+  ${lista.map(p=>`<tr><td><b>${esc(p.nome)}</b></td><td>${esc(CARGOS[p.cargo]||"")}</td><td>${esc(p.lotacao||"")}</td><td class="mono" style="font-size:13px">${esc(p.email||"—")}</td><td class="mono">${esc(p.aniversario||"")}</td><td>${p.email?`<span class="pill ${p.perfil==="admin"?"st-acum":"st-ok"}">${PERFIS[p.perfil]||"Leitura"}</span>${!DEMO && S.admin && !p.uid ? '<span class="nota">acesso não criado</span>' : ""}`:`<span class="muted">sem login</span>`}</td>${adm(`<td><div class="barra"><button class="btn btn-sm" data-acao="editar-pessoa" data-id="${esc(p.id)}" type="button">Editar</button>${!DEMO && p.email ? (p.uid ? (p.trocarSenha ? `<button class="btn btn-sm btn-pri" data-acao="msg-acesso" data-id="${esc(p.id)}" type="button">Mensagem de acesso</button>` : "") : `<button class="btn btn-sm btn-pri" data-acao="criar-acesso" data-id="${esc(p.id)}" type="button">Criar acesso</button>`) : ""}</div></td>`)}</tr>`).join("") || `<tr><td colspan="7" class="vazio">Ninguém cadastrado.</td></tr>`}
   </tbody></table></div>`;
 }
 
@@ -1048,7 +1062,7 @@ function secAjuda(){
       <li><b>Designações semanais:</b> a grade do planejamento trimestral (atendimentos, audiências e plantão de Parintins e Barreirinha), o plantão e quem está fora na semana, quem responde por cada DP dia a dia e os eventos e viagens. Use ◀ ▶ para mudar de semana.</li>
       <li><b>Férias da equipe:</b> férias, folgas e licenças de servidores, estagiários e terceirizados.</li>
       <li><b>Plantão:</b> a escala completa, com quem está de plantão agora.</li>
-      <li><b>Histórico de designações:</b> todas as designações e acumulações, com filtros por defensor, defensoria e período. Mostra a partir de quando cada pessoa responde pelas remessas do Projudi (3 dias corridos antes do início da designação) e avisa quem começa a receber remessas nos próximos 7 dias.</li>
+      <li><b>Histórico de designações:</b> todas as designações e acumulações, com filtros por defensor, defensoria e período. Mostra o período de cada pessoa nas remessas do Projudi: começa 3 dias corridos antes do início da designação e, se houver outra designação logo em seguida, termina 3 dias antes do fim, quando a próxima pessoa assume. Avisa quem começa a receber remessas nos próximos 7 dias.</li>
       <li><b>Diário Oficial:</b> portarias e atos que citam o polo, as comarcas ou as pessoas do polo, com busca e filtros. O link abre o PDF da edição.</li>
       <li><b>Pessoas do polo:</b> quem é quem, cargo, lotação, e-mail funcional e aniversário (só dia e mês).</li>
     </ul>
@@ -1122,7 +1136,7 @@ function secHistorico(){
   const nomes = [...new Set(todos.map(g => g.defensor))].sort();
   const SIT = {todas:"Todas", vig:"Vigentes", fut:"Futuras", enc:"Encerradas"};
   return `
-  <div class="cab-secao"><div><h2>Histórico de designações</h2><p>Todas as designações e acumulações nas defensorias do polo: do Diário Oficial, do planejamento, do SGI e as lançadas no site. A coluna <b>Remessas do Projudi</b> mostra quando a pessoa passa a responder pelas remessas: ${DIAS_REMESSA} dias corridos antes do início da designação.</p></div>
+  <div class="cab-secao"><div><h2>Histórico de designações</h2><p>Todas as designações e acumulações nas defensorias do polo: do Diário Oficial, do planejamento, do SGI e as lançadas no site. A coluna <b>Remessas do Projudi</b> mostra o período em que a pessoa responde pelas remessas: começa ${DIAS_REMESSA} dias corridos antes do início da designação; se outra pessoa for designada em seguida, termina ${DIAS_REMESSA} dias antes do fim, quando a próxima assume.</p></div>
   <div class="barra">${adm(`<button class="btn btn-pri" data-acao="nova-desig" type="button">Nova designação</button>`)}</div></div>
   ${emBreve.length ? `<div class="aviso-demo" style="background:var(--caprichoso-soft);border-color:color-mix(in srgb,var(--caprichoso) 35%,transparent)"><span>📥</span><div><b style="color:var(--caprichoso)">Começam a responder pelas remessas do Projudi nos próximos 7 dias</b><ul class="lista" style="margin-top:6px;border-top:none">${emBreve.map(g => `<li style="border-bottom:none;padding:3px 0"><span><b>${esc(g.defensor)}</b> · ${esc(nomeDp(g.dp))}</span><span class="remessa">remessas a partir de ${br(inicioRemessas(g.inicio))} · designação em ${br(g.inicio)}</span></li>`).join("")}</ul></div></div>` : ""}
   <div class="filtros">
@@ -1136,7 +1150,7 @@ function secHistorico(){
   <div class="tab-scroll"><table><thead><tr><th>Defensoria</th><th>Defensor(a)</th><th>Período</th><th>Remessas do Projudi</th><th>Situação</th><th>Portaria · origem</th>${adm("<th></th>")}</tr></thead><tbody>
   ${lista.map(g => { const sit = situacao(g); return `<tr><td><b>${esc(dpPorId(g.dp)?.nome||g.dp)}</b><br><span class="muted">${esc(dpPorId(g.dp)?.comarca||"")}</span></td><td>${esc(g.defensor)}${g.motivo?`<br><span class="muted" style="font-size:12.5px">${esc(g.motivo)}</span>`:""}</td>
     <td class="mono" style="white-space:nowrap">${br(g.inicio)}${g.fim ? (g.fim!==g.inicio?` a ${br(g.fim)}`:"") : " em diante"}</td>
-    <td class="remessa">a partir de ${br(inicioRemessas(g.inicio))}</td>
+    <td class="remessa">${(() => { const r = periodoRemessas(g); return `${br(r.inicio)} ${r.fim ? `a ${br(r.fim)}` : "em diante"}${r.prox ? `<span class="nota">depois: ${esc(r.prox.defensor)}</span>` : ""}`; })()}</td>
     <td><span class="pill sit-${sit}">${{vig:"Vigente",fut:"Futura",enc:"Encerrada"}[sit]}</span></td>
     <td>${esc(g.portaria||"—")}<br><span class="origem">${esc(g.origens.join(" · "))}</span></td>
     ${adm(`<td>${g.auto ? "" : `<button class="btn btn-sm" data-acao="editar-desig" data-id="${esc(g.id)}" type="button">Editar</button>`}</td>`)}</tr>`; }).join("") || `<tr><td colspan="7" class="vazio">Nenhuma designação com esses filtros.</td></tr>`}
@@ -1199,7 +1213,7 @@ function ligarTrocarSenha(){
     ev.preventDefault(); const s1 = document.getElementById("t-s1").value, s2 = document.getElementById("t-s2").value, out = document.getElementById("t-erro");
     if (s1.length < 8){ out.textContent = "A senha precisa ter pelo menos 8 caracteres."; return; }
     if (s1 !== s2){ out.textContent = "As duas senhas não são iguais."; return; }
-    try { await fb.auth.currentUser.updatePassword(s1); await fb.db.collection("pessoas").doc(S.user.email).update({trocarSenha:false}); S.trocarSenha = false; toast("Senha criada"); render(); }
+    try { await fb.auth.currentUser.updatePassword(s1); await fb.db.collection("pessoas").doc(S.user.email).update({trocarSenha:false}); try { await fb.db.collection("acessos").doc(S.user.email).delete(); } catch(e){} S.trocarSenha = false; toast("Senha criada"); render(); }
     catch(e){ out.textContent = (e.code||"").includes("requires-recent-login") ? "Por segurança, saia e entre de novo com a senha provisória, e crie a nova senha em seguida." : "Não foi possível salvar. Tente de novo."; }
   });
 }
@@ -1266,16 +1280,17 @@ async function criarAcesso(p){
     const r = await app2.auth().createUserWithEmailAndPassword(p.email, senha);
     const uid = r.user.uid; await app2.auth().signOut();
     await Dados.salvar("pessoas", {...p, uid, trocarSenha:true});
+    try { await fb.db.collection("acessos").doc(p.email).set({senha, em:new Date().toISOString(), por:S.user?.email||""}); } catch(e){}
     return {ok:true, senha};
   } catch(e){
-    return {ok:false, motivo: (e.code||"").includes("email-already-in-use") ? "já criou a própria senha: peça para tocar em “Pedir liberação” e libere aqui" : "não foi possível criar agora"};
+    return {ok:false, motivo: (e.code||"").includes("email-already-in-use") ? (p.trocarSenha ? "a conta já existe com senha provisória. Use “Mensagem de acesso”; se ela não aparecer, apague a conta no Firebase (Authentication › Usuários) e crie de novo" : "já criou a própria senha: peça para tocar em “Pedir liberação” e libere aqui") : "não foi possível criar agora"};
   }
 }
 function mostrarAcessos(lista){
   const linhas = lista.map((x,i) => x.ok ? `<li><div><b>${esc(x.p.nome)}</b><br><span class="mono" style="font-size:12.5px">${esc(x.p.email)} · senha provisória <b>${esc(x.senha)}</b></span></div>
     <div class="barra"><button class="btn btn-sm" type="button" data-copiar="${i}">Copiar mensagem</button><a class="btn btn-sm" target="_blank" rel="noopener" href="mailto:${encodeURIComponent(x.p.email)}?subject=${encodeURIComponent("Acesso ao painel do Polo do Baixo Amazonas")}&body=${encodeURIComponent(mensagemAcesso(x.p,x.senha))}">E-mail</a><a class="btn btn-sm" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(mensagemAcesso(x.p,x.senha))}">WhatsApp</a></div></li>`
     : `<li><div><b>${esc(x.p.nome)}</b><br><span class="muted">${esc(x.motivo)}</span></div></li>`).join("");
-  dlgForm.innerHTML = `<div class="dlg-cab"><h3>Acessos criados</h3></div><div class="dlg-corpo"><p style="margin:0">Mande a mensagem de cada pessoa só para ela. As senhas não ficam guardadas: anote ou envie agora. Se perder a senha antes de enviar, use “Nova senha provisória”.</p><ul class="lista">${linhas}</ul></div><div class="dlg-pe"><button class="btn btn-pri" value="cancel" type="submit">Concluir</button></div>`;
+  dlgForm.innerHTML = `<div class="dlg-cab"><h3>Acessos criados</h3></div><div class="dlg-corpo"><p style="margin:0">Mande a mensagem de cada pessoa só para ela. Até a pessoa criar a própria senha, a mensagem fica guardada em <b>Pessoas do polo › Mensagem de acesso</b> (só admins veem).</p><ul class="lista">${linhas}</ul></div><div class="dlg-pe"><button class="btn btn-pri" value="cancel" type="submit">Concluir</button></div>`;
   dlg.showModal();
   dlgForm.querySelectorAll("[data-copiar]").forEach(b => b.onclick = async () => { const x = lista[+b.dataset.copiar]; const t = mensagemAcesso(x.p, x.senha); try { await navigator.clipboard.writeText(t); b.textContent = "Copiada"; } catch(e){ b.textContent = "Copie manualmente"; } });
 }
@@ -1445,6 +1460,15 @@ document.addEventListener("click", ev => {
     case "editar-evento": return formEvento(acha("eventos"));
     case "carga-inicial": return formCarga();
     case "criar-acesso": return (async () => { const p = acha("pessoas"); toast("Criando acesso…"); mostrarAcessos([{p, ...(await criarAcesso(p))}]); })();
+    case "msg-acesso": return (async () => { const p = acha("pessoas"); let senha = null; try { const d = await fb.db.collection("acessos").doc(p.email).get(); if (d.exists) senha = d.data().senha; } catch(e){}
+      if (senha) return mostrarAcessos([{p, ok:true, senha}]);
+      const r = await criarAcesso({...p, uid:""}); mostrarAcessos([{p, ...r}]); })();
+    case "mensagens-pendentes": return (async () => { const pend = S.pessoas.filter(p => p.email && p.uid && p.trocarSenha); const out = [];
+      for (const p of pend){ let senha = null; try { const d = await fb.db.collection("acessos").doc(p.email).get(); if (d.exists) senha = d.data().senha; } catch(e){}
+        if (senha){ out.push({p, ok:true, senha}); continue; }
+        const r = await criarAcesso({...p, uid:""});
+        out.push(r.ok ? {p, ...r} : {p, ok:false, motivo:"senha provisória não guardada (criada antes desta versão): apague esta conta no Firebase › Authentication › Usuários e toque em “Mensagens de acesso” de novo"}); }
+      if (!out.length) return toast("Nenhuma mensagem pendente"); mostrarAcessos(out); })();
     case "criar-acessos": return (async () => { const pend = S.pessoas.filter(p => p.email && !p.uid && p.id !== "polobaixoamazonas@defensoria.am.def.br"); if (!pend.length) return toast("Ninguém pendente"); toast(`Criando ${pend.length} acessos…`); const out = []; for (const p of pend) out.push({p, ...(await criarAcesso(p))}); mostrarAcessos(out); })();
     case "nova-senha": return toast("Para uma senha nova, a pessoa usa “Esqueci a senha”; se o e-mail não chegar, exclua a conta dela em Firebase › Authentication e use “Criar acesso”.");
     case "liberar": return (async () => { const r = S.pedidos.find(x => x.id === id); const p = S.pessoas.find(x => x.id === r?.email); if (!r || !p) return;

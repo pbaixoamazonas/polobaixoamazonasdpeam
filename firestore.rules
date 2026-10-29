@@ -36,6 +36,12 @@ service cloud.firestore {
       allow read, delete: if admin();
     }
 
+    // senhas provisórias guardadas até a pessoa criar a dela: só admin lê; a própria pessoa apaga
+    match /acessos/{id} {
+      allow read, write: if admin();
+      allow delete: if logado() && id == email();
+    }
+
     // a própria pessoa só pode desligar o aviso de troca da senha provisória
     match /pessoas/{id} {
       allow update: if cadastrado() && id == email()
@@ -44,7 +50,7 @@ service cloud.firestore {
     }
 
     match /{colecao}/{id} {
-      allow read: if colecao != 'pedidos' && (contaDoPolo() || cadastrado());
+      allow read: if !(colecao in ['pedidos', 'acessos']) && (contaDoPolo() || cadastrado());
       allow write: if admin() && colecao in [
         'defensorias', 'pessoas', 'grade', 'eventos', 'config', 'designacoes',
         'afastamentos', 'equipe', 'plantao', 'diario_lancados'
