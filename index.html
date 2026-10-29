@@ -169,6 +169,15 @@ td.c-hoje,th.c-hoje{background:color-mix(in srgb,var(--estrela) 14%,transparent)
 .passos{margin:0;padding-left:20px;display:grid;gap:4px}
 .prev{font-size:14px}
 .prev ul{margin:6px 0 0;padding-left:18px}
+/* Histórico */
+.filtros{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-bottom:14px}
+.filtros .campo{min-width:150px;flex:1 1 150px}
+.filtros select,.filtros input{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:7px 10px;width:100%;min-width:0}
+.remessa{font-family:var(--f-mono);font-size:13px;white-space:nowrap}
+.sit-vig{background:var(--dpe-soft);color:var(--ok)}
+.sit-fut{background:var(--caprichoso-soft);color:var(--caprichoso)}
+.sit-enc{background:var(--surface-2);color:var(--muted)}
+.origem{font-size:12px;color:var(--muted)}
 /* Ajuda */
 .ajuda{display:grid;gap:26px;max-width:860px}
 .ajuda h3{font-size:24px;margin-bottom:6px}
@@ -262,6 +271,7 @@ dialog::backdrop{background:rgba(10,20,14,.55)}
     <a href="#semana">Designações semanais</a>
     <a href="#equipe">Férias da equipe</a>
     <a href="#plantao">Plantão</a>
+    <a href="#historico">Histórico de designações</a>
     <a href="#diario">Diário Oficial</a>
     <a href="#pessoas">Pessoas do polo</a>
   </div>
@@ -331,7 +341,7 @@ const uid = () => Math.random().toString(36).slice(2,10);
 
 /* ---------- estado ---------- */
 const S = {pedidos:[], defensorias:[], pessoas:[], grade:[], eventos:[], config:[], designacoes:[], afastamentos:[], equipe:[], plantao:[], diario:[], user:null, admin:false};
-const ui = {mesAf:null, mesEq:null, semana:null, catDiario:"todas", buscaDiario:""};
+const ui = {hDef:"", hDp:"", hSit:"todas", hDe:"", hAte:"", hBusca:"", mesAf:null, mesEq:null, semana:null, catDiario:"todas", buscaDiario:""};
 
 /* ---------- dados de exemplo (só no modo demonstração) ---------- */
 function exemplo(){ return {defensorias:[], pessoas:[], afastamentos:[], designacoes:[], equipe:[], plantao:[], diario:[]}; }
@@ -491,6 +501,9 @@ function quemResponde(dp, dia){
   }
   return {nome:"", tipo:"falta", af, motivo:`${motivo}, sem designação e sem substituto automático disponível`};
 }
+const DIAS_REMESSA = 3; // remessas do Projudi: 3 dias corridos antes do início da designação
+const inicioRemessas = d => iso(somaDias(deIso(d), -DIAS_REMESSA));
+const quemRecebeRemessas = (dp, dia) => quemResponde(dp, iso(somaDias(deIso(dia), DIAS_REMESSA)));
 const defensoriasOrdenadas = () => [...S.defensorias].sort((a,b)=>(a.ordem||0)-(b.ordem||0));
 
 /* ---------- planejamento trimestral (colado do Word) ---------- */
@@ -786,7 +799,7 @@ function filtrarPlano(R){
 }
 
 /* ---------- renderização ---------- */
-const SECOES = {ajuda:secAjuda, hoje:secHoje, afastamentos:secAfastamentos, semana:secSemana, equipe:secEquipe, plantao:secPlantao, diario:secDiario, pessoas:secPessoas};
+const SECOES = {ajuda:secAjuda, historico:secHistorico, hoje:secHoje, afastamentos:secAfastamentos, semana:secSemana, equipe:secEquipe, plantao:secPlantao, diario:secDiario, pessoas:secPessoas};
 function secaoAtual(){ const h = location.hash.replace("#",""); return SECOES[h] ? h : "hoje"; }
 function render(){
   const sec = secaoAtual();
@@ -824,7 +837,7 @@ function secHoje(){
     else if (q.tipo==="auto") corpo = `<div class="quem"><i>${esc(q.nome)}</i></div><small>${q.ordemSub}º substituto automático (${esc(dpPorId(q.via)?.nome||"")}) · ${esc(q.motivo)}${q.af?.fim?` até ${br(q.af.fim)}`:""}. Confira se saiu portaria.</small>`;
     else if (q.tipo==="falta") corpo = `<div class="quem" style="color:var(--falta)">Ninguém designado</div><small>${esc(q.motivo)}</small>`;
     else corpo = `<div class="quem"><i>${esc(q.nome)}</i></div><small>${q.tipo==="sub" ? `No lugar de ${esc(dp.titular)}` : "Defensoria vaga"} · ${q.desig.fim ? `até ${br(q.desig.fim)}` : "sem data de término"}${q.desig.portaria ? ` · ${esc(q.desig.portaria)}` : ""}</small>${q.afDoSub ? `<small style="color:var(--falta)">Atenção: ${esc(q.nome)} também está afastado(a) hoje.</small>` : ""}`;
-    return `<article class="dp"><div class="dp-topo"><span class="dp-num">${esc(dp.nome)}</span><span class="dp-comarca">${esc(dp.comarca)}</span></div><div class="dp-area">${esc(dp.area||"")}</div>${estadoPill(q)}${corpo}<div class="dp-regras">Substitutos: ${(dp.subs||[]).map(curto).join(" e ")||"—"}${dp.colidente?` · colidente: ${curto(dp.colidente)}`:""}</div>${adm(`<div><button class="btn btn-sm" data-acao="editar-dp" data-id="${dp.id}" type="button">Editar</button></div>`)}</article>`;
+    return `<article class="dp"><div class="dp-topo"><span class="dp-num">${esc(dp.nome)}</span><span class="dp-comarca">${esc(dp.comarca)}</span></div><div class="dp-area">${esc(dp.area||"")}</div>${estadoPill(q)}${corpo}${(() => { const r = quemRecebeRemessas(dp, HOJE); return r.nome && r.nome !== q.nome ? `<small style="color:var(--caprichoso)"><b>Remessas do Projudi:</b> já com ${esc(r.nome)}</small>` : ""; })()}<div class="dp-regras">Substitutos: ${(dp.subs||[]).map(curto).join(" e ")||"—"}${dp.colidente?` · colidente: ${curto(dp.colidente)}`:""}</div>${adm(`<div><button class="btn btn-sm" data-acao="editar-dp" data-id="${dp.id}" type="button">Editar</button></div>`)}</article>`;
   };
   const cards = Object.entries(UNIDADES).map(([k,rot]) => { const l = dps.filter(d=>(d.unidade||"sede")===k); return l.length ? `<h3 class="grupo">${rot}</h3><div class="grade-dp">${l.map(card).join("")}</div>` : ""; }).join("");
   const mesAtual = pad(new Date().getMonth()+1);
@@ -1035,6 +1048,7 @@ function secAjuda(){
       <li><b>Designações semanais:</b> a grade do planejamento trimestral (atendimentos, audiências e plantão de Parintins e Barreirinha), o plantão e quem está fora na semana, quem responde por cada DP dia a dia e os eventos e viagens. Use ◀ ▶ para mudar de semana.</li>
       <li><b>Férias da equipe:</b> férias, folgas e licenças de servidores, estagiários e terceirizados.</li>
       <li><b>Plantão:</b> a escala completa, com quem está de plantão agora.</li>
+      <li><b>Histórico de designações:</b> todas as designações e acumulações, com filtros por defensor, defensoria e período. Mostra a partir de quando cada pessoa responde pelas remessas do Projudi (3 dias corridos antes do início da designação) e avisa quem começa a receber remessas nos próximos 7 dias.</li>
       <li><b>Diário Oficial:</b> portarias e atos que citam o polo, as comarcas ou as pessoas do polo, com busca e filtros. O link abre o PDF da edição.</li>
       <li><b>Pessoas do polo:</b> quem é quem, cargo, lotação, e-mail funcional e aniversário (só dia e mês).</li>
     </ul>
@@ -1087,6 +1101,48 @@ function secAjuda(){
 }
 
 const DOMINIO = "@defensoria.am.def.br";
+function historicoDesignacoes(){
+  const mapa = new Map();
+  for (const g of desigs()){
+    const k = `${g.dp}|${g.defensor}|${g.inicio}|${g.fim||""}`;
+    const origem = g.auto ? `Diário, ed. ${g.edicao}` : g.origem === "planejamento" ? "Planejamento" : String(g.id||"").startsWith("sgi") ? "SGI" : "Lançada no site";
+    if (mapa.has(k)){ const x = mapa.get(k); if (!x.origens.includes(origem)) x.origens.push(origem); if (!x.portaria && g.portaria) x.portaria = g.portaria; }
+    else mapa.set(k, {...g, origens:[origem]});
+  }
+  return [...mapa.values()].sort((a,b) => b.inicio.localeCompare(a.inicio) || a.dp.localeCompare(b.dp));
+}
+function situacao(g){ return g.inicio > HOJE ? "fut" : (g.fim && g.fim < HOJE ? "enc" : "vig"); }
+function secHistorico(){
+  const todos = historicoDesignacoes();
+  const q = norm(ui.hBusca);
+  const lista = todos.filter(g => (!ui.hDef || g.defensor === ui.hDef) && (!ui.hDp || g.dp === ui.hDp) && (ui.hSit === "todas" || situacao(g) === ui.hSit)
+    && (!ui.hDe || (g.fim || "9999") >= ui.hDe) && (!ui.hAte || g.inicio <= ui.hAte)
+    && (!q || norm(`${g.defensor} ${nomeDp(g.dp)} ${g.portaria||""} ${g.motivo||""}`).includes(q)));
+  const emBreve = todos.filter(g => { const r = inicioRemessas(g.inicio); return r >= HOJE && r <= iso(somaDias(new Date(), 7)); }).sort((a,b)=>a.inicio.localeCompare(b.inicio));
+  const nomes = [...new Set(todos.map(g => g.defensor))].sort();
+  const SIT = {todas:"Todas", vig:"Vigentes", fut:"Futuras", enc:"Encerradas"};
+  return `
+  <div class="cab-secao"><div><h2>Histórico de designações</h2><p>Todas as designações e acumulações nas defensorias do polo: do Diário Oficial, do planejamento, do SGI e as lançadas no site. A coluna <b>Remessas do Projudi</b> mostra quando a pessoa passa a responder pelas remessas: ${DIAS_REMESSA} dias corridos antes do início da designação.</p></div>
+  <div class="barra">${adm(`<button class="btn btn-pri" data-acao="nova-desig" type="button">Nova designação</button>`)}</div></div>
+  ${emBreve.length ? `<div class="aviso-demo" style="background:var(--caprichoso-soft);border-color:color-mix(in srgb,var(--caprichoso) 35%,transparent)"><span>📥</span><div><b style="color:var(--caprichoso)">Começam a responder pelas remessas do Projudi nos próximos 7 dias</b><ul class="lista" style="margin-top:6px;border-top:none">${emBreve.map(g => `<li style="border-bottom:none;padding:3px 0"><span><b>${esc(g.defensor)}</b> · ${esc(nomeDp(g.dp))}</span><span class="remessa">remessas a partir de ${br(inicioRemessas(g.inicio))} · designação em ${br(g.inicio)}</span></li>`).join("")}</ul></div></div>` : ""}
+  <div class="filtros">
+    <div class="campo"><label for="h-def">Defensor(a)</label><select id="h-def"><option value="">Todos</option>${nomes.map(n=>`<option ${n===ui.hDef?"selected":""}>${esc(n)}</option>`).join("")}</select></div>
+    <div class="campo"><label for="h-dp">Defensoria</label><select id="h-dp"><option value="">Todas</option>${opDps(ui.hDp)}</select></div>
+    <div class="campo"><label for="h-de">De</label><input id="h-de" type="date" value="${esc(ui.hDe)}"></div>
+    <div class="campo"><label for="h-ate">Até</label><input id="h-ate" type="date" value="${esc(ui.hAte)}"></div>
+    <div class="campo" style="flex:2 1 220px"><label for="h-busca">Buscar</label><input id="h-busca" type="search" placeholder="Portaria, nome, motivo…" value="${esc(ui.hBusca)}"></div>
+  </div>
+  <div class="chips" role="group" aria-label="Situação" style="margin-bottom:12px">${Object.entries(SIT).map(([k,v])=>`<button type="button" class="chip" data-acao="hsit" data-k="${k}" aria-pressed="${ui.hSit===k}">${v}</button>`).join("")}<span class="muted mono" style="align-self:center;margin-left:6px">${lista.length} de ${todos.length}</span></div>
+  <div class="tab-scroll"><table><thead><tr><th>Defensoria</th><th>Defensor(a)</th><th>Período</th><th>Remessas do Projudi</th><th>Situação</th><th>Portaria · origem</th>${adm("<th></th>")}</tr></thead><tbody>
+  ${lista.map(g => { const sit = situacao(g); return `<tr><td><b>${esc(dpPorId(g.dp)?.nome||g.dp)}</b><br><span class="muted">${esc(dpPorId(g.dp)?.comarca||"")}</span></td><td>${esc(g.defensor)}${g.motivo?`<br><span class="muted" style="font-size:12.5px">${esc(g.motivo)}</span>`:""}</td>
+    <td class="mono" style="white-space:nowrap">${br(g.inicio)}${g.fim ? (g.fim!==g.inicio?` a ${br(g.fim)}`:"") : " em diante"}</td>
+    <td class="remessa">a partir de ${br(inicioRemessas(g.inicio))}</td>
+    <td><span class="pill sit-${sit}">${{vig:"Vigente",fut:"Futura",enc:"Encerrada"}[sit]}</span></td>
+    <td>${esc(g.portaria||"—")}<br><span class="origem">${esc(g.origens.join(" · "))}</span></td>
+    ${adm(`<td>${g.auto ? "" : `<button class="btn btn-sm" data-acao="editar-desig" data-id="${esc(g.id)}" type="button">Editar</button>`}</td>`)}</tr>`; }).join("") || `<tr><td colspan="7" class="vazio">Nenhuma designação com esses filtros.</td></tr>`}
+  </tbody></table></div>`;
+}
+
 function telaLogin(){
   const modo = ui.modoLogin || "entrar";
   const titulo = {entrar:"Entrar", criar:"Primeiro acesso", esqueci:"Esqueci a senha"}[modo];
@@ -1358,6 +1414,10 @@ function lancar(atoId){
 
 /* ---------- eventos ---------- */
 function ligar(sec){
+  if (sec === "historico"){
+    const liga = (id, k, ev="change") => { const el = document.getElementById(id); if (el) el.addEventListener(ev, () => { ui[k] = el.value; const pos = el.selectionStart; render(); if (ev==="input"){ const n = document.getElementById(id); n.focus(); try{ n.setSelectionRange(pos,pos); }catch(e){} } }); };
+    liga("h-def","hDef"); liga("h-dp","hDp"); liga("h-de","hDe"); liga("h-ate","hAte"); liga("h-busca","hBusca","input");
+  }
   const b = document.getElementById("busca-diario");
   if (b) b.addEventListener("input", () => { ui.buscaDiario = b.value; const pos = b.selectionStart; render(); const nb = document.getElementById("busca-diario"); nb.focus(); nb.setSelectionRange(pos,pos); });
 }
@@ -1398,6 +1458,7 @@ document.addEventListener("click", ev => {
     case "rejeitar": return Dados.marcarLancado(id,"rejeitado").then(()=>{ toast("Desfeito: o ato não vale mais no site"); render(); });
     case "reaplicar": return Dados.marcarLancado(id,"").then(()=>{ render(); });
     case "cat": ui.catDiario = k; return render();
+    case "hsit": ui.hSit = k; return render();
     case "mes": { const m = Number(d); ui[k] = m===0 ? new Date() : new Date(ui[k].getFullYear(), ui[k].getMonth()+m, 1); return render(); }
     case "sem": { const n = Number(d); ui.semana = n===0 ? segunda(new Date()) : somaDias(ui.semana,n); return render(); }
   }
