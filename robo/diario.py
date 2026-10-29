@@ -149,15 +149,34 @@ def procurar_edicao(numero: int, depois_de: str) -> dict | None:
 
 # ---------------------------------------------------------------- PDF
 
+def _duas_colunas(pag) -> bool:
+    """A página é em duas colunas quando quase nenhuma palavra atravessa o meio."""
+    meio = pag.width / 2
+    palavras = pag.extract_words()
+    if len(palavras) < 40:
+        return False
+    cruzam = sum(1 for w in palavras if w["x0"] < meio - 2 and w["x1"] > meio + 2)
+    esquerda = sum(1 for w in palavras if w["x1"] <= meio)
+    direita = sum(1 for w in palavras if w["x0"] >= meio)
+    return cruzam / len(palavras) < 0.03 and esquerda > 10 and direita > 10
+
+
 def texto_do_pdf(conteudo: bytes) -> str:
     import pdfplumber
 
     partes = []
     with pdfplumber.open(io.BytesIO(conteudo)) as pdf:
         for i, pag in enumerate(pdf.pages, 1):
-            partes.append(pag.extract_text() or "")
-            # o Diário é diagramado em duas colunas e o texto corrido mistura tabelas;
-            # as tabelas vão de novo, uma linha por registro
+            try:
+                if _duas_colunas(pag):
+                    meio = pag.width / 2
+                    partes.append(pag.crop((0, 0, meio, pag.height)).extract_text() or "")
+                    partes.append(pag.crop((meio, 0, pag.width, pag.height)).extract_text() or "")
+                else:
+                    partes.append(pag.extract_text() or "")
+            except Exception:  # noqa: BLE001
+                partes.append(pag.extract_text() or "")
+            # tabelas vão de novo, uma linha por registro
             try:
                 for tab in pag.extract_tables():
                     linhas = [" | ".join((c or "").replace("\n", " ").strip() for c in lin) for lin in tab if any(lin)]
@@ -235,14 +254,76 @@ def datas_no_texto(t: str, ano_padrao: int) -> list[dt.date]:
     return [d for _, d in sorted(achadas)]
 
 
+def _extenso_para_barra(t: str, ano_padrao: int) -> str:
+    """'01 de outubro a 31 de dezembro de 2026' -> '01/10/2026 a 31/12/2026'."""
+    anos = [int(x) for x in re.findall(r"\b(20\d{2})\b", t)]
+    def troca(m):
+        ano = m.group(3)
+        if not ano:
+            depois = re.search(r"\b(20\d{2})\b", t[m.end():])
+            ano = depois.group(1) if depois else str(anos[-1] if anos else ano_padrao)
+        return f"{m.group(1)}/{MESES[m.group(2)]:02d}/{ano}"
+    return re.sub(r"(\d{1,2})[º°o]?\s+de\s+(janeiro|fevereiro|marco|abril|maio|junho|julho|agosto|setembro|outubro|novembro|dezembro)(?:\s+de\s+(\d{4}))?", troca, t)
+
+
+def segmentos(t: str, ano_padrao: int) -> list[tuple[dt.date, dt.date]]:
+    """Todos os dias citados no trecho, agrupados em períodos contínuos."""
+    t = " " + _extenso_para_barra(t, ano_padrao) + " "
+    dias: set[dt.date] = set()
+    Y = lambda y: ano4(y, ano_padrao)
+    def faixa(d1, m1, y1, d2, m2, y2):
+        try:
+            a, b = dt.date(y1, m1, d1), dt.date(y2, m2, d2)
+        except ValueError:
+            return
+        if b < a:
+            try:
+                b = dt.date(y2 + 1, m2, d2)
+            except ValueError:
+                return
+        if (b - a).days > 400:
+            return
+        x = a
+        while x <= b:
+            dias.add(x); x += dt.timedelta(days=1)
+    def r1(m):
+        y2 = Y(m.group(6)); y1 = Y(m.group(3)) if m.group(3) else y2
+        faixa(int(m.group(1)), int(m.group(2)), y1, int(m.group(4)), int(m.group(5)), y2); return " "
+    t = re.sub(r"(\d{1,2})/(\d{1,2})(?:/(\d{2,4}))?\s*(?:a|ate|-|–)\s*(\d{1,2})/(\d{1,2})(?:/(\d{2,4}))?", r1, t)
+    def r2(m):
+        y = Y(m.group(4)); faixa(int(m.group(1)), int(m.group(3)), y, int(m.group(2)), int(m.group(3)), y); return " "
+    t = re.sub(r"(\d{1,2})\s*(?:a|ate|-|–)\s*(\d{1,2})/(\d{1,2})(?:/(\d{2,4}))?", r2, t)
+    ult = 0
+    for m in re.finditer(r"(\d{1,2})/(\d{1,2})(?:/(\d{2,4}))?", t):
+        mm, yy = int(m.group(2)), Y(m.group(3))
+        cauda = re.search(r"((?:\d{1,2}\s*(?:-\s*\d{1,2})?\s*(?:,|\be\b)\s*)+)$", t[ult:m.start()])
+        if cauda:
+            for p in re.split(r",|\be\b", cauda.group(1)):
+                r = re.match(r"^\s*(\d{1,2})(?:\s*-\s*(\d{1,2}))?\s*$", p)
+                if r:
+                    for d in range(int(r.group(1)), int(r.group(2) or r.group(1)) + 1):
+                        try: dias.add(dt.date(yy, mm, d))
+                        except ValueError: pass
+        try: dias.add(dt.date(yy, mm, int(m.group(1))))
+        except ValueError: pass
+        ult = m.end()
+    segs: list[list[dt.date]] = []
+    for d in sorted(dias):
+        if segs and (d - segs[-1][1]).days == 1:
+            segs[-1][1] = d
+        else:
+            segs.append([d, d])
+    return [(a, b) for a, b in segs]
+
+
 def periodo(t: str, ano_padrao: int):
-    """(início, fim) de um inciso; fim None quando é só "a contar de" uma data."""
-    ds = datas_no_texto(t, ano_padrao)
-    if not ds:
+    """(início, fim) de um trecho; fim None quando é só "a contar de" uma data."""
+    segs = segmentos(t, ano_padrao)
+    if not segs:
         return None, None
-    if len(ds) == 1:
-        return (ds[0], None) if re.search(r"a contar de|a partir de", t) else (ds[0], ds[0])
-    return min(ds), max(ds)
+    if len(segs) == 1 and segs[0][0] == segs[0][1] and re.search(r"a contar d[eo]|a partir d[eo]", t):
+        return segs[0][0], None
+    return segs[0][0], segs[-1][1]
 
 
 def defensores_no_texto(t: str, defensores: list[str]) -> list[str]:
@@ -254,7 +335,7 @@ def defensores_no_texto(t: str, defensores: list[str]) -> list[str]:
     return achados
 
 
-RE_DP_POLO = re.compile(r"(\d{1,2})\s*[ªaº°]?\s*defensoria publica do polo do baixo amazonas")
+RE_DP_POLO = re.compile(r"(\d{1,2})\s*[ªaº°]?\s*defensoria(?:\s+publica)?(?:\s+do)?\s+polo(?:\s+do)?\s+baixo\s+amazonas")
 VERBOS = r"(designar|conceder|cessar|tornar sem efeito|revogar|dispensar|nomear|lotar|remover|alterar|retificar|interromper|suspender|autorizar)"
 
 
@@ -331,16 +412,24 @@ def ler_ato(texto: str, edicao: dict, idx: int, defensores: list[str]) -> list[d
         ini, fim = periodo(n, ano)
         eh_servidor = bool(re.search(r"\b(servidor|servidora|estagiari|assessor|residente|analista|assistente)\b", n)) and "defensor" not in n
         anula = bool(re.search(r"tornar sem efeito|cessar|revogar|dispensar|interromper|suspender", n))
-        if re.search(r"\bdesignar\b", n) and dps and pessoas and ini and not eh_servidor and not anula:
-            p = pessoas[0]
-            fim_iso = fim.isoformat() if fim else ""
-            for dp in dps:
-                it = dict(item, id=f"{item['id']}-{dp}")
-                it["sugestao"] = {"tipo": "designacao", "dp": f"dp{dp}", "defensor": p, "inicio": ini.isoformat(), "fim": fim_iso}
-                it["resumo"] = f"Designa {p} para a {dp}ª DP do Polo do Baixo Amazonas" + (f", de {ini:%d/%m/%Y} a {fim:%d/%m/%Y}" if fim else f", a contar de {ini:%d/%m/%Y}")
-                it["auto"] = len(pessoas) == 1 and (not fim or fim >= ini)
-                itens.append(it)
-            continue
+        if re.search(r"\bdesignar\b", n) and dps and pessoas and not eh_servidor and not anula:
+            # o período é o que vem depois da DP, até o fim do inciso (";")
+            m_dp = RE_DP_POLO.search(n)
+            resto = n[m_dp.end():] if m_dp else n
+            resto = resto.split(";")[0]
+            segs = segmentos(resto, ano)
+            aberto = bool(re.search(r"a contar d[eo]|a partir d[eo]", resto)) and len(segs) == 1 and segs[0][0] == segs[0][1]
+            if segs:
+                p = pessoas[0]
+                for dp in dps:
+                    for k, (si, sf) in enumerate(segs):
+                        it = dict(item, id=f"{item['id']}-{dp}-{k}")
+                        fim_iso = "" if aberto else sf.isoformat()
+                        it["sugestao"] = {"tipo": "designacao", "dp": f"dp{dp}", "defensor": p, "inicio": si.isoformat(), "fim": fim_iso}
+                        it["resumo"] = f"Designa {p} para a {dp}ª DP do Polo do Baixo Amazonas" + (f", a contar de {si:%d/%m/%Y}" if aberto else (f", em {si:%d/%m/%Y}" if si == sf else f", de {si:%d/%m/%Y} a {sf:%d/%m/%Y}"))
+                        it["auto"] = len(pessoas) == 1 and len(dps) == 1
+                        itens.append(it)
+                continue
         if re.search(r"ferias|licenca|folga", n) and pessoas and ini and fim and not eh_servidor and not anula and "conceder" in n:
             tipo = "ferias" if "ferias" in n else "licenca" if "licenca" in n else "folga"
             p = pessoas[0]
