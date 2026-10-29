@@ -1,0 +1,34 @@
+rules_version = '2';
+
+// Painel do Polo do Baixo Amazonas — quem pode ler e quem pode alterar.
+// Ler: quem está em "pessoas" com o próprio e-mail funcional como identificador.
+// Alterar: quem está em "pessoas" com perfil "admin", ou a conta institucional do polo.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function logado() {
+      return request.auth != null && request.auth.token.email != null;
+    }
+    function email() {
+      return request.auth.token.email.lower();
+    }
+    function contaDoPolo() {
+      return logado() && email() == 'polobaixoamazonas@defensoria.am.def.br';
+    }
+    function cadastrado() {
+      return logado() && exists(/databases/$(database)/documents/pessoas/$(email()));
+    }
+    function admin() {
+      return contaDoPolo() ||
+        (cadastrado() && get(/databases/$(database)/documents/pessoas/$(email())).data.perfil == 'admin');
+    }
+
+    match /{colecao}/{id} {
+      allow read: if contaDoPolo() || cadastrado();
+      allow write: if admin() && colecao in [
+        'defensorias', 'pessoas', 'grade', 'eventos', 'config', 'designacoes',
+        'afastamentos', 'equipe', 'plantao', 'diario_lancados'
+      ];
+    }
+  }
+}

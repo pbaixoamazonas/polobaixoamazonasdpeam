@@ -1,0 +1,1307 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<style>
+:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0;font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+img{max-width:100%}[hidden]{display:none!important}
+</style>
+<title>Polo do Baixo Amazonas</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: faixa de cabeçalho dividida Garantido | Caprichoso com a costura verde da DPE-AM; conteúdo em abas, cartões só onde há objeto. */
+:root{
+  --bg:#f5f7f3; --surface:#ffffff; --surface-2:#eef2ec; --ink:#16201a; --muted:#5a685f; --line:#dbe3db;
+  --dpe:#0e6b3b; --dpe-soft:#dcefe3;
+  --garantido:#c8102e; --garantido-soft:#fbe3e6;
+  --caprichoso:#143f9e; --caprichoso-soft:#e2e9fb;
+  --estrela:#e2a800;
+  --ok:#1f7a45; --alerta:#a35d00; --alerta-soft:#fff1d6; --falta:#b3261e; --falta-soft:#fde4e1;
+  --f-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --f-body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0e1411; --surface:#161f1a; --surface-2:#1d2822; --ink:#e8eee9; --muted:#9db0a4; --line:#2a3730;
+  --dpe:#47c487; --dpe-soft:#173325;
+  --garantido:#ff5a6e; --garantido-soft:#3a1a20;
+  --caprichoso:#7aa2ff; --caprichoso-soft:#18233f;
+  --estrela:#f2c230;
+  --ok:#5fd394; --alerta:#f0b25a; --alerta-soft:#3a2a12; --falta:#ff8a80; --falta-soft:#3d1a18;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1411; --surface:#161f1a; --surface-2:#1d2822; --ink:#e8eee9; --muted:#9db0a4; --line:#2a3730;
+  --dpe:#47c487; --dpe-soft:#173325;
+  --garantido:#ff5a6e; --garantido-soft:#3a1a20;
+  --caprichoso:#7aa2ff; --caprichoso-soft:#18233f;
+  --estrela:#f2c230;
+  --ok:#5fd394; --alerta:#f0b25a; --alerta-soft:#3a2a12; --falta:#ff8a80; --falta-soft:#3d1a18;
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:#8a0c22}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;letter-spacing:.01em}
+h2{font-size:30px;font-weight:800;line-height:1.05}
+h3{font-size:20px;font-weight:800}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--estrela);outline-offset:2px}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)}
+.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:700}
+
+/* Cabeçalho: o rio entre os dois bumbás */
+.topo{position:relative;color:#fff;background:linear-gradient(100deg,#9e0b25 0%,#c8102e 46%,#0e6b3b 46%,#0e6b3b 48.5%,#143f9e 48.5%,#0b2c74 100%);overflow:hidden}
+.topo::after{content:"";position:absolute;inset:auto 0 0;height:6px;background:repeating-linear-gradient(90deg,#c8102e 0 22px,#fff 22px 26px,#143f9e 26px 48px,#fff 48px 52px)}
+.topo .wrap{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding-block:18px 24px}
+.marca{display:flex;gap:14px;align-items:center;min-width:0}
+.selo{flex:none;width:52px;height:52px}
+.marca h1{font-size:34px;font-weight:900;line-height:.95;text-transform:uppercase}
+.marca p{margin:3px 0 0;font-size:13px;opacity:.92}
+.acoes-topo{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 10px;font-size:12px;font-weight:700}
+.pill-demo{background:#fff;color:#8a0c22}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:7px 13px;cursor:pointer;font-weight:700;font-size:14px;line-height:1.2}
+.btn:hover{border-color:var(--dpe)}
+.btn-pri{background:var(--dpe);border-color:var(--dpe);color:#fff}
+:root[data-theme="dark"] .btn-pri{color:#06130c}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn-pri{color:#06130c}}
+.btn-topo{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.45);color:#fff}
+.btn-topo:hover{background:rgba(255,255,255,.24);border-color:#fff}
+.btn-sm{padding:4px 9px;font-size:13px}
+.btn-perigo{color:var(--falta)}
+
+/* Abas */
+.abas{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+.abas .wrap{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+.abas a{flex:none;display:block;padding:13px 14px 11px;color:var(--muted);text-decoration:none;font-weight:700;border-bottom:3px solid transparent;white-space:nowrap}
+.abas a:hover{color:var(--ink)}
+.abas a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--garantido)}
+.abas a:nth-child(even)[aria-current="page"]{border-bottom-color:var(--caprichoso)}
+
+main{padding-block:26px 60px}
+.cab-secao{display:flex;gap:14px;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;margin-bottom:18px}
+.cab-secao p{margin:6px 0 0;max-width:62ch;color:var(--muted)}
+.barra{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+
+.aviso-demo{display:flex;gap:10px;align-items:flex-start;background:var(--alerta-soft);border:1px solid color-mix(in srgb,var(--alerta) 35%,transparent);border-radius:10px;padding:10px 14px;margin-bottom:22px;font-size:14px}
+.aviso-demo b{color:var(--alerta)}
+
+/* Hoje: defensorias */
+.grade-dp{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.dp{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 15px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.dp-topo{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.dp-num{font-family:var(--f-display);font-size:26px;font-weight:900;line-height:1}
+.dp-comarca{font-size:13px;color:var(--muted);text-align:right}
+.dp-area{font-size:13px;color:var(--muted);margin-top:-4px}
+.quem{font-weight:700;font-size:16px;line-height:1.3}
+.quem i{font-weight:700}
+.estado{align-self:flex-start}
+.st-ok{background:var(--dpe-soft);color:var(--ok)}
+.st-sub{background:var(--caprichoso-soft);color:var(--caprichoso)}
+.st-acum{background:var(--garantido-soft);color:var(--garantido)}
+.st-falta{background:var(--falta-soft);color:var(--falta)}
+.st-auto{background:var(--alerta-soft);color:var(--alerta)}
+.polo-info{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px 24px;padding:14px 16px;margin-bottom:22px;border-left:4px solid var(--dpe);background:var(--surface);border-radius:0 10px 10px 0}
+.polo-info > div{display:flex;flex-direction:column;gap:2px;min-width:0}
+.grupo{margin:26px 0 10px;font-size:17px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+.grupo:first-of-type{margin-top:0}
+.dp-regras{font-size:12.5px;color:var(--muted);border-top:1px dashed var(--line);padding-top:7px;margin-top:auto}
+.bolo{font-family:var(--f-mono);font-size:13px}
+.dp small{font-size:12.5px;color:var(--muted)}
+
+.dois{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:22px;margin-top:30px}
+@media (max-width:860px){.dois{grid-template-columns:1fr}}
+.bloco h3{margin-bottom:10px}
+.lista{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.lista li{padding:10px 2px;border-bottom:1px solid var(--line);display:flex;gap:10px;justify-content:space-between;align-items:flex-start}
+.lista li > div{min-width:0}
+.vazio{color:var(--muted);font-style:italic;padding:10px 2px}
+
+/* Tabelas */
+.tab-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);background:var(--surface-2);white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.c-sub{font-style:italic;color:var(--caprichoso)}
+td.c-falta{color:var(--falta);font-weight:700}
+td.c-hoje,th.c-hoje{background:color-mix(in srgb,var(--estrela) 14%,transparent)}
+
+/* Calendário */
+.cal-nav{display:flex;gap:8px;align-items:center}
+.cal-titulo{font-family:var(--f-display);font-size:24px;font-weight:800;min-width:9ch;text-align:center;text-transform:capitalize}
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--line);gap:1px}
+.cal .dow{background:var(--surface-2);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);padding:6px 8px}
+.cal .dia{background:var(--surface);min-height:92px;padding:5px 6px;display:flex;flex-direction:column;gap:3px;min-width:0}
+.cal .dia.fora{background:var(--surface-2)}
+.cal .dia.fora .n{opacity:.45}
+.cal .dia.fds{background:color-mix(in srgb,var(--surface-2) 60%,var(--surface))}
+.cal .n{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.cal .dia.hoje .n{background:var(--estrela);color:#1a1300;border-radius:999px;padding:0 6px;align-self:flex-start;font-weight:500}
+.ev{font-size:11.5px;line-height:1.25;border-radius:4px;padding:2px 5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;border:none;text-align:left;width:100%}
+.t-ferias{background:var(--garantido-soft);color:var(--garantido)}
+.t-licenca{background:var(--caprichoso-soft);color:var(--caprichoso)}
+.t-folga{background:var(--dpe-soft);color:var(--ok)}
+.t-viagem{background:var(--alerta-soft);color:var(--alerta)}
+.t-remoto{background:var(--surface-2);color:var(--ink);outline:1px dashed var(--line)}
+.t-outro{background:var(--surface-2);color:var(--muted)}
+@media (max-width:620px){.cal .dia{min-height:58px}.ev{font-size:0;height:7px;padding:0}.cal .dow{font-size:10px;padding:5px 3px}}
+.legenda{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0}
+
+/* Grade do planejamento */
+.grade-plan th,.grade-plan td{font-size:13px;padding:7px 8px}
+.grade-plan thead tr:first-child th{text-align:center}
+.grade-plan .g-par{background:var(--garantido-soft);color:var(--garantido)}
+.grade-plan .g-bar{background:var(--caprichoso-soft);color:var(--caprichoso)}
+.grade-plan .g-pla{background:var(--dpe-soft);color:var(--ok)}
+.grade-plan tbody th{white-space:nowrap;font-family:var(--f-mono);font-weight:500;letter-spacing:0;text-transform:none;color:var(--ink);background:var(--surface)}
+.grade-plan tr.atual td,.grade-plan tr.atual th{background:color-mix(in srgb,var(--estrela) 16%,var(--surface))}
+.grade-plan td{min-width:92px}
+.nota{display:block;font-size:11.5px;color:var(--muted);line-height:1.3}
+.fonte{font-size:12.5px;color:var(--muted)}
+.passos{margin:0;padding-left:20px;display:grid;gap:4px}
+.prev{font-size:14px}
+.prev ul{margin:6px 0 0;padding-left:18px}
+/* Ajuda */
+.ajuda{display:grid;gap:26px;max-width:860px}
+.ajuda h3{font-size:24px;margin-bottom:6px}
+.ajuda h4{font-size:15px;margin:14px 0 4px}
+.ajuda p,.ajuda li{max-width:68ch}
+.ajuda ol,.ajuda ul{margin:6px 0 0;padding-left:22px;display:grid;gap:5px}
+.ajuda details{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:4px 16px 14px}
+.ajuda summary{cursor:pointer;font-family:var(--f-display);font-size:22px;font-weight:800;padding:10px 0 4px}
+.ajuda .tecla{font-family:var(--f-mono);font-size:12.5px;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:0 5px;background:var(--surface-2)}
+.ajuda .fontes{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:8px}
+.ajuda .fontes > div{border-top:3px solid var(--dpe);background:var(--surface);padding:10px 12px;border-radius:0 0 8px 8px}
+.ajuda .fontes > div:nth-child(2){border-top-color:var(--caprichoso)}
+.ajuda .fontes > div:nth-child(3){border-top-color:var(--garantido)}
+.ajuda .fontes > div:nth-child(4){border-top-color:var(--estrela)}
+/* Diário */
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 11px;font-size:13px;font-weight:700;cursor:pointer;color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.busca{flex:1 1 220px;min-width:0;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:7px 11px}
+.edicao{border-top:2px solid var(--ink);padding-top:10px;margin-top:22px}
+.edicao-cab{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:baseline}
+.edicao-cab h3{font-size:22px}
+.ato{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 14px;padding:12px 0;border-bottom:1px solid var(--line)}
+.ato .num{font-weight:700}
+.ato blockquote{margin:6px 0 0;padding-left:10px;border-left:3px solid var(--line);color:var(--muted);font-size:13.5px}
+.tag{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;border-radius:4px;padding:2px 6px;margin-right:4px}
+.cat-designacao{background:var(--caprichoso-soft);color:var(--caprichoso)}
+.cat-substituicao{background:var(--caprichoso-soft);color:var(--caprichoso)}
+.cat-afastamento{background:var(--garantido-soft);color:var(--garantido)}
+.cat-plantao{background:var(--dpe-soft);color:var(--ok)}
+.cat-lotacao{background:var(--alerta-soft);color:var(--alerta)}
+.cat-coordenacao{background:var(--surface-2);color:var(--ink)}
+.cat-servidores{background:var(--surface-2);color:var(--muted)}
+.cat-geral{background:var(--surface-2);color:var(--muted)}
+.lancado{font-size:12.5px;color:var(--ok);font-weight:700}
+
+/* Formulários */
+dialog{border:none;border-radius:14px;padding:0;width:min(560px,calc(100vw - 32px));background:var(--surface);color:var(--ink);box-shadow:0 24px 60px rgba(0,0,0,.35)}
+dialog::backdrop{background:rgba(10,20,14,.55)}
+.dlg-cab{padding:16px 18px 12px;border-bottom:1px solid var(--line);background:linear-gradient(90deg,var(--garantido-soft),var(--caprichoso-soft))}
+.dlg-corpo{padding:16px 18px;display:grid;gap:12px;max-height:68vh;overflow:auto}
+.dlg-pe{padding:12px 18px 16px;display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;border-top:1px solid var(--line)}
+.campo{display:grid;gap:4px}
+.campo label{font-size:13px;font-weight:700}
+.campo input,.campo select,.campo textarea{border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:7px 10px;width:100%;min-width:0}
+.linha2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:480px){.linha2{grid-template-columns:1fr}}
+.subs{border:1px dashed var(--line);border-radius:10px;padding:10px;display:grid;gap:10px}
+.sub-item{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.sub-item:last-of-type{border-bottom:none;padding-bottom:0}
+.erro{color:var(--falta);font-size:13.5px;font-weight:700;min-height:1em}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-weight:700;z-index:50;max-width:calc(100vw - 32px)}
+
+/* Login */
+.login{display:grid;place-items:center;padding-block:60px}
+.login form{width:min(380px,100%);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;display:grid;gap:12px}
+
+@media (prefers-reduced-motion:no-preference){.dp,.ato{transition:border-color .15s}}
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <div class="wrap">
+    <div class="marca">
+      <svg class="selo" viewBox="0 0 52 52" aria-hidden="true">
+        <circle cx="26" cy="26" r="25" fill="#fff"/>
+        <path d="M26 41 C14 33 9 26 9 20 a8 8 0 0 1 17-3 v24z" fill="#c8102e"/>
+        <path d="M26 41 V17 a8 8 0 0 1 17 3 c0 6-5 13-17 21z" fill="#143f9e"/>
+        <path d="M26 19 l2 5 5 .3-4 3.2 1.4 5-4.4-2.8-4.4 2.8 1.4-5-4-3.2 5-.3z" fill="#e2a800"/>
+        <path d="M6 44 q10 -5 20 0 t20 0" fill="none" stroke="#0e6b3b" stroke-width="3"/>
+      </svg>
+      <div style="min-width:0">
+        <h1>Polo do Baixo Amazonas</h1>
+        <p>Defensoria Pública do Estado do Amazonas · painel da equipe</p>
+      </div>
+    </div>
+    <div class="acoes-topo">
+      <span class="pill pill-demo" id="pill-modo" hidden>Modo demonstração</span>
+      <span id="quem-logado" style="font-size:13px"></span>
+      <a class="btn btn-topo btn-sm" href="#ajuda">Como funciona</a>
+      <button class="btn btn-topo btn-sm" id="btn-login" type="button">Entrar</button>
+    </div>
+  </div>
+</header>
+
+<nav class="abas" aria-label="Seções">
+  <div class="wrap" id="abas">
+    <a href="#hoje">Designações hoje</a>
+    <a href="#afastamentos">Afastamentos dos membros</a>
+    <a href="#semana">Designações semanais</a>
+    <a href="#equipe">Férias da equipe</a>
+    <a href="#plantao">Plantão</a>
+    <a href="#diario">Diário Oficial</a>
+    <a href="#pessoas">Pessoas do polo</a>
+  </div>
+</nav>
+
+<main class="wrap" id="conteudo"></main>
+
+<dialog id="dlg"><form method="dialog" id="dlg-form"></form></dialog>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+/* =========================================================================
+   CONFIGURAÇÃO — Parte 3: colar aqui o objeto de configuração do Firebase.
+   Enquanto for null, o site roda em modo demonstração (dados de exemplo,
+   gravados só neste navegador).
+   ========================================================================= */
+const FIREBASE_CONFIG = null;
+const DEMO = !FIREBASE_CONFIG;
+/* Contas que são admin mesmo antes de existir o cadastro de pessoas (servem para a carga inicial). */
+const ADMINS_INICIAIS = ["polobaixoamazonas@defensoria.am.def.br"];
+
+const TIPOS_AF = {ferias:"Férias", licenca:"Licença", folga:"Folga / compensação", viagem:"Viagem a serviço", remoto:"Trabalho em trânsito / remoto", outro:"Outro"};
+const CATS = {designacao:"Designações", substituicao:"Substituições", afastamento:"Férias e afastamentos", plantao:"Plantão", lotacao:"Lotação e remoção", coordenacao:"Coordenação", servidores:"Servidores", geral:"Interesse geral"};
+const MESES = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
+const DOW = ["Dom","Seg","Ter","Qua","Qui","Sex","Sáb"];
+const CARGOS = {defensor:"Defensor(a) público(a)", analista:"Analista jurídico(a)", assistente:"Assistente técnico(a)", assistente_def:"Assistente defensorial", servidor:"Servidor(a)", assessor:"Assessor(a)", estagiario:"Estagiário(a)", voluntario:"Cedido(a) / voluntário(a)", terceirizado:"Terceirizado(a)", colaborador:"Colaborador(a)", institucional:"Conta institucional"};
+const PERFIS = {leitor:"Leitura", admin:"Admin (edita)"};
+
+/* Resolução nº 13/2023-CSDPE/AM, consolidada VII, Anexo III (alterado pela Res. 032/2024) */
+const UNIDADES = {sede:"Sede · Parintins", nhamunda:"Nhamundá · atendimento remoto e mutirões", udi:"UDI Barreirinha"};
+const POLO = {coordenacao:"", portariaCoord:"", whatsapp:"(92) 98559-1599", ligacoes:"(92) 98455-6153", email:"polobaixoamazonas@defensoria.am.def.br", endereco:"Estrada Macurany, s/n, Conjunto João Novo, Parintins/AM (próximo ao MP e ao Fórum)"};
+const RES13 = [
+  {id:"dp1",ordem:1,nome:"1ª DP",unidade:"sede",comarca:"Parintins",area:"Família e Sucessões",detalhe:"Processos pares da 2ª Vara; revezamento semanal com a 2ª DP; coletivas: pessoa com deficiência e população em situação de rua.",subs:["dp3","dp4"],colidente:"dp2"},
+  {id:"dp2",ordem:2,nome:"2ª DP",unidade:"sede",comarca:"Parintins",area:"Família e Sucessões",detalhe:"Processos ímpares da 2ª Vara; revezamento semanal com a 1ª DP; coletivas: diversidade sexual, saúde, igualdade étnico-racial e povos tradicionais.",subs:["dp6","dp5"],colidente:"dp1"},
+  {id:"dp3",ordem:3,nome:"3ª DP",unidade:"sede",comarca:"Parintins",area:"Cível, Registros Públicos, Infância e Juventude Cível e Previdenciário",detalhe:"Processos pares da 2ª e da 3ª Vara; revezamento semanal com a 4ª DP; coletivas: mulher, moradia, saneamento e questões fundiárias.",subs:["dp5","dp2"],colidente:"dp4"},
+  {id:"dp4",ordem:4,nome:"4ª DP",unidade:"sede",comarca:"Parintins",area:"Cível, Registros Públicos, Infância e Juventude Cível e Previdenciário",detalhe:"Processos ímpares da 2ª e da 3ª Vara; revezamento semanal com a 3ª DP; coletivas: pessoa idosa e consumidor.",subs:["dp1","dp6"],colidente:"dp3"},
+  {id:"dp5",ordem:5,nome:"5ª DP",unidade:"sede",comarca:"Parintins",area:"Criminal e Medidas Socioeducativas",detalhe:"1ª e 2ª Vara; presídios e delegacias; júri e audiências em revezamento com a 6ª DP; coletivas: política criminal, cárcere e educação.",subs:["dp2","dp1"],colidente:"dp6"},
+  {id:"dp6",ordem:6,nome:"6ª DP",unidade:"sede",comarca:"Parintins",area:"Criminal e Medidas Socioeducativas",detalhe:"1ª e 2ª Vara; presídios e delegacias; júri e audiências em revezamento com a 5ª DP; coletivas: infância e juventude e meio ambiente.",subs:["dp4","dp3"],colidente:"dp5"},
+  {id:"dp7",ordem:7,nome:"7ª DP",unidade:"nhamunda",comarca:"Nhamundá",area:"Família e Sucessões",detalhe:"Vara Única de Nhamundá; júri em revezamento com a 8ª a 12ª DP.",subs:["dp11","dp9"],colidente:"dp8"},
+  {id:"dp8",ordem:8,nome:"8ª DP",unidade:"nhamunda",comarca:"Nhamundá",area:"Criminal e Medidas Socioeducativas",detalhe:"Vara Única de Nhamundá; delegacia de Nhamundá; júri em revezamento com a 7ª e a 9ª a 12ª DP.",subs:["dp12","dp10"],colidente:"dp7"},
+  {id:"dp9",ordem:9,nome:"9ª DP",unidade:"nhamunda",comarca:"Nhamundá",area:"Cível, Registros Públicos, Infância e Juventude Cível e Previdenciário",detalhe:"Vara Única de Nhamundá; júri em revezamento com a 7ª, 8ª e 10ª a 12ª DP.",subs:["dp7","dp12"],colidente:"dp10"},
+  {id:"dp10",ordem:10,nome:"10ª DP",unidade:"udi",comarca:"Barreirinha",area:"Cível, Registros Públicos, Infância e Juventude Cível e Previdenciário",detalhe:"Vara Única de Barreirinha; júri em revezamento com a 6ª a 9ª e a 11ª DP.",subs:["dp8","dp11"],colidente:"dp9"},
+  {id:"dp11",ordem:11,nome:"11ª DP",unidade:"udi",comarca:"Barreirinha",area:"Família e Sucessões",detalhe:"Vara Única de Barreirinha; júri em revezamento com a 6ª a 8ª e a 10ª DP.",subs:["dp10","dp7"],colidente:"dp12"},
+  {id:"dp12",ordem:12,nome:"12ª DP",unidade:"udi",comarca:"Barreirinha",area:"Criminal e Medidas Socioeducativas",detalhe:"Vara Única de Barreirinha; delegacia de Barreirinha; júri em revezamento com a 7ª a 11ª DP.",subs:["dp9","dp8"],colidente:"dp11"}
+];
+
+/* ---------- datas ---------- */
+const pad = n => String(n).padStart(2,"0");
+const iso = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+const deIso = s => { const [a,m,d] = s.split("-").map(Number); return new Date(a,m-1,d); };
+const br = s => s ? s.split("-").reverse().join("/") : "";
+const brCurto = s => s ? `${s.slice(8,10)}/${s.slice(5,7)}` : "";
+const somaDias = (d,n) => { const x = new Date(d); x.setDate(x.getDate()+n); return x; };
+const HOJE = iso(new Date());
+const cobre = (reg, dia) => reg.inicio <= dia && (!reg.fim || reg.fim >= dia);
+const sobrepoe = (a1,a2,b1,b2) => a1 <= (b2||"9999") && b1 <= (a2||"9999");
+const segunda = d => { const x = new Date(d); const w = (x.getDay()+6)%7; x.setDate(x.getDate()-w); return x; };
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const uid = () => Math.random().toString(36).slice(2,10);
+
+/* ---------- estado ---------- */
+const S = {defensorias:[], pessoas:[], grade:[], eventos:[], config:[], designacoes:[], afastamentos:[], equipe:[], plantao:[], diario:[], user:null, admin:false};
+const ui = {mesAf:null, mesEq:null, semana:null, catDiario:"todas", buscaDiario:""};
+
+/* ---------- dados de exemplo (só no modo demonstração) ---------- */
+function exemplo(){ return {defensorias:[], pessoas:[], afastamentos:[], designacoes:[], equipe:[], plantao:[], diario:[]}; }
+
+/* ---------- camada de dados ---------- */
+const COLECOES = ["defensorias","pessoas","grade","eventos","config","designacoes","afastamentos","equipe","plantao"];
+let fb = null; // {auth, db}
+const Dados = {
+  async iniciar(){
+    if (DEMO){
+      let salvo = null;
+      try { salvo = JSON.parse(localStorage.getItem("pba-demo") || "null"); } catch(e){}
+      const base = exemplo();
+      const fonte = salvo && salvo.versao === 12 ? salvo : null;
+      for (const c of COLECOES) S[c] = (fonte ? fonte[c] : base[c]) || [];
+      S.diario = base.diario;
+      if (fonte && fonte.lancados) for (const ed of S.diario) for (const a of ed.atos){ if (fonte.lancados.includes(a.id)) a.lancado = true; if ((fonte.rejeitados||[]).includes(a.id)) a.rejeitado = true; }
+      return;
+    }
+    await carregarFirebase();
+    S.diario = await fetch("diario.json",{cache:"no-store"}).then(r=>r.ok?r.json():[]).catch(()=>[]);
+  },
+  persistirDemo(){
+    try {
+      const lancados = S.diario.flatMap(e=>e.atos.filter(a=>a.lancado).map(a=>a.id));
+      const rejeitados = S.diario.flatMap(e=>e.atos.filter(a=>a.rejeitado).map(a=>a.id));
+      localStorage.setItem("pba-demo", JSON.stringify({versao:12, ...Object.fromEntries(COLECOES.map(c=>[c,S[c]])), lancados, rejeitados}));
+    } catch(e){}
+  },
+  async salvar(col, obj){
+    const orig = obj.id ? (S[col]||[]).find(x => x.id === obj.id) : null;
+    if (orig && orig.origem === "planejamento"){
+      await Dados.remover(col, orig.id);
+      obj = {...obj, id: uid(), origem: "manual", substitui: chavePlan(col, orig)};
+    }
+    if (!obj.id) obj.id = uid();
+    if (DEMO){
+      const i = S[col].findIndex(x=>x.id===obj.id);
+      if (i>=0) S[col][i] = obj; else S[col].push(obj);
+      Dados.persistirDemo(); render(); return obj;
+    }
+    const {id, ...resto} = obj;
+    await fb.db.collection(col).doc(id).set({...resto, atualizado_por:S.user?.email||"", atualizado_em:new Date().toISOString()});
+    return obj;
+  },
+  async remover(col, id){
+    if (DEMO){ S[col] = S[col].filter(x=>x.id!==id); Dados.persistirDemo(); render(); return; }
+    await fb.db.collection(col).doc(id).delete();
+  },
+  async substituirOrigem(col, origem, novos){
+    novos = novos.map(o => ({...o, origem, id:o.id || uid()}));
+    if (DEMO){ S[col] = S[col].filter(x => x.origem !== origem).concat(novos); Dados.persistirDemo(); return; }
+    const velhos = await fb.db.collection(col).where("origem","==",origem).get();
+    let lote = fb.db.batch(), n = 0;
+    const descarrega = async () => { await lote.commit(); lote = fb.db.batch(); n = 0; };
+    for (const d of velhos.docs){ lote.delete(d.ref); if (++n >= 400) await descarrega(); }
+    for (const o of novos){ const {id, ...resto} = o; lote.set(fb.db.collection(col).doc(id), {...resto, atualizado_por:S.user?.email||"", atualizado_em:new Date().toISOString()}); if (++n >= 400) await descarrega(); }
+    if (n) await descarrega();
+  },
+  async importarTudo(dados){
+    const cols = COLECOES.filter(c => Array.isArray(dados[c]));
+    if (DEMO){ for (const c of cols) S[c] = dados[c]; Dados.persistirDemo(); return; }
+    let lote = fb.db.batch(), n = 0;
+    for (const c of cols) for (const o of dados[c]){
+      const {id, ...resto} = o;
+      lote.set(fb.db.collection(c).doc(id || uid()), {...resto, atualizado_por:S.user?.email||"", atualizado_em:new Date().toISOString()});
+      if (++n >= 400){ await lote.commit(); lote = fb.db.batch(); n = 0; }
+    }
+    if (n) await lote.commit();
+  },
+  async marcarLancado(atoId, status="lancado"){
+    for (const ed of S.diario) for (const a of ed.atos) if (a.id===atoId){ a.lancado = status==="lancado"; a.rejeitado = status==="rejeitado"; }
+    if (DEMO){ Dados.persistirDemo(); return; }
+    if (!status) return fb.db.collection("diario_lancados").doc(atoId).delete();
+    await fb.db.collection("diario_lancados").doc(atoId).set({status, por:S.user?.email||"", em:new Date().toISOString()});
+  }
+};
+
+function carregarScript(src){ return new Promise((ok,erro)=>{ const s=document.createElement("script"); s.src=src; s.onload=ok; s.onerror=erro; document.head.appendChild(s); }); }
+async function carregarFirebase(){
+  const v = "10.12.2";
+  for (const m of ["app","auth","firestore"]) await carregarScript(`https://cdn.jsdelivr.net/npm/firebase@${v}/firebase-${m}-compat.js`);
+  firebase.initializeApp(FIREBASE_CONFIG);
+  fb = {auth:firebase.auth(), db:firebase.firestore()};
+  await new Promise(pronto => {
+    let primeira = true;
+    fb.auth.onAuthStateChanged(async u => {
+      S.user = null; S.admin = false; S.semCadastro = false;
+      if (u){
+        const email = (u.email||"").toLowerCase();
+        S.user = {email, uid:u.uid, nome:email};
+        let p = null;
+        try { const d = await fb.db.collection("pessoas").doc(email).get(); if (d.exists) p = d.data(); } catch(e){}
+        const inicial = ADMINS_INICIAIS.includes(email);
+        if (!p && !inicial){ S.semCadastro = true; render(); if (primeira){ primeira = false; pronto(); } return; }
+        S.user.nome = p?.nome || email;
+        S.admin = inicial || p?.perfil === "admin";
+        for (const c of COLECOES) fb.db.collection(c).onSnapshot(q => {
+          S[c] = q.docs.map(d=>({id:d.id, ...d.data()}));
+          if (c === "pessoas"){ const eu = S.pessoas.find(x => x.id === email); S.admin = inicial || eu?.perfil === "admin"; if (eu) S.user.nome = eu.nome; }
+          render();
+        }, e => console.warn(c, e));
+        fb.db.collection("diario_lancados").onSnapshot(q => { const st = Object.fromEntries(q.docs.map(d=>[d.id, d.data().status||"lancado"])); for (const ed of S.diario) for (const a of ed.atos){ a.lancado = st[a.id]==="lancado"; a.rejeitado = st[a.id]==="rejeitado"; } render(); });
+      }
+      render();
+      if (primeira){ primeira = false; pronto(); }
+    });
+  });
+}
+
+/* ---------- regras: quem responde por cada DP ---------- */
+const dpPorId = id => S.defensorias.find(d=>d.id===id);
+const nomeDp = id => { const d = dpPorId(id); return d ? `${d.nome} · ${d.comarca}` : id; };
+function autoDoDiario(){
+  const out = {desig:[], af:[]};
+  for (const ed of S.diario) for (const a of ed.atos){
+    if (!a.auto || a.lancado || a.rejeitado || !a.sugestao) continue;
+    const s = a.sugestao;
+    if (s.tipo === "designacao" && s.dp && s.defensor && s.inicio) out.desig.push({id:"do-"+a.id, dp:s.dp, defensor:s.defensor, inicio:s.inicio, fim:s.fim||"", motivo:a.resumo.slice(0,120), portaria:a.numero, auto:true, edicao:ed.edicao});
+    if (s.tipo === "afastamento" && s.defensor && s.inicio && s.fim) out.af.push({id:"do-"+a.id, defensor:s.defensor, tipo:s.afastamento||"ferias", inicio:s.inicio, fim:s.fim, obs:a.resumo, portaria:a.numero, auto:true, edicao:ed.edicao});
+  }
+  return out;
+}
+const mesmoPeriodo = (x,d) => x.defensor===d.defensor && x.inicio===d.inicio && (x.fim||"")===(d.fim||"");
+const desigs = () => { const au = autoDoDiario().desig.filter(d => !S.designacoes.some(x => x.dp===d.dp && mesmoPeriodo(x,d))); return S.designacoes.concat(au); };
+const afs = () => { const au = autoDoDiario().af.filter(d => !S.afastamentos.some(x => mesmoPeriodo(x,d))); return S.afastamentos.concat(au); };
+function afastamentoDe(nome, dia){ return nome ? afs().find(a => a.defensor===nome && a.tipo!=="remoto" && cobre(a,dia)) : null; }
+function disponivelNa(dpId, dia){
+  const d = dpPorId(dpId); if (!d) return null;
+  const desig = desigs().filter(g => g.dp===dpId && cobre(g,dia)).sort((a,b)=>b.inicio.localeCompare(a.inicio))[0];
+  if (desig && !afastamentoDe(desig.defensor,dia)) return desig.defensor;
+  if (d.titular && !afastamentoDe(d.titular,dia)) return d.titular;
+  return null;
+}
+function quemResponde(dp, dia){
+  const lista = desigs().filter(g => g.dp===dp.id && cobre(g,dia)).sort((a,b)=>b.inicio.localeCompare(a.inicio));
+  const af = afastamentoDe(dp.titular, dia);
+  const desig = lista.find(g => !afastamentoDe(g.defensor, dia) && !(g.defensor===dp.titular && af));
+  if (desig){
+    if (desig.defensor===dp.titular) return {nome:dp.titular, tipo:"ok"};
+    return {nome:desig.defensor, tipo: dp.titular ? "sub" : "acum", desig, af};
+  }
+  const desigAfastado = lista.find(g => g.defensor!==dp.titular);
+  if (dp.titular && !af) return {nome:dp.titular, tipo:"ok"};
+  let motivo = dp.titular ? `${dp.titular} em ${TIPOS_AF[af.tipo].toLowerCase()}` : "Defensoria sem titular";
+  if (desigAfastado) motivo += `; ${desigAfastado.defensor}, designado(a), também está afastado(a)`;
+  for (const [i,sub] of (dp.subs||[]).entries()){
+    const n = disponivelNa(sub, dia);
+    if (n) return {nome:n, tipo:"auto", via:sub, ordemSub:i+1, motivo, af};
+  }
+  return {nome:"", tipo:"falta", af, motivo:`${motivo}, sem designação e sem substituto automático disponível`};
+}
+const defensoriasOrdenadas = () => [...S.defensorias].sort((a,b)=>(a.ordem||0)-(b.ordem||0));
+
+/* ---------- planejamento trimestral (colado do Word) ---------- */
+const PLAN_URL_PADRAO = "";
+const semAcento = s => String(s ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+const norm = s => semAcento(s).toLowerCase().replace(/[ \t\u00a0]+/g, " ").trim();
+const config = () => S.config.find(c => c.id === "polo") || {id:"polo", planejamentoUrl:PLAN_URL_PADRAO};
+
+/* HTML colado → lista de tabelas, cada uma uma grade de textos (rowspan/colspan expandidos) */
+function textoCelula(td){
+  const c = td.cloneNode(true);
+  c.querySelectorAll("br").forEach(b => b.replaceWith("\n"));
+  const blocos = c.querySelectorAll("p,li");
+  const linhas = blocos.length ? [...blocos].map(p => p.textContent) : [c.textContent];
+  return linhas.flatMap(l => l.split("\n")).map(l => l.replace(/[ \t\u00a0]+/g, " ").trim()).filter(Boolean).join("\n");
+}
+function tabelasDeHTML(html){
+  const doc = new DOMParser().parseFromString(html, "text/html");
+  const tabelas = [];
+  for (const t of doc.querySelectorAll("table")){
+    if (t.parentElement?.closest("table")) continue;
+    const grade = [];
+    [...t.rows].forEach((tr, r) => {
+      grade[r] ||= []; let c = 0;
+      for (const td of tr.cells){
+        while (grade[r][c] !== undefined) c++;
+        const txt = textoCelula(td), rs = Math.max(1, +td.rowSpan || 1), cs = Math.max(1, +td.colSpan || 1);
+        for (let i = 0; i < rs; i++){ grade[r+i] ||= []; for (let j = 0; j < cs; j++) grade[r+i][c+j] = txt; }
+        c += cs;
+      }
+    });
+    tabelas.push(grade.map(l => Array.from(l, x => x ?? "")));
+  }
+  return {tabelas, texto: doc.body?.textContent || ""};
+}
+
+/* "5, 6, 13-16, 20/10/2026", "26 e 27/10", "14 a 23/09", "24/08/2026 - 02/09/2026" → [{inicio, fim}] */
+const MESES_N = {janeiro:1,fevereiro:2,marco:3,abril:4,maio:5,junho:6,julho:7,agosto:8,setembro:9,outubro:10,novembro:11,dezembro:12};
+function periodos(txt, ano){
+  let t = " " + norm(txt).replace(/\n/g, " ") + " ";
+  const Y = y => !y ? ano : (y.length === 2 ? 2000 + +y : +y);
+  const dias = new Set();
+  const valida = (d,m) => m >= 1 && m <= 12 && d >= 1 && d <= 31;
+  const faixa = (d1,m1,y1,d2,m2,y2) => {
+    if (!valida(d1,m1) || !valida(d2,m2)) return;
+    let a = new Date(y1,m1-1,d1), b = new Date(y2,m2-1,d2);
+    if (b < a) b = new Date(y2+1,m2-1,d2);
+    if ((b - a) / 864e5 > 400) return;
+    for (let x = new Date(a); x <= b; x.setDate(x.getDate()+1)) dias.add(iso(x));
+  };
+  t = t.replace(/(\d{1,2})\/(\d{1,2})(?:\/(\d{2,4}))?\s*(?:a|ate|-|–)\s*(\d{1,2})\/(\d{1,2})(?:\/(\d{2,4}))?/g, (m,d1,m1,y1,d2,m2,y2) => { const y = Y(y2); faixa(+d1,+m1,y1?Y(y1):y,+d2,+m2,y); return " "; });
+  t = t.replace(/(\d{1,2})\s*(?:a|ate|-|–)\s*(\d{1,2})\/(\d{1,2})(?:\/(\d{2,4}))?/g, (m,d1,d2,mm,y) => { faixa(+d1,+mm,Y(y),+d2,+mm,Y(y)); return " "; });
+  t = t.replace(/\b(janeiro|fevereiro|marco|abril|maio|junho|julho|agosto|setembro|outubro|novembro|dezembro) de (\d{4})\b/g, (m,mes,y) => { const n = MESES_N[mes]; faixa(1,n,+y,new Date(+y,n,0).getDate(),n,+y); return " "; });
+  const re = /(\d{1,2})\/(\d{1,2})(?:\/(\d{2,4}))?/g; let ult = 0, m;
+  while ((m = re.exec(t))){
+    const mm = +m[2], yy = Y(m[3]);
+    const cauda = t.slice(ult, m.index).match(/((?:\d{1,2}\s*(?:-\s*\d{1,2})?\s*(?:,|\be\b)\s*)+)$/);
+    if (cauda) for (const p of cauda[1].split(/,|\be\b/)){
+      const r = p.trim().match(/^(\d{1,2})(?:\s*-\s*(\d{1,2}))?$/);
+      if (r) for (let d = +r[1]; d <= (r[2] ? +r[2] : +r[1]); d++) if (valida(d,mm)) dias.add(iso(new Date(yy,mm-1,d)));
+    }
+    if (valida(+m[1],mm)) dias.add(iso(new Date(yy,mm-1,+m[1])));
+    ult = re.lastIndex;
+  }
+  const segs = [];
+  for (const d of [...dias].sort()){ const u = segs[segs.length-1]; if (u && iso(somaDias(deIso(u.fim),1)) === d) u.fim = d; else segs.push({inicio:d, fim:d}); }
+  return segs;
+}
+const diasDe = segs => segs.flatMap(s => { const out = []; for (let x = deIso(s.inicio); iso(x) <= s.fim; x = somaDias(x,1)) out.push(iso(x)); return out; });
+const segsDeDias = lista => { const segs = []; for (const d of [...new Set(lista)].sort()){ const u = segs[segs.length-1]; if (u && iso(somaDias(deIso(u.fim),1)) === d) u.fim = d; else segs.push({inicio:d, fim:d}); } return segs; };
+
+/* "RACHEL MARINHO", "Cristiano" → nome completo do cadastro, quando houver */
+const naoCadastrados = new Set();
+function nomeCompleto(raw){
+  const r = norm(raw).replace(/[^a-z ]/g, " ").replace(/\s+/g, " ").trim();
+  if (!r) return String(raw).trim();
+  const semH = s => s.replace(/h/g, "");
+  const cands = S.pessoas.map(p => ({p, n: norm(p.nome).replace(/[^a-z ]/g, " ").replace(/\s+/g," ")}));
+  const toks = r.split(" ").filter(t => !["de","da","do","dos","das","e"].includes(t));
+  const c = cands.find(x => x.n === r) || cands.find(x => { const pt = x.n.split(" "); return semH(pt[0]) === semH(toks[0]) && toks.slice(1).every(t => pt.includes(t)); });
+  if (c) return c.p.nome;
+  const bonito = String(raw).trim().toLowerCase().replace(/(^|\s)(\S)/g, (m,a,b) => a + b.toUpperCase()).replace(/ (De|Da|Do|Dos|Das|E) /g, s => s.toLowerCase());
+  naoCadastrados.add(bonito);
+  return bonito;
+}
+
+const TITULOS_PLAN = [
+  ["atribuicoes", /atribuicoes das defensorias/],
+  ["designacoes", /designacoes para/],
+  ["grade", /atendimentos,? audiencias e plant/],
+  ["ferias_def", /ferias, folgas e trabalho remoto/],
+  ["ferias_eq", /ferias e folgas de servidores/],
+  ["eventos", /eventos e proximas viagens/],
+  ["plantoes", /^plantoes$/]
+];
+const tipoPorTexto = (t, nDias) => { const n = norm(t);
+  if (/transito|remoto|teletrabalho/.test(n)) return "remoto";
+  if (/licen/.test(n)) return "licenca";
+  if (/ferias/.test(n)) return "ferias";
+  if (/folga|compensa/.test(n)) return "folga";
+  return nDias >= 5 ? "ferias" : "folga"; };
+
+function parseSubs(txt, segsAf, ano){
+  const linhas = String(txt).split("\n").map(l => l.trim()).filter(l => l && !/nao cabe|sem substitut/.test(norm(l)));
+  const datadas = [], soltas = [];
+  for (const l of linhas){
+    const dps = [...l.matchAll(/(\d{1,2})\s*[ªaº°]\s*dp/gi)].map(m => "dp" + (+m[1]));
+    if (!dps.length) continue;
+    const partes = l.split(":");
+    let nome = partes.length > 1 ? partes.slice(1).join(":") : l.replace(/.*\d{1,2}\s*[ªaº°]\s*dp/i, "");
+    nome = nome.replace(/\d{1,2}\/\d{1,2}(\/\d{2,4})?/g, "").replace(/[-–]/g, " ").trim();
+    if (!nome) continue;
+    const segs = periodos(partes[0].replace(/\d{1,2}\s*[ªaº°]\s*dp/gi, " "), ano);
+    (segs.length ? datadas : soltas).push({dps, nome: nomeCompleto(nome), segs});
+  }
+  const out = [];
+  for (const d of datadas) for (const dp of d.dps) for (const s of d.segs) out.push({dp, defensor:d.nome, ...s});
+  for (const d of soltas) for (const dp of d.dps){
+    const cobertos = new Set(diasDe(out.filter(o => o.dp === dp)));
+    for (const s of segsDeDias(diasDe(segsAf).filter(x => !cobertos.has(x)))) out.push({dp, defensor:d.nome, ...s});
+  }
+  return out;
+}
+
+function interpretarPlanejamento(tabelas, ano){
+  naoCadastrados.clear();
+  const R = {grade:[], afastamentos:[], designacoes:[], equipe:[], eventos:[], plantao:[], avisos:[], ignorados:{atribuicoes:0, designacoes:0}};
+  let secao = null, grupoCols = [], labelCols = [];
+  const n = {af:0, dg:0, eq:0, ev:0, pl:0, gr:0};
+  for (const tab of tabelas){
+    for (const row of tab){
+      const cel = row.map(c => String(c ?? "").trim());
+      const naoVazias = [...new Set(cel.filter(Boolean))];
+      if (!naoVazias.length) continue;
+      if (naoVazias.length === 1){
+        const t = norm(naoVazias[0]);
+        const achou = TITULOS_PLAN.find(([,re]) => re.test(t));
+        if (achou){ secao = achou[0]; continue; }
+        if (secao === "ferias_def" && MESES_N[t]) continue;
+      }
+      const c0 = norm(cel[0]).replace(/\n/g, " ");
+      if (secao === "atribuicoes"){ R.ignorados.atribuicoes++; continue; }
+      if (secao === "designacoes"){ R.ignorados.designacoes++; continue; }
+      if (secao === "grade"){
+        if (c0 === "semana"){
+          if (cel.some(c => /atendimento|audiencia/.test(norm(c)))) labelCols = cel.map(c => c.replace(/\n/g, " "));
+          else grupoCols = cel.map(c => c.replace(/\n/g, " "));
+          continue;
+        }
+        const mm = c0.match(/^(\d{1,2})\/(\d{1,2})\s*a\s*(\d{1,2})\/(\d{1,2})/);
+        if (!mm) continue;
+        const ini = new Date(ano, +mm[2]-1, +mm[1]); let fim = new Date(ano, +mm[4]-1, +mm[3]); if (fim < ini) fim = new Date(ano+1, +mm[4]-1, +mm[3]);
+        const cols = [];
+        for (let i = 1; i < cel.length; i++){
+          const lab = (labelCols[i] || "").trim(), grp = (grupoCols[i] || "").trim();
+          if (!lab && !cel[i]) continue;
+          const rotulo = lab ? (grp && norm(grp) !== norm(lab) ? `${grp} · ${lab}` : lab) : `Coluna ${i}`;
+          cols.push({label: rotulo, texto: cel[i]});
+        }
+        R.grade.push({id:`pl-gr-${++n.gr}`, inicio:iso(ini), fim:iso(fim), cols});
+        continue;
+      }
+      if (secao === "ferias_def"){
+        if (c0 === "defensora" || c0 === "defensor" || c0 === "defensor(a)") continue;
+        const [nome, per, subs, obs] = cel;
+        if (!nome || !per) continue;
+        const segs = periodos(per, ano);
+        if (!segs.length){ R.avisos.push(`Não entendi as datas de ${nome}: “${per.replace(/\n/g," ")}”`); continue; }
+        const defensor = nomeCompleto(nome), nd = diasDe(segs).length, tipo = tipoPorTexto(per, nd);
+        const deduzido = !/transito|remoto|licen|ferias|folga|compensa/.test(norm(per));
+        const ids = segs.map(s => {
+          const id = `pl-af-${++n.af}`;
+          R.afastamentos.push({id, defensor, tipo, ...s, obs: [per.replace(/\n/g," "), deduzido ? "(tipo deduzido pela duração)" : ""].filter(Boolean).join(" "), portaria:(obs||"").replace(/\n/g," · ")});
+          return id;
+        });
+        if (tipo !== "remoto") for (const d of parseSubs(subs||"", segs, ano)){
+          const i = segs.findIndex(s => s.inicio <= d.inicio && s.fim >= d.inicio);
+          R.designacoes.push({id:`pl-dg-${++n.dg}`, dp:d.dp, defensor:d.defensor, inicio:d.inicio, fim:d.fim, motivo:`${TIPOS_AF[tipo]} de ${defensor}`, portaria:(obs||"").replace(/\n/g," · "), afastamento: ids[Math.max(0,i)]});
+        }
+        continue;
+      }
+      if (secao === "ferias_eq"){
+        if (c0 === "servidor" || c0 === "servidor(a)") continue;
+        const [nome, per] = naoVazias.length >= 2 ? [cel.find(Boolean), cel.filter(Boolean)[1]] : [null,null];
+        if (!nome || !per) continue;
+        const segs = periodos(per, ano);
+        if (!segs.length){ R.avisos.push(`Não entendi as datas de ${nome}: “${per.replace(/\n/g," ")}”`); continue; }
+        const servidor = nomeCompleto(nome), tipo = tipoPorTexto(per, diasDe(segs).length);
+        for (const s of segs) R.equipe.push({id:`pl-eq-${++n.eq}`, servidor, tipo, ...s, obs:per.replace(/\n/g," ")});
+        continue;
+      }
+      if (secao === "eventos"){
+        const [data, membro, desc] = cel;
+        if (!desc && !membro) continue;
+        const segs = data ? periodos(data, ano) : [];
+        R.eventos.push({id:`pl-ev-${++n.ev}`, data:data.replace(/\n/g," "), inicio:segs[0]?.inicio || "", fim:segs[segs.length-1]?.fim || "", membro:(membro||"").replace(/\n/g," "), descricao:(desc||"").replace(/\n/g," ")});
+        continue;
+      }
+      if (secao === "plantoes"){
+        if (!/^semana\s*\d+/.test(c0)) continue;
+        const segs = periodos(cel[1] || "", ano);
+        if (!segs.length){ R.avisos.push(`Plantão sem datas reconhecidas: “${cel[1]}”`); continue; }
+        const pega = (s, rot) => { const m = String(s||"").replace(/\n/g," ").match(new RegExp(rot + "\\s*:\\s*(.*?)(?=\\s+[A-Za-zÀ-ú]+\\s*:|$)","i")); return m ? m[1].trim() : ""; };
+        const def = pega(cel[2], "nome") || cel[2] || "", contra = pega(cel[2], "contrapresta[cç][aã]o"), ass = pega(cel[3], "nome") || cel[3] || "";
+        R.plantao.push({id:`pl-pl-${++n.pl}`, inicio:segs[0].inicio, fim:segs[segs.length-1].fim, defensor:nomeCompleto(def), assessoria:ass ? nomeCompleto(ass) : "", contraprestacao:contra, portaria:""});
+        continue;
+      }
+    }
+  }
+  // semanas da grade sem linha na tabela de plantões: usa a coluna "Plantão" da grade
+  for (const g of R.grade){
+    if (R.plantao.some(p => sobrepoe(p.inicio,p.fim,g.inicio,g.fim))) continue;
+    const col = g.cols.find(c => /plantao/.test(norm(c.label)));
+    if (!col || !col.texto) continue;
+    const nomes = col.texto.split(/\n|\/|,| e /).map(s => s.trim()).filter(Boolean);
+    R.plantao.push({id:`pl-pl-${++n.pl}`, inicio:g.inicio, fim:g.fim, defensor:nomeCompleto(nomes[0]), assessoria:nomes[1] ? nomeCompleto(nomes[1]) : "", contraprestacao:"", portaria:"", obs:"Da grade semanal"});
+  }
+  R.naoCadastrados = [...naoCadastrados].sort();
+  return R;
+}
+function anoDoPlanejamento(texto){
+  const t = norm(texto);
+  const m = t.match(/de (20\d{2})\s*[–-]?\s*\d\s*[ºo°]?\s*trimestre/) || t.match(/trimestre[^0-9]{0,40}(20\d{2})/) || t.match(/\b(20\d{2})\b/);
+  return m ? +m[1] : new Date().getFullYear();
+}
+
+const COLS_PLAN = ["grade","afastamentos","designacoes","equipe","eventos","plantao"];
+async function aplicarPlanejamento(R, url){
+  const F = filtrarPlano(R);
+  for (const col of COLS_PLAN) await Dados.substituirOrigem(col, "planejamento", F[col]);
+  await Dados.salvar("config", {...config(), id:"polo", planejamentoUrl:url || config().planejamentoUrl, planejamentoEm:new Date().toISOString(), planejamentoPor:S.user?.nome || ""});
+}
+
+function formPlanejamento(){
+  const cfg = config(); let R = null;
+  abrir("Atualizar pelo planejamento",
+    `<ol class="passos"><li><a href="${esc(cfg.planejamentoUrl||PLAN_URL_PADRAO)}" target="_blank" rel="noopener">Abra o planejamento no Word</a>.</li><li>Clique no texto do documento e aperte <b>Ctrl+A</b>, depois <b>Ctrl+C</b>.</li><li>Clique no quadro abaixo e aperte <b>Ctrl+V</b>.</li></ol>
+     <div class="campo"><label for="f-cola">Documento colado</label><textarea id="f-cola" rows="3" placeholder="Clique aqui e aperte Ctrl+V"></textarea></div>
+     <div id="f-prev" class="prev" aria-live="polite"></div>
+     ${campo("f-url","Link do planejamento (para o botão “Abrir planejamento”)",cfg.planejamentoUrl||PLAN_URL_PADRAO)}`,
+    async () => {
+      if (!R) return "Cole o documento antes de salvar.";
+      await aplicarPlanejamento(R, v("f-url")); render();
+    });
+  document.getElementById("f-salvar").textContent = "Salvar no site";
+  const area = document.getElementById("f-cola");
+  area.addEventListener("paste", ev => {
+    ev.preventDefault();
+    const html = ev.clipboardData.getData("text/html");
+    const prev = document.getElementById("f-prev");
+    if (!html || !/<table/i.test(html)){ R = null; prev.innerHTML = `<p class="erro">Não vieram tabelas. Copie direto do Word (Ctrl+A e Ctrl+C dentro do documento) e cole de novo.</p>`; return; }
+    const {tabelas, texto} = tabelasDeHTML(html);
+    const ano = anoDoPlanejamento(texto);
+    R = interpretarPlanejamento(tabelas, ano);
+    area.value = `Documento colado: ${tabelas.length} tabelas, ano ${ano}.`;
+    const linha = (rot, nro, extra="") => `<li><b>${nro}</b> ${rot}${extra}</li>`;
+    const sem = R.grade.length ? ` (${brCurto(R.grade[0].inicio)} a ${brCurto(R.grade[R.grade.length-1].fim)})` : "";
+    prev.innerHTML = `<b>O que será atualizado</b><ul>
+      ${linha("semanas na grade de atendimentos, audiências e plantões", R.grade.length, sem)}
+      ${linha("férias, folgas e trabalho em trânsito de defensores", R.afastamentos.length)}
+      ${linha("substituições tiradas dessas férias e folgas", R.designacoes.length)}
+      ${linha("férias e folgas da equipe", R.equipe.length)}
+      ${linha("eventos e viagens", R.eventos.length)}
+      ${linha("semanas de plantão", R.plantao.length)}</ul>
+      ${(()=>{ const F = filtrarPlano(R); return F.mantidos ? `<p style="margin:6px 0 0"><b>${F.mantidos}</b> itens corrigidos à mão no site continuam valendo no lugar do que está no documento.</p>` : ""; })()}
+      <p class="muted" style="margin:6px 0 0">Substitui o que veio do planejamento anterior. Lançamentos feitos à mão no site e os dados do SGI não mudam. As tabelas de atribuições e “Designações para PBA” não são lidas: titularidades e portarias vêm do SGI.</p>
+      ${R.naoCadastrados.length ? `<p style="margin:8px 0 0"><b>Nomes que não estão em Pessoas do polo:</b> ${R.naoCadastrados.map(esc).join(", ")}. Entram como estão; cadastre depois se quiser.</p>` : ""}
+      ${R.avisos.length ? `<p class="erro" style="margin:8px 0 0">${R.avisos.map(esc).join("<br>")}</p>` : ""}`;
+  });
+  area.focus();
+}
+
+/* exibição */
+const bonitoCel = s => esc(s)
+  .replace(/(^|[^A-Za-zÀ-ÿ])([A-ZÀ-Þ]{3,})(?=[^A-Za-zÀ-ÿ]|$)/g, (m,a,w) => a + (w === "DP" ? w : w[0] + w.slice(1).toLowerCase()))
+  .replace(/\(([^)]*)\)/g, '<span class="nota">($1)</span>')
+  .replace(/\n/g, "<br>");
+
+/* Planejamento do 4º trimestre de 2026 como lido na tela em 29/10/2026 (serve de demonstração e de teste do leitor).
+   Nomes de réus dos júris foram omitidos. */
+
+const chavePlan = (col, o) => ({grade:`g|${o.inicio}`, eventos:`e|${o.data||o.inicio||""}|${norm(o.descricao||"").slice(0,40)}`, afastamentos:`a|${o.defensor}|${o.inicio}`, equipe:`q|${o.servidor}|${o.inicio}`, plantao:`p|${o.inicio}`, designacoes:`d|${o.dp}|${o.defensor}|${o.inicio}`})[col] || `${col}|${o.id}`;
+function filtrarPlano(R){
+  const out = {};
+  const subst = col => new Set((S[col]||[]).filter(x => x.origem !== "planejamento" && x.substitui).map(x => x.substitui));
+  let mantidos = 0;
+  for (const col of COLS_PLAN){ const sb = subst(col); out[col] = (R[col]||[]).filter(o => !sb.has(chavePlan(col,o))); mantidos += (R[col]||[]).length - out[col].length; }
+  const afOk = new Set(out.afastamentos.map(a => a.id));
+  out.designacoes = out.designacoes.filter(d => !d.afastamento || afOk.has(d.afastamento))
+    .filter(d => !S.designacoes.some(x => x.origem !== "planejamento" && x.dp === d.dp && x.defensor === d.defensor && x.inicio === d.inicio && (x.fim||"") === (d.fim||"")));
+  out.mantidos = mantidos;
+  return out;
+}
+
+/* ---------- renderização ---------- */
+const SECOES = {ajuda:secAjuda, hoje:secHoje, afastamentos:secAfastamentos, semana:secSemana, equipe:secEquipe, plantao:secPlantao, diario:secDiario, pessoas:secPessoas};
+function secaoAtual(){ const h = location.hash.replace("#",""); return SECOES[h] ? h : "hoje"; }
+function render(){
+  const sec = secaoAtual();
+  document.querySelectorAll("#abas a").forEach(a => { if (a.getAttribute("href")==="#"+sec) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current"); });
+  document.getElementById("pill-modo").hidden = !DEMO;
+  const ql = document.getElementById("quem-logado");
+  ql.textContent = S.user ? `${S.user.nome}${S.admin ? " · admin" : ""}` : "";
+  document.getElementById("btn-login").textContent = S.user ? "Sair" : "Entrar";
+  const main = document.getElementById("conteudo");
+  if (!DEMO && S.semCadastro && sec !== "ajuda"){ main.innerHTML = `<div class="login"><form><h2>E-mail sem cadastro</h2><p class="muted" style="margin:0">${esc(S.user?.email||"")} ainda não está em Pessoas do polo. Peça a um admin para incluir você e entre de novo.</p></form></div>`; return; }
+  if (!DEMO && !S.user && sec !== "ajuda"){ main.innerHTML = telaLogin(); ligarLogin(); return; }
+  if (DEMO && sec !== "ajuda"){ main.innerHTML = `<div class="login"><form><h2>Configuração pendente</h2><p class="muted" style="margin:0">O painel ainda não está ligado ao banco de dados (Firebase). Assim que a configuração for colada no arquivo index.html, a tela de entrada aparece aqui.</p><p class="fonte" style="margin:0"><a href="#ajuda">Como funciona o painel</a></p></form></div>`; return; }
+  main.innerHTML = (DEMO ? `<div class="aviso-demo"><span>⚠️</span><div><b>Modo demonstração.</b> Titulares e designações vêm do SGI (29/10/2026); grade semanal, folgas, férias da equipe, eventos e plantão vêm do planejamento do 4º trimestre. Só o Diário Oficial ainda é exemplo inventado. As alterações ficam só neste navegador. ${S.admin ? "Você está como admin." : "Toque em <b>Entrar</b> para testar como admin."}</div></div>` : "") + SECOES[sec]();
+  ligar(sec);
+}
+
+const adm = html => S.admin ? html : "";
+function estadoPill(q){
+  if (q.tipo==="ok") return `<span class="pill estado st-ok">Em exercício</span>`;
+  if (q.tipo==="sub") return `<span class="pill estado st-sub">Substituição</span>`;
+  if (q.tipo==="acum") return `<span class="pill estado st-acum">Acumulação</span>`;
+  if (q.tipo==="auto") return `<span class="pill estado st-auto">Substituto automático</span>`;
+  return `<span class="pill estado st-falta">Sem designação</span>`;
+}
+
+function secHoje(){
+  const dps = defensoriasOrdenadas();
+  const curto = id => (dpPorId(id)?.nome || id).replace(" DP","");
+  const card = dp => {
+    const q = quemResponde(dp, HOJE);
+    let corpo;
+    if (q.tipo==="ok") corpo = `<div class="quem">${esc(q.nome)}</div><small>Titular${dp.portariaTitular?` · ${esc(dp.portariaTitular)}`:""}</small>`;
+    else if (q.tipo==="auto") corpo = `<div class="quem"><i>${esc(q.nome)}</i></div><small>${q.ordemSub}º substituto automático (${esc(dpPorId(q.via)?.nome||"")}) · ${esc(q.motivo)}${q.af?.fim?` até ${br(q.af.fim)}`:""}. Confira se saiu portaria.</small>`;
+    else if (q.tipo==="falta") corpo = `<div class="quem" style="color:var(--falta)">Ninguém designado</div><small>${esc(q.motivo)}</small>`;
+    else corpo = `<div class="quem"><i>${esc(q.nome)}</i></div><small>${q.tipo==="sub" ? `No lugar de ${esc(dp.titular)}` : "Defensoria vaga"} · ${q.desig.fim ? `até ${br(q.desig.fim)}` : "sem data de término"}${q.desig.portaria ? ` · ${esc(q.desig.portaria)}` : ""}</small>${q.afDoSub ? `<small style="color:var(--falta)">Atenção: ${esc(q.nome)} também está afastado(a) hoje.</small>` : ""}`;
+    return `<article class="dp"><div class="dp-topo"><span class="dp-num">${esc(dp.nome)}</span><span class="dp-comarca">${esc(dp.comarca)}</span></div><div class="dp-area">${esc(dp.area||"")}</div>${estadoPill(q)}${corpo}<div class="dp-regras">Substitutos: ${(dp.subs||[]).map(curto).join(" e ")||"—"}${dp.colidente?` · colidente: ${curto(dp.colidente)}`:""}</div>${adm(`<div><button class="btn btn-sm" data-acao="editar-dp" data-id="${dp.id}" type="button">Editar</button></div>`)}</article>`;
+  };
+  const cards = Object.entries(UNIDADES).map(([k,rot]) => { const l = dps.filter(d=>(d.unidade||"sede")===k); return l.length ? `<h3 class="grupo">${rot}</h3><div class="grade-dp">${l.map(card).join("")}</div>` : ""; }).join("");
+  const mesAtual = pad(new Date().getMonth()+1);
+  const niver = S.pessoas.filter(p=>p.aniversario && p.aniversario.slice(3,5)===mesAtual).sort((a,b)=>a.aniversario.localeCompare(b.aniversario));
+  const semEstrutura = !S.defensorias.length;
+
+  // acumulações: quem responde por mais de uma DP hoje
+  const carga = {};
+  for (const dp of dps){ const q = quemResponde(dp,HOJE); if (q.nome) (carga[q.nome] ||= []).push(dp); }
+  const acum = Object.entries(carga).filter(([,l])=>l.length>1);
+  const vigentes = desigs().filter(g => cobre(g,HOJE) || g.inicio > HOJE).sort((a,b)=>a.inicio.localeCompare(b.inicio));
+
+  return `
+  <div class="cab-secao"><div><span class="eyebrow mono">${br(HOJE)}</span><h2>Quem responde por cada defensoria hoje</h2><p>Calculado a partir dos afastamentos e das designações lançadas. Sem portaria, vale a substituição automática da Resolução nº 13/2023-CSDPE/AM.</p></div>
+  <div class="barra">${adm(`<button class="btn" data-acao="nova-dp" type="button">Nova defensoria</button><button class="btn btn-pri" data-acao="nova-desig" type="button">Nova designação</button>`)}</div></div>
+  <div class="polo-info"><div><span class="eyebrow">Coordenação do polo</span><div class="quem">${esc(infoPolo().coordenacao||"—")}</div><small class="muted">${esc(infoPolo().portariaCoord||"")}</small>${adm(`<div><button class="btn btn-sm" data-acao="editar-polo" type="button">Editar</button></div>`)}</div><div><span class="eyebrow">Contato</span><div class="mono" style="font-size:13.5px">WhatsApp ${esc(infoPolo().whatsapp)} · ligações ${esc(infoPolo().ligacoes)}</div><div class="mono" style="font-size:13.5px">${esc(infoPolo().email)}</div></div><div style="min-width:0"><span class="eyebrow">Sede</span><div style="font-size:13.5px">${esc(infoPolo().endereco)}</div></div></div>
+  ${cards || (semEstrutura ? `<div class="aviso-demo"><span>📋</span><div><b>Nenhuma defensoria cadastrada.</b> ${adm(`<button class="btn btn-sm btn-pri" data-acao="carregar-res13" type="button">Carregar as 12 defensorias da Resolução 13/2023</button>`)}</div></div>` : "")}
+  <div class="dois">
+    <section class="bloco"><h3>Designações vigentes e próximas</h3>
+      <ul class="lista">${vigentes.map(g=>`<li><div><b>${esc(g.defensor)}</b> → ${esc(nomeDp(g.dp))}<br><span class="muted">${esc(g.motivo||"")}${g.portaria?` · ${esc(g.portaria)}`:""}</span></div><div style="text-align:right"><span class="mono">${brCurto(g.inicio)}${g.fim?`–${brCurto(g.fim)}`:"→"}</span>${g.auto ? `<br><span class="fonte">Diário, ed. ${g.edicao}</span>` : adm(`<br><button class="btn btn-sm" data-acao="editar-desig" data-id="${g.id}" type="button">Editar</button>`)}</div></li>`).join("") || `<li class="vazio">Nenhuma designação vigente.</li>`}</ul>
+    </section>
+    <section class="bloco"><h3>Aniversariantes de ${MESES[new Date().getMonth()]}</h3>
+      <ul class="lista">${niver.map(p=>`<li><div><b>${esc(p.nome)}</b><br><span class="muted">${esc(CARGOS[p.cargo]||"")}${p.lotacao?` · ${esc(p.lotacao)}`:""}</span></div><span class="bolo">${p.aniversario===`${pad(new Date().getDate())}/${mesAtual}`?"🎉 hoje":esc(p.aniversario)}</span></li>`).join("") || `<li class="vazio">Ninguém faz aniversário este mês.</li>`}</ul>
+      <h3 style="margin-top:22px">Acumulações hoje</h3>
+      <ul class="lista">${acum.map(([n,l])=>`<li><div><b>${esc(n)}</b><br><span class="muted">${l.map(d=>esc(d.nome+" ("+d.comarca+")")).join(" + ")}</span></div><span class="pill st-acum">${l.length} DPs</span></li>`).join("") || `<li class="vazio">Ninguém respondendo por mais de uma defensoria hoje.</li>`}</ul>
+    </section>
+  </div>`;
+}
+
+function calendario(mesRef, eventos){
+  const ini = new Date(mesRef.getFullYear(), mesRef.getMonth(), 1);
+  const cursor = somaDias(ini, -ini.getDay());
+  let h = DOW.map(d=>`<div class="dow">${d}</div>`).join("");
+  for (let i=0;i<42;i++){
+    const dia = somaDias(cursor,i); const s = iso(dia);
+    if (i>=35 && dia.getMonth()!==mesRef.getMonth()) break;
+    const evs = eventos.filter(e=>cobre(e,s));
+    const cls = ["dia", dia.getMonth()!==mesRef.getMonth()?"fora":"", s===HOJE?"hoje":"", (dia.getDay()===0||dia.getDay()===6)?"fds":""].join(" ");
+    h += `<div class="${cls}"><span class="n">${dia.getDate()}</span>${evs.map(e=>`<button type="button" class="ev t-${e.tipo}" data-acao="${e._acao}" data-id="${e.id}" title="${esc(e._rot)} · ${TIPOS_AF[e.tipo]} · ${br(e.inicio)} a ${br(e.fim)}">${esc(e._curto)}</button>`).join("")}</div>`;
+  }
+  return `<div class="cal">${h}</div><div class="legenda">${Object.entries(TIPOS_AF).map(([k,v])=>`<span class="pill t-${k}">${v}</span>`).join("")}</div>`;
+}
+const primeiroNome = n => (n||"").split(" ")[0];
+function navMes(chave, mes){ return `<div class="cal-nav"><button class="btn btn-sm" data-acao="mes" data-k="${chave}" data-d="-1" type="button" aria-label="Mês anterior">◀</button><span class="cal-titulo">${MESES[mes.getMonth()]} ${mes.getFullYear()}</span><button class="btn btn-sm" data-acao="mes" data-k="${chave}" data-d="1" type="button" aria-label="Próximo mês">▶</button><button class="btn btn-sm" data-acao="mes" data-k="${chave}" data-d="0" type="button">Hoje</button></div>`; }
+
+function secAfastamentos(){
+  ui.mesAf ||= new Date();
+  const evs = afs().map(a=>({...a,_acao:"ver-af",_rot:a.defensor,_curto:primeiroNome(a.defensor)}));
+  const proximos = afs().filter(a=>a.fim>=HOJE).sort((a,b)=>a.inicio.localeCompare(b.inicio));
+  const simult = {};
+  for (let i=0;i<60;i++){ const s = iso(somaDias(new Date(),i)); const n = afs().filter(a=>a.tipo!=="remoto"&&cobre(a,s)).length; if (n>=3) simult[s]=n; }
+  const alerta = Object.keys(simult).length ? `<div class="aviso-demo" style="background:var(--falta-soft)"><span>⛔</span><div><b style="color:var(--falta)">Três ou mais membros afastados ao mesmo tempo</b> em ${Object.keys(simult).map(brCurto).join(", ")}.</div></div>` : "";
+  return `
+  <div class="cab-secao"><div><h2>Calendário de afastamentos dos membros</h2><p>Férias, licenças, folgas e viagens dos defensores. Cada afastamento pode trazer as designações de quem responde pelas defensorias no período.</p></div>
+  <div class="barra">${navMes("mesAf",ui.mesAf)}${adm(`<button class="btn btn-pri" data-acao="novo-af" type="button">Novo afastamento</button>`)}</div></div>
+  ${alerta}
+  ${calendario(ui.mesAf, evs)}
+  <section class="bloco" style="margin-top:28px"><h3>Em curso e próximos</h3>
+  <div class="tab-scroll"><table><thead><tr><th>Membro</th><th>Tipo</th><th>Período</th><th>Quem responde</th><th>Portaria</th>${adm("<th></th>")}</tr></thead><tbody>
+  ${proximos.map(a=>{ const subs = desigs().filter(g=>g.afastamento===a.id); const tit = S.defensorias.filter(d=>d.titular===a.defensor);
+    const resp = subs.length ? subs.map(g=>`${esc(g.defensor)} <span class="muted">(${esc(dpPorId(g.dp)?.nome||g.dp)}, ${brCurto(g.inicio)}–${brCurto(g.fim)})</span>`).join("<br>") : (tit.length ? `<span style="color:var(--falta);font-weight:700">A definir</span>` : `<span class="muted">—</span>`);
+    return `<tr><td><b>${esc(a.defensor)}</b>${a.obs?`<br><span class="muted">${esc(a.obs)}</span>`:""}</td><td><span class="pill t-${a.tipo}">${TIPOS_AF[a.tipo]}</span></td><td class="mono">${br(a.inicio)} a ${br(a.fim)}</td><td>${resp}</td><td>${esc(a.portaria||"")}</td>${adm(`<td>${a.auto?`<span class="fonte">Diário, ed. ${a.edicao}</span>`:`<button class="btn btn-sm" data-acao="editar-af" data-id="${a.id}" type="button">Editar</button>`}</td>`)}</tr>`; }).join("") || `<tr><td colspan="6" class="vazio">Nenhum afastamento em curso ou previsto.</td></tr>`}
+  </tbody></table></div></section>`;
+}
+
+const COLS_GRADE_PADRAO = ["PARINTINS · ATENDIMENTO FAMÍLIA","PARINTINS · AUDIÊNCIA FAMÍLIA","PARINTINS · ATENDIMENTO CÍVEL","PARINTINS · ATENDIMENTO CRIMINAL","PARINTINS · AUDIÊNCIA CRIMINAL","BARREIRINHA · ATENDIMENTO FAMÍLIA","BARREIRINHA · ATENDIMENTO CÍVEL","BARREIRINHA · ATENDIMENTO CRIMINAL","PLANTÃO"];
+function colunasGrade(){ const g = [...S.grade].sort((a,b)=>b.inicio.localeCompare(a.inicio))[0]; return g ? g.cols.map(c=>c.label) : COLS_GRADE_PADRAO; }
+function formSemana(g={}){
+  const cols = g.cols ? g.cols.map(c=>c.label) : colunasGrade();
+  const ini = g.inicio || iso(ui.semana || segunda(new Date()));
+  abrir(g.id ? `Semana de ${br(g.inicio)}` : "Nova semana na grade",
+    `<div class="linha2">${campo("f-ini","Início",ini,"date")}${campo("f-fim","Fim",g.fim||iso(somaDias(deIso(ini),6)),"date")}</div>
+     ${cols.map((l,i)=>`<div class="campo"><label for="f-c${i}">${bonitoCel(l)}</label><textarea id="f-c${i}" rows="2">${esc(g.cols?.find(c=>c.label===l)?.texto||"")}</textarea></div>`).join("")}`,
+    async () => { const o = {...g, inicio:v("f-ini"), fim:v("f-fim"), cols: cols.map((l,i)=>({label:l, texto:(document.getElementById("f-c"+i)?.value||"").trim()}))};
+      if (!o.inicio || !o.fim) return "Preencha o início e o fim da semana."; if (o.fim < o.inicio) return "O fim não pode ser antes do início.";
+      if (S.grade.some(x => x.id !== g.id && x.inicio === o.inicio)) return "Já existe uma semana começando nessa data.";
+      await Dados.salvar("grade", o); },
+    g.id ? () => Dados.remover("grade", g.id) : null, g.origem==="planejamento" ? "planejamento" : (g.substitui ? "manual-plan" : ""));
+}
+function formEvento(e={}){
+  abrir(e.id ? "Editar evento" : "Novo evento ou viagem",
+    `${campo("f-data","Data",e.data,"text",'placeholder="24 a 27/11/2026 · 13/07/2026 · julho de 2026"')}
+     ${campo("f-mem","Quem vai",e.membro,"text",'list="dl-todos"')}<datalist id="dl-todos">${S.pessoas.map(p=>`<option value="${esc(p.nome)}"></option>`).join("")}</datalist>
+     <div class="campo"><label for="f-desc">O que é</label><textarea id="f-desc" rows="3">${esc(e.descricao||"")}</textarea></div>`,
+    async () => { const data = v("f-data"), desc = v("f-desc"); if (!desc) return "Descreva o evento.";
+      const segs = data ? periodos(data, new Date().getFullYear()) : [];
+      if (data && !segs.length) return "Não entendi a data. Use, por exemplo, 24 a 27/11/2026.";
+      await Dados.salvar("eventos", {...e, data, inicio:segs[0]?.inicio||"", fim:segs[segs.length-1]?.fim||"", membro:v("f-mem"), descricao:desc}); },
+    e.id ? () => Dados.remover("eventos", e.id) : null, e.origem==="planejamento" ? "planejamento" : (e.substitui ? "manual-plan" : ""));
+}
+function gradePlanejamento(){
+  const grade = [...S.grade].sort((a,b)=>a.inicio.localeCompare(b.inicio));
+  if (!grade.length) return `<p class="vazio">Grade ainda não carregada. ${adm("Use <b>Atualizar pelo planejamento</b> ou <b>Nova semana</b>.")}</p>`;
+  const cols = grade[0].cols.map(c => c.label);
+  const grupo = l => l.includes(" · ") ? l.split(" · ")[0] : "";
+  const rot = l => l.includes(" · ") ? l.split(" · ").slice(1).join(" · ") : l;
+  const cls = l => { const n = norm(l); return /plantao/.test(n) ? "g-pla" : /barreirinha/.test(n) ? "g-bar" : "g-par"; };
+  let topo = "", i = 0;
+  while (i < cols.length){ const g = grupo(cols[i]); let j = i; while (j+1 < cols.length && grupo(cols[j+1]) === g) j++;
+    topo += g ? `<th colspan="${j-i+1}" class="${cls(cols[i])}">${bonitoCel(g)}</th>` : `<th rowspan="2" class="${cls(cols[i])}">${bonitoCel(cols[i])}</th>`; i = j+1; }
+  const sub = cols.filter(grupo).map(l => `<th class="${cls(l)}">${bonitoCel(rot(l))}</th>`).join("");
+  const ref = iso(ui.semana);
+  return `<div class="tab-scroll"><table class="grade-plan"><thead><tr><th rowspan="2">Semana</th>${topo}</tr><tr>${sub}</tr></thead><tbody>
+    ${grade.map(g => `<tr class="${g.inicio<=ref && g.fim>=ref ? "atual" : ""}"><th scope="row">${brCurto(g.inicio)} a ${brCurto(g.fim)}${g.substitui?'<span class="nota">corrigida à mão</span>':""}${adm(`<br><button class="btn btn-sm" data-acao="editar-semana" data-id="${g.id}" type="button" style="margin-top:4px">Editar</button>`)}</th>${cols.map(l => { const c = g.cols.find(x=>x.label===l); return `<td>${c ? bonitoCel(c.texto) : ""}</td>`; }).join("")}</tr>`).join("")}
+  </tbody></table></div>`;
+}
+function secSemana(){
+  ui.semana ||= segunda(new Date());
+  const cfg = config();
+  const dias = [0,1,2,3,4].map(i=>somaDias(ui.semana,i));
+  const fimSem = somaDias(ui.semana,6);
+  const linhas = defensoriasOrdenadas().map(dp=>`<tr><th scope="row" style="text-transform:none;letter-spacing:0;font-size:14px;color:var(--ink);background:var(--surface)">${esc(dp.nome)}<br><span class="muted" style="font-weight:400">${esc(dp.comarca)}</span></th>${dias.map(d=>{ const s=iso(d); const q=quemResponde(dp,s); const c = q.tipo==="falta"?"c-falta":(q.tipo==="ok"?"":"c-sub"); return `<td class="${c} ${s===HOJE?"c-hoje":""}">${q.nome?esc(q.nome):"Sem designação"}${q.tipo==="auto"?'<span class="nota">substituição automática</span>':""}</td>`; }).join("")}</tr>`).join("");
+  const plant = S.plantao.filter(p=>sobrepoe(p.inicio,p.fim,iso(ui.semana),iso(fimSem)));
+  const eq = S.equipe.filter(e=>sobrepoe(e.inicio,e.fim,iso(ui.semana),iso(fimSem)));
+  const af = afs().filter(a=>sobrepoe(a.inicio,a.fim,iso(ui.semana),iso(fimSem)));
+  const evs = [...S.eventos].filter(e => !e.fim || e.fim >= HOJE).sort((a,b)=>(a.inicio||"9999").localeCompare(b.inicio||"9999"));
+  const passados = S.eventos.filter(e => e.fim && e.fim < HOJE).length;
+  return `
+  <div class="cab-secao"><div><h2>Designações semanais</h2><p>Grade de atendimentos, audiências e plantões do planejamento trimestral. A semana escolhida fica destacada.</p>
+    <p class="fonte">${cfg.planejamentoEm ? `Planejamento atualizado em ${br(cfg.planejamentoEm.slice(0,10))}${cfg.planejamentoPor?` · ${esc(cfg.planejamentoPor)}`:""}` : "Planejamento ainda não carregado"}</p></div>
+  <div class="barra">${cfg.planejamentoUrl?`<a class="btn" href="${esc(cfg.planejamentoUrl)}" target="_blank" rel="noopener">Abrir planejamento</a>`:""}${adm(`<button class="btn" data-acao="nova-semana" type="button">Nova semana</button><button class="btn btn-pri" data-acao="importar-planejamento" type="button">Atualizar pelo planejamento</button>`)}</div></div>
+  <div class="cal-nav" style="margin-bottom:12px"><button class="btn btn-sm" data-acao="sem" data-d="-7" type="button" aria-label="Semana anterior">◀</button><span class="cal-titulo mono" style="font-family:var(--f-mono);font-size:16px;min-width:15ch">${br(iso(ui.semana))} a ${br(iso(somaDias(ui.semana,4)))}</span><button class="btn btn-sm" data-acao="sem" data-d="7" type="button" aria-label="Próxima semana">▶</button><button class="btn btn-sm" data-acao="sem" data-d="0" type="button">Esta semana</button></div>
+  ${gradePlanejamento()}
+  <div class="dois">
+    <section class="bloco"><h3>Plantão da semana</h3><ul class="lista">${plant.map(p=>`<li><div><b>${esc(p.defensor)}</b><br><span class="muted">Assessoria: ${esc(p.assessoria||"—")}${p.contraprestacao?` · ${esc(p.contraprestacao)}`:""}</span></div><span class="mono">${brCurto(p.inicio)}–${brCurto(p.fim)}</span></li>`).join("") || `<li class="vazio">Plantão desta semana ainda não lançado.</li>`}</ul></section>
+    <section class="bloco"><h3>Fora nesta semana</h3><ul class="lista">${[...af.map(a=>({n:a.defensor,t:a.tipo,i:a.inicio,f:a.fim,q:"Membro"})),...eq.map(e=>({n:e.servidor,t:e.tipo,i:e.inicio,f:e.fim,q:"Equipe"}))].map(x=>`<li><div><b>${esc(x.n)}</b><br><span class="muted">${x.q} · ${TIPOS_AF[x.t]||x.t}</span></div><span class="mono">${brCurto(x.i)}–${brCurto(x.f)}</span></li>`).join("") || `<li class="vazio">Todos em exercício.</li>`}</ul></section>
+  </div>
+  <section class="bloco" style="margin-top:30px"><h3>Quem responde por cada defensoria nesta semana</h3>
+  <div class="tab-scroll"><table><thead><tr><th>Defensoria</th>${dias.map(d=>`<th class="${iso(d)===HOJE?"c-hoje":""}">${DOW[d.getDay()]} ${pad(d.getDate())}/${pad(d.getMonth()+1)}</th>`).join("")}</tr></thead><tbody>${linhas}</tbody></table></div></section>
+  <section class="bloco" style="margin-top:30px"><div class="cab-secao" style="margin-bottom:10px"><h3>Eventos e viagens</h3>${adm(`<button class="btn btn-sm" data-acao="novo-evento" type="button">Novo evento</button>`)}</div>
+  <ul class="lista">${evs.map(e=>`<li><div><b>${esc(e.descricao)}</b><br><span class="muted">${esc(e.membro||"—")}</span></div><div style="text-align:right"><span class="mono">${esc(e.data||"sem data")}</span>${adm(`<br><button class="btn btn-sm" data-acao="editar-evento" data-id="${e.id}" type="button">Editar</button>`)}</div></li>`).join("") || `<li class="vazio">Nenhum evento previsto.</li>`}</ul>
+  ${passados?`<p class="fonte">${passados} eventos anteriores ficam guardados.</p>`:""}</section>`;
+}
+
+function secEquipe(){
+  ui.mesEq ||= new Date();
+  const evs = S.equipe.map(e=>({...e,_acao:"editar-eq",_rot:e.servidor,_curto:primeiroNome(e.servidor)}));
+  const lista = [...S.equipe].filter(e=>e.fim>=HOJE).sort((a,b)=>a.inicio.localeCompare(b.inicio));
+  return `
+  <div class="cab-secao"><div><h2>Escala de férias da equipe</h2><p>Servidores, assessores, estagiários e colaboradores. Lançada por um admin do polo, porque esses afastamentos quase nunca saem no Diário.</p></div>
+  <div class="barra">${navMes("mesEq",ui.mesEq)}${adm(`<button class="btn btn-pri" data-acao="novo-eq" type="button">Novo lançamento</button>`)}</div></div>
+  ${calendario(ui.mesEq, evs)}
+  <section class="bloco" style="margin-top:28px"><h3>Em curso e próximos</h3><ul class="lista">${lista.map(e=>`<li><div><b>${esc(e.servidor)}</b><br><span class="muted">${TIPOS_AF[e.tipo]}${e.obs?` · ${esc(e.obs)}`:""}</span></div><div style="text-align:right"><span class="mono">${br(e.inicio)}${e.fim!==e.inicio?` a ${br(e.fim)}`:""}</span>${adm(`<br><button class="btn btn-sm" data-acao="editar-eq" data-id="${e.id}" type="button">Editar</button>`)}</div></li>`).join("") || `<li class="vazio">Nada previsto.</li>`}</ul></section>`;
+}
+
+function secPlantao(){
+  const lista = [...S.plantao].sort((a,b)=>a.inicio.localeCompare(b.inicio));
+  const atual = lista.find(p=>cobre(p,HOJE));
+  return `
+  <div class="cab-secao"><div><h2>Escala do plantão</h2><p>Plantão cível e de família do polo. A escala trimestral sai no Diário; o robô extrai as semanas do Baixo Amazonas e elas podem ser coladas aqui de uma vez.</p></div>
+  <div class="barra">${adm(`<button class="btn" data-acao="importar-plantao" type="button">Colar escala</button><button class="btn btn-pri" data-acao="novo-plantao" type="button">Novo período</button>`)}</div></div>
+  ${atual ? `<div class="dp" style="margin-bottom:18px;border-color:var(--dpe)"><span class="eyebrow">De plantão agora</span><div class="quem" style="font-size:22px;font-family:var(--f-display)">${esc(atual.defensor)}</div><small>Assessoria: ${esc(atual.assessoria||"—")} · ${br(atual.inicio)} a ${br(atual.fim)}</small></div>` : ""}
+  <div class="tab-scroll"><table><thead><tr><th>Período</th><th>Defensor(a)</th><th>Assessoria</th><th>Portaria</th>${adm("<th></th>")}</tr></thead><tbody>
+  ${lista.map(p=>`<tr class="${cobre(p,HOJE)?"":""}"><td class="mono ${cobre(p,HOJE)?"c-hoje":""}">${br(p.inicio)} a ${br(p.fim)}</td><td><b>${esc(p.defensor)}</b></td><td>${esc(p.assessoria||"")}</td><td>${esc(p.portaria||"")}</td>${adm(`<td><button class="btn btn-sm" data-acao="editar-plantao" data-id="${p.id}" type="button">Editar</button></td>`)}</tr>`).join("") || `<tr><td colspan="5" class="vazio">Escala ainda não lançada.</td></tr>`}
+  </tbody></table></div>`;
+}
+
+function statusAto(a){
+  if (!a.sugestao) return "";
+  if (a.lancado) return `<span class="lancado">✓ lançado</span>`;
+  if (a.auto && !a.rejeitado) return `<span class="lancado">✓ aplicado sozinho</span>${adm(`<br><button class="btn btn-sm" data-acao="rejeitar" data-id="${a.id}" type="button">Desfazer</button>`)}`;
+  if (a.rejeitado) return `<span class="fonte">desfeito</span>${adm(`<br><button class="btn btn-sm" data-acao="reaplicar" data-id="${a.id}" type="button">Reaplicar</button> <button class="btn btn-sm btn-pri" data-acao="lancar" data-id="${a.id}" type="button">Lançar com ajustes</button>`)}`;
+  return adm(`<button class="btn btn-sm btn-pri" data-acao="lancar" data-id="${a.id}" type="button">Conferir e lançar</button>`);
+}
+function secDiario(){
+  const q = ui.buscaDiario.trim().toLowerCase();
+  const eds = [...S.diario].sort((a,b)=>b.edicao-a.edicao).map(ed=>({...ed, atos: ed.atos.filter(a => (ui.catDiario==="todas"||a.categorias.includes(ui.catDiario)||(ui.catDiario==="pendentes"&&a.sugestao&&!a.lancado&&(!a.auto||a.rejeitado))) && (!q || (a.numero+" "+a.resumo+" "+a.trecho).toLowerCase().includes(q)))})).filter(ed=>ed.atos.length);
+  const total = S.diario.reduce((n,e)=>n+e.atos.length,0);
+  const pend = S.diario.reduce((n,e)=>n+e.atos.filter(a=>a.sugestao&&!a.lancado&&(!a.auto||a.rejeitado)).length,0);
+  const autos = S.diario.reduce((n,e)=>n+e.atos.filter(a=>a.auto&&!a.lancado&&!a.rejeitado).length,0);
+  return `
+  <div class="cab-secao"><div><h2>Diário Oficial do polo</h2><p>Atos da DPE-AM que citam o Polo do Baixo Amazonas, suas comarcas, defensores ou servidores. Um robô lê cada edição nova de madrugada. Designações e afastamentos claros (DP, defensor cadastrado e período) entram sozinhos no site; o resto espera um admin conferir.</p></div>
+  <div class="barra"><span class="muted mono">${S.diario.length} edições · ${total} atos${autos?` · ${autos} aplicados sozinhos`:""}${pend?` · ${pend} para conferir`:""}</span></div></div>
+  <div class="barra" style="margin-bottom:6px"><input class="busca" id="busca-diario" type="search" placeholder="Buscar nome, portaria, comarca…" value="${esc(ui.buscaDiario)}" aria-label="Buscar no Diário"></div>
+  <div class="chips" role="group" aria-label="Filtrar por categoria">${[["todas","Todos"],...(S.admin?[["pendentes","Para conferir"]]:[]),...Object.entries(CATS)].map(([k,v])=>`<button type="button" class="chip" data-acao="cat" data-k="${k}" aria-pressed="${ui.catDiario===k}">${v}</button>`).join("")}</div>
+  ${eds.map(ed=>`<section class="edicao"><div class="edicao-cab"><h3>Edição ${ed.edicao}</h3><span class="muted mono">${br(ed.data)} · <a href="${esc(ed.url)}" target="_blank" rel="noopener" style="color:var(--caprichoso)">abrir PDF</a></span></div>
+    ${ed.atos.map(a=>`<div class="ato"><div><div>${a.categorias.map(c=>`<span class="tag cat-${c}">${CATS[c]||c}</span>`).join("")}</div><div class="num" style="margin-top:4px">${esc(a.numero)}</div><div>${esc(a.resumo)}</div>${a.trecho?`<blockquote>${esc(a.trecho)}</blockquote>`:""}</div>
+      <div style="text-align:right">${statusAto(a)}</div></div>`).join("")}
+  </section>`).join("") || `<p class="vazio" style="margin-top:20px">Nenhum ato com esse filtro.</p>`}`;
+}
+
+function secPessoas(){
+  const ordem = Object.keys(CARGOS);
+  const lista = [...S.pessoas].sort((a,b)=>ordem.indexOf(a.cargo)-ordem.indexOf(b.cargo) || a.nome.localeCompare(b.nome));
+  return `
+  <div class="cab-secao"><div><h2>Pessoas do polo</h2><p>Defensores, servidores, assessores e estagiários. O e-mail funcional é o login de cada um; o perfil diz quem só vê e quem pode editar. Os nomes também ensinam o robô a achar as portarias de cada pessoa no Diário.</p></div>
+  <div class="barra">${adm(`<button class="btn" data-acao="carga-inicial" type="button">Carregar dados iniciais</button><button class="btn btn-pri" data-acao="nova-pessoa" type="button">Nova pessoa</button>`)}</div></div>
+  <div class="tab-scroll"><table><thead><tr><th>Nome</th><th>Cargo</th><th>Lotação</th><th>E-mail funcional</th><th>Aniversário</th><th>Acesso</th>${adm("<th></th>")}</tr></thead><tbody>
+  ${lista.map(p=>`<tr><td><b>${esc(p.nome)}</b></td><td>${esc(CARGOS[p.cargo]||"")}</td><td>${esc(p.lotacao||"")}</td><td class="mono" style="font-size:13px">${esc(p.email||"—")}</td><td class="mono">${esc(p.aniversario||"")}</td><td>${p.email?`<span class="pill ${p.perfil==="admin"?"st-acum":"st-ok"}">${PERFIS[p.perfil]||"Leitura"}</span>`:`<span class="muted">sem login</span>`}</td>${adm(`<td><button class="btn btn-sm" data-acao="editar-pessoa" data-id="${esc(p.id)}" type="button">Editar</button></td>`)}</tr>`).join("") || `<tr><td colspan="7" class="vazio">Ninguém cadastrado.</td></tr>`}
+  </tbody></table></div>`;
+}
+
+function secAjuda(){
+  const k = t => `<span class="tecla">${t}</span>`;
+  return `
+  <div class="cab-secao"><div><h2>Como funciona o painel</h2><p>O painel junta, num lugar só, quem responde por cada defensoria, quem está fora, a grade da semana, o plantão e o que saiu no Diário Oficial sobre o polo.</p></div>
+  <div class="barra"><a class="btn" href="#hoje">Voltar ao painel</a></div></div>
+  <div class="ajuda">
+  <section><h3>Para todos</h3>
+    <h4>Entrar</h4>
+    <ol><li>O login é o seu e-mail funcional (@defensoria.am.def.br).</li><li>No primeiro acesso, ou se esquecer a senha, toque em <b>Primeiro acesso ou esqueci a senha</b> na tela de entrada. Chega um link no seu e-mail para criar a senha.</li><li>Se aparecer que o e-mail não está cadastrado, peça a um admin para incluir você em <b>Pessoas do polo</b>.</li></ol>
+    <h4>O que cada aba mostra</h4>
+    <ul>
+      <li><b>Designações hoje:</b> quem responde por cada uma das 12 defensorias hoje, separadas em Sede (Parintins), Nhamundá e UDI Barreirinha. Também mostra a coordenação, o contato do polo, as designações em vigor, quem acumula mais de uma DP e os aniversariantes do mês.</li>
+      <li><b>Afastamentos dos membros:</b> calendário de férias, folgas, licenças e viagens dos defensores, com quem responde por cada DP no período. Toque num nome no calendário para ver os detalhes.</li>
+      <li><b>Designações semanais:</b> a grade do planejamento trimestral (atendimentos, audiências e plantão de Parintins e Barreirinha), o plantão e quem está fora na semana, quem responde por cada DP dia a dia e os eventos e viagens. Use ◀ ▶ para mudar de semana.</li>
+      <li><b>Férias da equipe:</b> férias, folgas e licenças de servidores, estagiários e terceirizados.</li>
+      <li><b>Plantão:</b> a escala completa, com quem está de plantão agora.</li>
+      <li><b>Diário Oficial:</b> portarias e atos que citam o polo, as comarcas ou as pessoas do polo, com busca e filtros. O link abre o PDF da edição.</li>
+      <li><b>Pessoas do polo:</b> quem é quem, cargo, lotação, e-mail funcional e aniversário (só dia e mês).</li>
+    </ul>
+    <h4>O que significam as etiquetas</h4>
+    <ul>
+      <li><span class="pill st-ok">Em exercício</span> o titular está trabalhando normalmente.</li>
+      <li><span class="pill st-sub">Substituição</span> outra pessoa foi designada no lugar do titular afastado.</li>
+      <li><span class="pill st-acum">Acumulação</span> a defensoria não tem titular e alguém responde por ela.</li>
+      <li><span class="pill st-auto">Substituto automático</span> o titular está fora e não há portaria lançada; o site aplica a ordem de substituição da Resolução nº 13/2023-CSDPE/AM. Vale conferir se saiu portaria.</li>
+      <li><span class="pill st-falta">Sem designação</span> ninguém disponível para responder pela DP naquele dia.</li>
+    </ul>
+    <h4>De onde vêm os dados</h4>
+    <div class="fontes">
+      <div><b>Diário Oficial</b><br><span class="muted">Um robô lê cada edição nova de madrugada. Designações e afastamentos claros entram sozinhos.</span></div>
+      <div><b>Planejamento trimestral</b><br><span class="muted">Um admin cola o documento do Word. Traz a grade semanal, folgas, férias da equipe, eventos e plantão.</span></div>
+      <div><b>Lançamento manual</b><br><span class="muted">Admins podem lançar ou corrigir qualquer coisa. Correção feita à mão prevalece.</span></div>
+      <div><b>Resolução nº 13/2023</b><br><span class="muted">Atribuições, colidências e substitutos automáticos de cada DP.</span></div>
+    </div>
+  </section>
+
+  <details ${S.admin ? "open" : ""}><summary>Para admins</summary>
+    <p>Admins são a conta do polo e os defensores titulares. Os botões de editar só aparecem para quem é admin, e o Firebase recusa qualquer alteração de quem não é.</p>
+
+    <h4>Atualizar pelo planejamento trimestral</h4>
+    <ol><li>Em <b>Designações semanais</b>, toque em <b>Atualizar pelo planejamento</b>.</li><li>Abra o documento pelo link da janela.</li><li>No Word, clique no texto do documento e aperte ${k("Ctrl")}+${k("A")}, depois ${k("Ctrl")}+${k("C")}.</li><li>Volte ao site, clique no quadro e aperte ${k("Ctrl")}+${k("V")}.</li><li>Confira a prévia: quantas semanas, folgas, substituições, eventos e plantões foram reconhecidos, nomes que não estão no cadastro e datas que o site não entendeu.</li><li>Toque em <b>Salvar no site</b>.</li></ol>
+    <p>O que veio do planejamento anterior é trocado pelo novo. Lançamentos manuais e correções feitas à mão continuam. As tabelas de atribuições e “Designações para PBA” não são lidas: as portarias vêm do Diário.</p>
+    <p>Para o site entender as datas, escreva no documento como já é feito: “5, 6, 7/10/2026 (folgas)”, “26 e 27/10”, “23/11/2026 a 02/12/2026”, “10 a 17/12 (trabalho em trânsito)”. Nas substituições, uma por linha: “5ª DP Camila” ou “8ª DP 05/10 - 09/10: Rachel”.</p>
+
+    <h4>Conferir o Diário Oficial</h4>
+    <ul><li><b>✓ aplicado sozinho:</b> o robô entendeu a DP, o defensor e o período, e o ato já vale no painel. Se estiver errado, toque em <b>Desfazer</b>.</li><li><b>Conferir e lançar:</b> o robô ficou em dúvida (data incompleta, nome fora do cadastro, servidor em vez de defensor). Abre o formulário preenchido; confira e salve.</li><li>O filtro <b>Para conferir</b> mostra só o que está esperando um admin.</li></ul>
+
+    <h4>Lançar à mão</h4>
+    <ul>
+      <li><b>Afastamento de defensor:</b> em Afastamentos, toque em <b>Novo afastamento</b>. Informe o membro, o tipo e o período. Em “Quem responde pelas defensorias”, inclua uma linha por DP. Pode deixar em branco e completar quando sair a portaria.</li>
+      <li><b>Designação ou acumulação:</b> em Designações hoje, toque em <b>Nova designação</b>. Sem data de término, vale até alguém encerrar.</li>
+      <li><b>Semana da grade:</b> em Designações semanais, use <b>Editar</b> na semana ou <b>Nova semana</b>.</li>
+      <li><b>Evento ou viagem:</b> em Designações semanais, use <b>Novo evento</b>.</li>
+      <li><b>Férias da equipe:</b> na aba Férias da equipe, toque em <b>Novo lançamento</b>.</li>
+      <li><b>Plantão:</b> na aba Plantão, use <b>Novo período</b> ou <b>Colar escala</b> (início;fim;defensor;assessoria).</li>
+    </ul>
+    <p>Corrigir um item que veio do planejamento cria uma versão manual que continua valendo nas próximas atualizações. Excluir no site um item do planejamento não basta: ele volta na próxima colagem; para tirar de vez, apague no documento.</p>
+
+    <h4>Dar ou tirar acesso</h4>
+    <ol><li>Em <b>Pessoas do polo</b>, toque em <b>Nova pessoa</b> (ou <b>Editar</b>).</li><li>Preencha nome, cargo, lotação e o e-mail funcional. Sem e-mail, a pessoa aparece no painel mas não entra.</li><li>Em <b>Acesso ao site</b>, escolha <b>Leitura</b> ou <b>Admin</b>. Defensores já vêm sugeridos como admin.</li><li>A conta de login é criada no Firebase (Authentication › Adicionar usuário, com o mesmo e-mail e uma senha qualquer). A pessoa depois usa <b>Primeiro acesso ou esqueci a senha</b> para criar a dela.</li><li>Para tirar o acesso, mude para Leitura ou apague o e-mail do cadastro.</li></ol>
+
+    <h4>Defensorias</h4>
+    <p>Em <b>Designações hoje</b>, o botão <b>Editar</b> de cada cartão muda o titular, a portaria da titularidade, a atribuição, os substitutos e a colidente. Se uma resolução nova mudar a estrutura do polo, ajuste aqui.</p>
+  </details>
+  </div>`;
+}
+
+function telaLogin(){
+  return `<div class="login"><form id="form-login"><h2>Entrar</h2><p class="muted" style="margin:0">Acesso restrito à equipe do Polo do Baixo Amazonas.</p>
+  <div class="campo"><label for="l-email">E-mail</label><input id="l-email" type="email" autocomplete="username" required></div>
+  <div class="campo"><label for="l-senha">Senha</label><input id="l-senha" type="password" autocomplete="current-password" required></div>
+  <div class="erro" id="l-erro"></div><button class="btn btn-pri" type="submit">Entrar</button>
+  <button class="btn" type="button" id="l-reset">Primeiro acesso ou esqueci a senha</button>
+  <p class="fonte" style="margin:0"><a href="#ajuda">Como funciona o painel</a></p></form></div>`;
+}
+function ligarLogin(){
+  document.getElementById("form-login").addEventListener("submit", async ev => {
+    ev.preventDefault();
+    try { await fb.auth.signInWithEmailAndPassword(document.getElementById("l-email").value, document.getElementById("l-senha").value); }
+    catch(e){ document.getElementById("l-erro").textContent = "E-mail ou senha incorretos. Se é o primeiro acesso ou esqueceu a senha, use o botão abaixo."; }
+  });
+  document.getElementById("l-reset").addEventListener("click", async () => {
+    const email = document.getElementById("l-email").value.trim().toLowerCase(), out = document.getElementById("l-erro");
+    if (!email){ out.textContent = "Escreva o seu e-mail funcional no campo acima e toque de novo."; return; }
+    try { fb.auth.languageCode = "pt"; await fb.auth.sendPasswordResetEmail(email); out.style.color = "var(--ok)"; out.textContent = `Se ${email} tiver acesso, chega em instantes um link para criar a senha. Veja também a caixa de spam.`; }
+    catch(e){ out.textContent = "Não foi possível enviar agora. Confira o e-mail e tente de novo."; }
+  });
+}
+
+/* ---------- formulários ---------- */
+const dlg = document.getElementById("dlg"), dlgForm = document.getElementById("dlg-form");
+function abrir(titulo, corpo, aoSalvar, aoRemover, origem){
+  const nota = origem === "planejamento" ? `<p class="fonte" style="margin:0">Veio do planejamento. Se você editar, a sua versão passa a valer mesmo depois de colar o planejamento de novo. Se excluir aqui, volta na próxima atualização: para tirar de vez, apague no documento.</p>` : origem === "manual-plan" ? `<p class="fonte" style="margin:0">Versão corrigida à mão de um item do planejamento.</p>` : "";
+  dlgForm.innerHTML = `<div class="dlg-cab"><h3>${titulo}</h3></div><div class="dlg-corpo">${nota}${corpo}<div class="erro" id="f-erro"></div></div>
+  <div class="dlg-pe">${aoRemover?`<button class="btn btn-perigo" value="remover" type="button" id="f-remover" style="margin-right:auto">Excluir</button>`:""}<button class="btn" value="cancel" type="submit" formnovalidate>Cancelar</button><button class="btn btn-pri" type="button" id="f-salvar">Salvar</button></div>`;
+  dlg.showModal();
+  document.getElementById("f-salvar").onclick = async () => {
+    const err = await aoSalvar(); if (err){ document.getElementById("f-erro").textContent = err; return; }
+    dlg.close(); toast("Salvo");
+  };
+  if (aoRemover){ const b = document.getElementById("f-remover"); b.onclick = async () => {
+    if (b.dataset.conf !== "1"){ b.dataset.conf = "1"; b.textContent = "Confirmar exclusão"; return; }
+    await aoRemover(); dlg.close(); toast("Excluído"); }; }
+}
+const v = id => (document.getElementById(id)?.value ?? "").trim();
+const campo = (id,rot,val="",tipo="text",extra="") => `<div class="campo"><label for="${id}">${rot}</label><input id="${id}" type="${tipo}" value="${esc(val)}" ${extra}></div>`;
+const opcoes = (obj,sel) => Object.entries(obj).map(([k,t])=>`<option value="${esc(k)}" ${k===sel?"selected":""}>${esc(t)}</option>`).join("");
+const nomesDefensores = () => [...new Set([...S.pessoas.filter(p=>p.cargo==="defensor").map(p=>p.nome),...S.defensorias.map(d=>d.titular),...S.designacoes.map(g=>g.defensor),...S.afastamentos.map(a=>a.defensor)].filter(Boolean))].sort();
+const datalist = () => `<datalist id="dl-def">${nomesDefensores().map(n=>`<option value="${esc(n)}"></option>`).join("")}</datalist>`;
+const opDps = sel => defensoriasOrdenadas().map(d=>`<option value="${d.id}" ${d.id===sel?"selected":""}>${esc(d.nome)} · ${esc(d.comarca)}</option>`).join("");
+
+const infoPolo = () => { const c = config(); const o = {...POLO}; for (const k of Object.keys(POLO)) if (c[k]) o[k] = c[k]; return o; };
+function formPolo(){
+  const P = infoPolo();
+  abrir("Coordenação e contato do polo",
+    `${campo("f-coord","Coordenador(a)",P.coordenacao,"text",'list="dl-def"')}${datalist()}${campo("f-pcoord","Portaria da coordenação",P.portariaCoord)}
+     <div class="linha2">${campo("f-wpp","WhatsApp",P.whatsapp)}${campo("f-tel","Ligações",P.ligacoes)}</div>${campo("f-mail","E-mail do polo",P.email,"email")}${campo("f-end","Endereço da sede",P.endereco)}`,
+    async () => { await Dados.salvar("config", {...config(), id:"polo", coordenacao:v("f-coord"), portariaCoord:v("f-pcoord"), whatsapp:v("f-wpp"), ligacoes:v("f-tel"), email:v("f-mail"), endereco:v("f-end")}); });
+}
+function formCarga(){
+  let dados = null;
+  abrir("Carregar dados iniciais",
+    `<p style="margin:0">Use uma vez, ao começar: escolha o arquivo <b>dados-iniciais.json</b> que a Claude preparou. Ele traz pessoas, defensorias, designações, afastamentos, grade, eventos, férias da equipe e plantão.</p>
+     <div class="campo"><label for="f-arq">Arquivo</label><input id="f-arq" type="file" accept=".json,application/json"></div><div id="f-prev" class="prev"></div>`,
+    async () => { if (!dados) return "Escolha o arquivo antes."; await Dados.importarTudo(dados); render(); });
+  document.getElementById("f-salvar").textContent = "Carregar";
+  document.getElementById("f-arq").addEventListener("change", async ev => {
+    const prev = document.getElementById("f-prev"); dados = null;
+    try { const j = JSON.parse(await ev.target.files[0].text()); const cols = COLECOES.filter(c => Array.isArray(j[c]));
+      if (!cols.length) throw 0; dados = j;
+      prev.innerHTML = `<ul>${cols.map(c=>`<li><b>${j[c].length}</b> ${c}</li>`).join("")}</ul><p class="fonte" style="margin:0">Registros com o mesmo identificador são substituídos; os demais continuam.</p>`;
+    } catch(e){ prev.innerHTML = `<p class="erro">Esse arquivo não parece ser o dos dados iniciais.</p>`; }
+  });
+}
+function formPessoa(p={}){
+  abrir(p.id?`Editar ${esc(p.nome)}`:"Nova pessoa",
+    `${campo("f-nome","Nome completo",p.nome)}
+     <div class="linha2"><div class="campo"><label for="f-cargo">Cargo</label><select id="f-cargo" onchange="if(!${p.id?1:0}){document.getElementById('f-perfil').value=this.value==='defensor'?'admin':'leitor'}">${opcoes(CARGOS,p.cargo||"servidor")}</select></div>${campo("f-niver","Aniversário (dd/mm)",p.aniversario,"text",'placeholder="17/03" inputmode="numeric" maxlength="5"')}</div>
+     ${campo("f-lot","Lotação",p.lotacao,"text",'placeholder="Titular da 1ª DP · UDI Barreirinha · atendimento…"')}
+     ${campo("f-email","E-mail funcional (login)",p.email,"email",'placeholder="nome@defensoria.am.def.br"')}
+     <div class="campo"><label for="f-perfil">Acesso ao site</label><select id="f-perfil">${opcoes(PERFIS,p.perfil||(p.cargo==="defensor"?"admin":"leitor"))}</select></div>`,
+    async () => { const email = v("f-email").toLowerCase();
+      const o = {nome:v("f-nome"),cargo:v("f-cargo"),aniversario:v("f-niver"),lotacao:v("f-lot"),email,perfil:v("f-perfil")};
+      if (!o.nome) return "Preencha o nome.";
+      if (o.aniversario && !/^\d{2}\/\d{2}$/.test(o.aniversario)) return "Aniversário no formato dd/mm, por exemplo 17/03.";
+      if (email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return "E-mail inválido.";
+      if (email && S.pessoas.some(x=>x.email===email && x.id!==p.id)) return "Já existe uma pessoa com esse e-mail.";
+      o.id = email || (p.id && !p.id.includes("@") ? p.id : uid());
+      if (p.id && p.id!==o.id) await Dados.remover("pessoas",p.id);
+      await Dados.salvar("pessoas",o); },
+    p.id ? () => Dados.remover("pessoas",p.id) : null);
+}
+function formDp(dp={}){
+  abrir(dp.id?`Editar ${esc(dp.nome)}`:"Nova defensoria",
+    `<div class="linha2">${campo("f-nome","Nome (ex.: 4ª DP)",dp.nome)}${campo("f-ordem","Ordem na lista",dp.ordem??S.defensorias.length+1,"number")}</div>
+     <div class="linha2"><div class="campo"><label for="f-unid">Unidade</label><select id="f-unid">${opcoes(UNIDADES,dp.unidade||"sede")}</select></div>${campo("f-comarca","Comarca",dp.comarca)}</div>
+     ${campo("f-area","Área",dp.area)}<div class="campo"><label for="f-det">Detalhes da atribuição</label><textarea id="f-det" rows="3">${esc(dp.detalhe||"")}</textarea></div>
+     <div class="linha2"><div class="campo"><label for="f-s1">1º substituto</label><select id="f-s1"><option value="">—</option>${opDps(dp.subs?.[0])}</select></div><div class="campo"><label for="f-s2">2º substituto</label><select id="f-s2"><option value="">—</option>${opDps(dp.subs?.[1])}</select></div></div>
+     <div class="campo"><label for="f-col">Colidente</label><select id="f-col"><option value="">—</option>${opDps(dp.colidente)}</select></div>
+     ${campo("f-titular","Titular (em branco se vaga)",dp.titular,"text",'list="dl-def"')}${campo("f-ptit","Portaria da titularidade",dp.portariaTitular)}${datalist()}`,
+    async () => { if (!v("f-nome")||!v("f-comarca")) return "Preencha o nome e a comarca.";
+      await Dados.salvar("defensorias",{...dp,nome:v("f-nome"),ordem:Number(v("f-ordem"))||0,unidade:v("f-unid"),comarca:v("f-comarca"),area:v("f-area"),detalhe:v("f-det"),subs:[v("f-s1"),v("f-s2")].filter(Boolean),colidente:v("f-col"),titular:v("f-titular"),portariaTitular:v("f-ptit")}); },
+    dp.id ? () => Dados.remover("defensorias",dp.id) : null);
+}
+function formDesig(g={}){
+  abrir(g.id?"Editar designação":"Nova designação",
+    `<div class="campo"><label for="f-dp">Defensoria</label><select id="f-dp">${opDps(g.dp)}</select></div>
+     ${campo("f-def","Defensor(a) designado(a)",g.defensor,"text",'list="dl-def"')}${datalist()}
+     <div class="linha2">${campo("f-ini","Início",g.inicio,"date")}${campo("f-fim","Término (em branco se sem prazo)",g.fim,"date")}</div>
+     ${campo("f-mot","Motivo",g.motivo,"text",'placeholder="Férias do titular, DP vaga, licença…"')}${campo("f-port","Portaria",g.portaria,"text",'placeholder="Portaria nº …/2026-GSPG"')}`,
+    async () => { const o = {...g,dp:v("f-dp"),defensor:v("f-def"),inicio:v("f-ini"),fim:v("f-fim"),motivo:v("f-mot"),portaria:v("f-port")};
+      if (!o.dp||!o.defensor||!o.inicio) return "Preencha a defensoria, o defensor e o início.";
+      if (o.fim && o.fim<o.inicio) return "O término não pode ser antes do início.";
+      const choque = S.designacoes.find(x=>x.id!==o.id && x.dp===o.dp && sobrepoe(x.inicio,x.fim,o.inicio,o.fim));
+      if (choque) return `Já existe designação de ${choque.defensor} na ${nomeDp(o.dp)} nesse período (${br(choque.inicio)}${choque.fim?" a "+br(choque.fim):""}).`;
+      await Dados.salvar("designacoes",o); },
+    g.id ? () => Dados.remover("designacoes",g.id) : null, g.origem==="planejamento" ? "planejamento" : (g.substitui ? "manual-plan" : ""));
+}
+function linhaSub(s={},i){ return `<div class="sub-item" data-sub="${i}"><div class="campo"><label for="s-dp-${i}">Defensoria</label><select id="s-dp-${i}">${opDps(s.dp)}</select></div>${campo(`s-def-${i}`,"Quem responde",s.defensor,"text",'list="dl-def"')}${campo(`s-ini-${i}`,"De",s.inicio,"date")}${campo(`s-fim-${i}`,"Até",s.fim,"date")}<div style="grid-column:1/-1">${campo(`s-port-${i}`,"Portaria da designação",s.portaria,"text")}</div></div>`; }
+function formAf(a={}){
+  const subs = a.id ? S.designacoes.filter(g=>g.afastamento===a.id) : (a._subs||[]);
+  let n = Math.max(subs.length,1);
+  abrir(a.id?"Editar afastamento":"Novo afastamento",
+    `${campo("f-def","Membro",a.defensor,"text",'list="dl-def"')}${datalist()}
+     <div class="linha2"><div class="campo"><label for="f-tipo">Tipo</label><select id="f-tipo">${opcoes(TIPOS_AF,a.tipo||"ferias")}</select></div>${campo("f-port","Portaria do afastamento",a.portaria)}</div>
+     <div class="linha2">${campo("f-ini","Início",a.inicio,"date")}${campo("f-fim","Fim",a.fim,"date")}</div>${campo("f-obs","Observação",a.obs)}
+     <div class="subs"><b>Quem responde pelas defensorias</b><span class="muted" style="font-size:13px">Pode deixar em branco e completar quando a portaria sair.</span><div id="subs">${(subs.length?subs:[{}]).map((s,i)=>linhaSub(s,i)).join("")}</div><button class="btn btn-sm" type="button" id="mais-sub">+ outra defensoria ou outro período</button></div>`,
+    async () => { const o = {id:a.id,defensor:v("f-def"),tipo:v("f-tipo"),inicio:v("f-ini"),fim:v("f-fim"),obs:v("f-obs"),portaria:v("f-port")};
+      if (!o.defensor||!o.inicio||!o.fim) return "Preencha o membro, o início e o fim.";
+      if (o.fim<o.inicio) return "O fim não pode ser antes do início.";
+      const novos = [];
+      for (let i=0;i<n;i++){ const s = {dp:v(`s-dp-${i}`),defensor:v(`s-def-${i}`),inicio:v(`s-ini-${i}`)||o.inicio,fim:v(`s-fim-${i}`)||o.fim,portaria:v(`s-port-${i}`)};
+        if (!s.defensor) continue;
+        if (s.inicio<o.inicio||s.fim>o.fim) return `A designação de ${s.defensor} precisa ficar dentro do afastamento.`;
+        if (novos.some(x=>x.dp===s.dp&&sobrepoe(x.inicio,x.fim,s.inicio,s.fim))) return `Duas pessoas na mesma defensoria no mesmo período (${nomeDp(s.dp)}).`;
+        novos.push(s); }
+      const salvo = await Dados.salvar("afastamentos",o);
+      for (const g of subs.filter(g=>g.id)) await Dados.remover("designacoes",g.id);
+      for (const s of novos) await Dados.salvar("designacoes",{...s,motivo:`${TIPOS_AF[o.tipo]} de ${o.defensor}`,afastamento:salvo.id});
+      if (a._atoId) await Dados.marcarLancado(a._atoId);
+      render(); },
+    a.id ? async () => { for (const g of subs) await Dados.remover("designacoes",g.id); await Dados.remover("afastamentos",a.id); } : null, a.origem==="planejamento" ? "planejamento" : (a.substitui ? "manual-plan" : ""));
+  document.getElementById("mais-sub").onclick = () => { document.getElementById("subs").insertAdjacentHTML("beforeend", linhaSub({},n)); n++; };
+}
+function verAf(a){
+  if (S.admin) return formAf(a);
+  const subs = S.designacoes.filter(g=>g.afastamento===a.id);
+  dlgForm.innerHTML = `<div class="dlg-cab"><h3>${esc(a.defensor)}</h3></div><div class="dlg-corpo"><div><span class="pill t-${a.tipo}">${TIPOS_AF[a.tipo]}</span> <span class="mono">${br(a.inicio)} a ${br(a.fim)}</span></div>${a.obs?`<div>${esc(a.obs)}</div>`:""}${a.portaria?`<div class="muted">${esc(a.portaria)}</div>`:""}<div><b>Quem responde</b><ul class="lista">${subs.map(g=>`<li><span>${esc(g.defensor)}</span><span class="muted">${esc(nomeDp(g.dp))}</span></li>`).join("")||`<li class="vazio">A definir</li>`}</ul></div></div><div class="dlg-pe"><button class="btn" value="cancel" type="submit">Fechar</button></div>`;
+  dlg.showModal();
+}
+function formEq(e={}){
+  abrir(e.id?"Editar lançamento":"Férias e folgas da equipe",
+    `${campo("f-serv","Servidor(a)",e.servidor,"text",'list="dl-eq" placeholder="Nome da pessoa"')}<datalist id="dl-eq">${S.pessoas.filter(p=>p.cargo!=="defensor").map(p=>`<option value="${esc(p.nome)}"></option>`).join("")}</datalist>
+     <div class="campo"><label for="f-tipo">Tipo</label><select id="f-tipo">${opcoes(TIPOS_AF,e.tipo||"ferias")}</select></div>
+     <div class="linha2">${campo("f-ini","Início",e.inicio,"date")}${campo("f-fim","Fim",e.fim,"date")}</div>${campo("f-obs","Observação",e.obs)}`,
+    async () => { const o={...e,servidor:v("f-serv"),tipo:v("f-tipo"),inicio:v("f-ini"),fim:v("f-fim")||v("f-ini"),obs:v("f-obs")};
+      if (!o.servidor||!o.inicio) return "Preencha o nome e o início."; if (o.fim<o.inicio) return "O fim não pode ser antes do início.";
+      await Dados.salvar("equipe",o); },
+    e.id ? () => Dados.remover("equipe",e.id) : null, e.origem==="planejamento" ? "planejamento" : (e.substitui ? "manual-plan" : ""));
+}
+function formPlantao(p={}){
+  abrir(p.id?"Editar plantão":"Novo período de plantão",
+    `<div class="linha2">${campo("f-ini","Início",p.inicio,"date")}${campo("f-fim","Fim",p.fim,"date")}</div>
+     ${campo("f-def","Defensor(a)",p.defensor,"text",'list="dl-def"')}${datalist()}${campo("f-ass","Assessoria",p.assessoria)}${campo("f-port","Portaria",p.portaria)}`,
+    async () => { const o={...p,inicio:v("f-ini"),fim:v("f-fim"),defensor:v("f-def"),assessoria:v("f-ass"),portaria:v("f-port")};
+      if (!o.inicio||!o.fim||!o.defensor) return "Preencha o período e o defensor."; if (o.fim<o.inicio) return "O fim não pode ser antes do início.";
+      await Dados.salvar("plantao",o); },
+    p.id ? () => Dados.remover("plantao",p.id) : null, p.origem==="planejamento" ? "planejamento" : (p.substitui ? "manual-plan" : ""));
+}
+function formImportar(){
+  abrir("Colar escala de plantão",
+    `<p class="muted" style="margin:0">Uma linha por semana: <span class="mono">início;fim;defensor;assessoria</span> (datas dd/mm/aaaa). Também aceita colar direto do Excel. O Diário Oficial do site mostra a escala do polo já neste formato.</p>
+     <div class="campo"><label for="f-csv">Escala</label><textarea id="f-csv" rows="7" placeholder="03/11/2026;09/11/2026;Nome do defensor;Nome da assessoria"></textarea></div>${campo("f-port","Portaria da escala")}`,
+    async () => { const linhas = v("f-csv").split(/\n+/).map(l=>l.split(/;|\t/).map(x=>x.trim())).filter(l=>l.length>=3);
+      if (!linhas.length) return "Nenhuma linha reconhecida.";
+      const conv = s => { const m = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/); return m ? `${m[3]}-${pad(m[2])}-${pad(m[1])}` : null; };
+      for (const [i,l] of linhas.entries()){ if (!conv(l[0])||!conv(l[1])) return `Linha ${i+1}: data inválida.`; }
+      for (const l of linhas) await Dados.salvar("plantao",{inicio:conv(l[0]),fim:conv(l[1]),defensor:l[2],assessoria:l[3]||"",portaria:v("f-port")});
+    });
+}
+function lancar(atoId){
+  let ato; for (const ed of S.diario) for (const a of ed.atos) if (a.id===atoId) ato = a;
+  if (!ato?.sugestao) return;
+  const s = ato.sugestao;
+  if (s.tipo==="afastamento") return formAf({defensor:s.defensor,tipo:s.afastamento||"ferias",inicio:s.inicio,fim:s.fim,portaria:ato.numero,_atoId:atoId});
+  if (s.tipo==="designacao"){
+    formDesig({dp:s.dp,defensor:s.defensor,inicio:s.inicio,fim:s.fim,portaria:ato.numero,motivo:ato.resumo.slice(0,90)});
+    const salvar = document.getElementById("f-salvar"); const orig = salvar.onclick;
+    salvar.onclick = async () => { await orig(); if (!dlg.open) { await Dados.marcarLancado(atoId); render(); } };
+  }
+}
+
+/* ---------- eventos ---------- */
+function ligar(sec){
+  const b = document.getElementById("busca-diario");
+  if (b) b.addEventListener("input", () => { ui.buscaDiario = b.value; const pos = b.selectionStart; render(); const nb = document.getElementById("busca-diario"); nb.focus(); nb.setSelectionRange(pos,pos); });
+}
+document.addEventListener("click", ev => {
+  const el = ev.target.closest("[data-acao]"); if (!el) return;
+  const {acao, id, k, d} = el.dataset;
+  const acha = (c) => S[c].find(x=>x.id===id);
+  switch (acao){
+    case "nova-dp": return formDp();
+    case "editar-dp": return formDp(acha("defensorias"));
+    case "nova-desig": return formDesig();
+    case "editar-desig": return formDesig(acha("designacoes"));
+    case "novo-af": return formAf();
+    case "editar-af": return formAf(acha("afastamentos"));
+    case "ver-af": { const a = afs().find(x=>x.id===id); return a?.auto ? toast(`Lançado automaticamente pelo Diário (ed. ${a.edicao})`) : verAf(a); }
+    case "novo-eq": return formEq();
+    case "editar-eq": return S.admin ? formEq(acha("equipe")) : null;
+    case "novo-plantao": return formPlantao();
+    case "editar-plantao": return formPlantao(acha("plantao"));
+    case "importar-plantao": return formImportar();
+    case "importar-planejamento": return formPlanejamento();
+    case "nova-semana": return formSemana();
+    case "editar-semana": return formSemana(acha("grade"));
+    case "novo-evento": return formEvento();
+    case "editar-evento": return formEvento(acha("eventos"));
+    case "carga-inicial": return formCarga();
+    case "editar-polo": return formPolo();
+    case "nova-pessoa": return formPessoa();
+    case "editar-pessoa": return formPessoa(acha("pessoas"));
+    case "carregar-res13": return (async () => { for (const dp of RES13) await Dados.salvar("defensorias",{...dp,titular:""}); toast("12 defensorias carregadas. Agora informe os titulares."); render(); })();
+    case "lancar": return lancar(id);
+    case "rejeitar": return Dados.marcarLancado(id,"rejeitado").then(()=>{ toast("Desfeito: o ato não vale mais no site"); render(); });
+    case "reaplicar": return Dados.marcarLancado(id,"").then(()=>{ render(); });
+    case "cat": ui.catDiario = k; return render();
+    case "mes": { const m = Number(d); ui[k] = m===0 ? new Date() : new Date(ui[k].getFullYear(), ui[k].getMonth()+m, 1); return render(); }
+    case "sem": { const n = Number(d); ui.semana = n===0 ? segunda(new Date()) : somaDias(ui.semana,n); return render(); }
+  }
+});
+document.getElementById("btn-login").addEventListener("click", async () => {
+  if (DEMO){ if (S.user){ S.user=null; S.admin=false; } else { S.user={nome:"Admin de teste",email:""}; S.admin=true; } return render(); }
+  if (S.user) await fb.auth.signOut(); else location.hash = "#hoje";
+});
+window.addEventListener("hashchange", () => { render(); window.scrollTo({top:0}); });
+function toast(t){ const el = document.getElementById("toast"); el.textContent = t; el.hidden = false; clearTimeout(toast._t); toast._t = setTimeout(()=>el.hidden=true, 2200); }
+
+Dados.iniciar().then(render).catch(e => { document.getElementById("conteudo").innerHTML = `<p class="erro">Não foi possível carregar os dados: ${esc(e.message)}</p>`; });
+</script>
+
+</body>
+</html>
