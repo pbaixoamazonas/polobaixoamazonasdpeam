@@ -335,7 +335,7 @@ def defensores_no_texto(t: str, defensores: list[str]) -> list[str]:
     return achados
 
 
-RE_DP_POLO = re.compile(r"(\d{1,2})\s*[ªaº°]?\s*defensoria(?:\s+publica)?(?:\s+do)?\s+polo(?:\s+do)?\s+baixo\s+amazonas")
+RE_DP_POLO = re.compile(r"(\d{1,2})\s*[ªaº°]?\s*defensoria(?:\s+public[ao])?(?:\s+do)?\s+polo(?:\s+do)?\s+baixo\s+amazonas")
 VERBOS = r"(designar|conceder|cessar|tornar sem efeito|revogar|dispensar|nomear|lotar|remover|alterar|retificar|interromper|suspender|autorizar)"
 
 
