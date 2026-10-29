@@ -187,7 +187,7 @@ def texto_do_pdf(conteudo: bytes) -> str:
     return "\n".join(partes)
 
 
-RE_ATO = re.compile(r"\*?\s*(PORTARIA|RESOLU[ÇC][ÃA]O|EDITAL|ATO|AVISO|DESPACHO|EXTRATO|INSTRU[ÇC][ÃA]O NORMATIVA)\s+N[º°o.]*\s*\d+[\d./\-]*\s*[-–/]?\s*[A-Z0-9/\-]*", re.I)
+RE_ATO = re.compile(r"^\s*\*?\s*(PORTARIA|RESOLU[ÇC][ÃA]O|EDITAL|ATO|AVISO|DESPACHO|EXTRATO|INSTRU[ÇC][ÃA]O NORMATIVA)\s+N[º°O.]*\s*\d+[\d./\-]*\s*[-–/]?\s*[A-Z0-9/\-]*", re.M)
 
 
 def separar_atos(texto: str) -> list[str]:
@@ -259,10 +259,15 @@ def _extenso_para_barra(t: str, ano_padrao: int) -> str:
     anos = [int(x) for x in re.findall(r"\b(20\d{2})\b", t)]
     def troca(m):
         ano = m.group(3)
+        mes = MESES[m.group(2)]
         if not ano:
-            depois = re.search(r"\b(20\d{2})\b", t[m.end():])
-            ano = depois.group(1) if depois else str(anos[-1] if anos else ano_padrao)
-        return f"{m.group(1)}/{MESES[m.group(2)]:02d}/{ano}"
+            prox = re.search(r"\d{1,2}[º°o]?\s+de\s+(janeiro|fevereiro|marco|abril|maio|junho|julho|agosto|setembro|outubro|novembro|dezembro)\s+de\s+(\d{4})", t[m.end():])
+            if prox:
+                ano = int(prox.group(2)) - (1 if MESES[prox.group(1)] < mes else 0)
+            else:
+                depois = re.search(r"\b(20\d{2})\b", t[m.end():])
+                ano = depois.group(1) if depois else str(anos[-1] if anos else ano_padrao)
+        return f"{m.group(1)}/{mes:02d}/{ano}"
     return re.sub(r"(\d{1,2})[º°o]?\s+de\s+(janeiro|fevereiro|marco|abril|maio|junho|julho|agosto|setembro|outubro|novembro|dezembro)(?:\s+de\s+(\d{4}))?", troca, t)
 
 
@@ -416,8 +421,9 @@ def ler_ato(texto: str, edicao: dict, idx: int, defensores: list[str]) -> list[d
             # o período é o que vem depois da DP, até o fim do inciso (";")
             m_dp = RE_DP_POLO.search(n)
             resto = n[m_dp.end():] if m_dp else n
-            resto = resto.split(";")[0]
-            segs = segmentos(resto, ano)
+            resto = re.split(r";|\bconsiderando\b|certifique-se|publique-se|cumpra-se|gabinete d|manaus,|\bart\.|lei complementar|portaria n|edicao \d", resto)[0]
+            pub = dt.date.fromisoformat(edicao.get("data")) if edicao.get("data") else dt.date.today()
+            segs = [(a_, b_) for a_, b_ in segmentos(resto, ano) if pub - dt.timedelta(days=60) <= a_ <= pub + dt.timedelta(days=400)]
             aberto = bool(re.search(r"a contar d[eo]|a partir d[eo]", resto)) and len(segs) == 1 and segs[0][0] == segs[0][1]
             if segs:
                 p = pessoas[0]
@@ -435,7 +441,7 @@ def ler_ato(texto: str, edicao: dict, idx: int, defensores: list[str]) -> list[d
             p = pessoas[0]
             item["sugestao"] = {"tipo": "afastamento", "defensor": p, "afastamento": tipo, "inicio": ini.isoformat(), "fim": fim.isoformat()}
             item["resumo"] = f"Concede {'férias' if tipo == 'ferias' else 'licença' if tipo == 'licenca' else 'folga'} a {p}, de {ini:%d/%m/%Y} a {fim:%d/%m/%Y}"
-            item["auto"] = len(pessoas) == 1 and fim >= ini
+            item["auto"] = len(pessoas) == 1 and fim >= ini and tipo != "folga" and not re.search(r"cada membro|membros|comissao|servidores", n)
             itens.append(item)
             continue
         # sem padrão claro: mostra para conferir
