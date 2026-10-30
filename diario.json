@@ -1065,5 +1065,46 @@
     "auto": false
    }
   ]
+ },
+ {
+  "edicao": 2762,
+  "data": "2026-10-29",
+  "url": "https://diario.defensoria.am.def.br/wp-content/uploads/2026/10/Edicao_2762-2026__publicada_em_29_outubro_de_2026.pdf",
+  "atos": [
+   {
+    "id": "2762-0-1",
+    "numero": "PORTARIA Nº 1154/2026-GSPG/DPE/AM",
+    "categorias": [
+     "designacao",
+     "plantao"
+    ],
+    "resumo": "Autorizar envolvendo Rachel Phanuelly Marinho e Silva, Stefany Coimbra Schmidt",
+    "trecho": "II - AUTORIZAR a substituição do Servidor Victor Gabriel Monteiro, designada para a semana 06 do Plantão do Polo do Madeira, pelo período de 02/11 a 08/11, pela Servidora Elivania Inhoque; III - DETERMINAR a seguinte escala de substituição entre os Polos e Unidades do Interior para atuarem reciprocamente como substitut",
+    "sugestao": null,
+    "auto": false
+   },
+   {
+    "id": "2762-1-1",
+    "numero": "PORTARIA Nº 1160/2026-GSPG/DPE/AM",
+    "categorias": [
+     "geral"
+    ],
+    "resumo": "Torna sem efeito ou encerra ato envolvendo Rachel Phanuelly Marinho e Silva — 10ª DP",
+    "trecho": "II - CESSAR OS EFEITOS, a contar do dia 09 de outubro de de 2026, do inciso II da PORTARIA Nº 1022/2026- GSPG/DPE/AM, publicada no dia 29 de setembro de 2026, Ano 12, Edição 2741 Pág. 14 de 20, quanto à designação da Defensora Pública de 3ª Classe Rachel Phanuelly Marinho e Silva para atuar na 10ª Defensoria Público do",
+    "sugestao": null,
+    "auto": false
+   },
+   {
+    "id": "2762-1-2",
+    "numero": "PORTARIA Nº 1160/2026-GSPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designar envolvendo Christiano Pinheiro da Costa",
+    "trecho": "III - DESIGNAR, cumulativamente, o Defensor Público de 1ª Classe Christiano Pinheiro da Costa para atuar na 10ª pla, 52400403000121, Presencial, Certificado Digital PJ A1; Organization: ICP-Brasil; Country: BR QUINTA-FEIRA, 29 DE OUTUBRO DE 2026 Defensoria Pública do Polo do Baixo Amazonas (Barreirinha), no período de ",
+    "sugestao": null,
+    "auto": false
+   }
+  ]
  }
 ]
