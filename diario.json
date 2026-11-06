@@ -1127,5 +1127,77 @@
     "auto": false
    }
   ]
+ },
+ {
+  "edicao": 2764,
+  "data": "2026-11-03",
+  "url": "https://diario.defensoria.am.def.br/wp-content/uploads/2026/11/Edicao_2764-2026__publicada_em_03_novembro_de_2026.pdf",
+  "atos": [
+   {
+    "id": "2764-1-1",
+    "numero": "PORTARIA Nº 1154/2026-GSPG/DPE/AM",
+    "categorias": [
+     "designacao",
+     "plantao"
+    ],
+    "resumo": "Autorizar envolvendo Rachel Phanuelly Marinho e Silva, Stefany Coimbra Schmidt",
+    "trecho": "II - AUTORIZAR a substituição do Servidor Victor Gabriel Monteiro, designada para a semana 06 do Plantão do Polo do Madeira, pelo período de 02/11 a 08/11, pela Servidora Elivania Inhoque; III - DETERMINAR a seguinte escala de substituição entre os Polos e Unidades do Interior para atuarem reciprocamente como substitut",
+    "sugestao": null,
+    "auto": false
+   },
+   {
+    "id": "2764-2-0",
+    "numero": "PORTARIA Nº 397/2026-2GSPG/DPE/AM",
+    "categorias": [
+     "designacao",
+     "afastamento",
+     "coordenacao"
+    ],
+    "resumo": "Designar envolvendo Christiano Pinheiro da Costa",
+    "trecho": "I- DESIGNAR, em caráter especial, o Defensor Público de 1ª Classe José Ivan Benaion Cardoso, para atuar na sessão de julgamento na 2ª Vara do Tribunal do Júri da Comarca de Manaus, pelo processo de nº.0226476- 52.2013.8.04.0001, no dia 17 de novembro 2026; II- ATRIBUIR ao Defensor Público mencionado neste ato 1 (um) di",
+    "sugestao": null,
+    "auto": false
+   }
+  ]
+ },
+ {
+  "edicao": 2766,
+  "data": "2026-11-05",
+  "url": "https://diario.defensoria.am.def.br/wp-content/uploads/2026/11/Edicao_2766-2026__publicada_em_05_novembro_de_2026.pdf",
+  "atos": [
+   {
+    "id": "2766-0-0",
+    "numero": "PORTARIA Nº 2010/2026-GDPG/DPE/AM",
+    "categorias": [
+     "geral"
+    ],
+    "resumo": "Autorizar envolvendo Christiano Pinheiro da Costa",
+    "trecho": "I - AUTORIZAR o deslocamento de Christiano Pinheiro da Costa, Defensor Público de 1ª classe, no trecho Manaus/Fortaleza/Manaus, no período de 15 a 19 de novembro de 2026, a fim de participar da 3a Reunião Extraordinária da Comissão de Defesa do Consumidor do CONDEGE e do XVIII Congresso Brasileiro de Direito do Consumi",
+    "sugestao": null,
+    "auto": false
+   },
+   {
+    "id": "2766-1-0",
+    "numero": "PORTARIA Nº 1123/2026-GSPG/DPE/AM",
+    "categorias": [
+     "geral"
+    ],
+    "resumo": "Autorizar envolvendo Stefany Coimbra Schmidt",
+    "trecho": "I - AUTORIZAR o deslocamento de Stefany Coimbra Schmidt, Defensora Pública de 4ª Classe, nos trechos Parintins/Barreirinha/Parintins, no período de 09 a 11 de novembro de 2026, a fim de realizar inspeção carcerária e atendimento prisional na comarca de Barreirinha/AM; Assinado digitalmente por - DEFENSORIA PUBLICA DO E",
+    "sugestao": null,
+    "auto": false
+   },
+   {
+    "id": "2766-1-1",
+    "numero": "PORTARIA Nº 1123/2026-GSPG/DPE/AM",
+    "categorias": [
+     "geral"
+    ],
+    "resumo": "Autorizar envolvendo Stefany Coimbra Schmidt",
+    "trecho": "II - AUTORIZAR o deslocamento de Yuna Barreto Cerdeira, Analista Jurídica de Defensoria, nos trechos Parintins/Barreirinha/Parintins, no período de 09 a 11 de novembro de 2026, a fim de auxiliar a Defensora Pública Stefany Coimbra Schmidt na realização de inspeção carcerária e atendimento prisional na comarca de Barrei",
+    "sugestao": null,
+    "auto": false
+   }
+  ]
  }
 ]
