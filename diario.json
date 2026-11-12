@@ -1254,5 +1254,69 @@
     "auto": false
    }
   ]
+ },
+ {
+  "edicao": 2770,
+  "data": "2026-11-11",
+  "url": "https://diario.defensoria.am.def.br/wp-content/uploads/2026/11/Edicao_2770-2026__publicada_em_11_novembro_de_2026.pdf",
+  "atos": [
+   {
+    "id": "2770-0-1",
+    "numero": "PORTARIA Nº 2063/2026-GDPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designar envolvendo Rachel Phanuelly Marinho e Silva",
+    "trecho": "DESIGNAR os seguintes integrantes para compor a Comissão Permanente de Inclusão e Ações Afirmativas, instituída pela Portaria nº 1967/2026/GDPG/DPE/AM: NOME FUNÇÃO Helom César da Silva Presidente Nunes Emilly Bianca Ferreira dos Membro Santos Rachel Phanuelly Marinho Membro e Silva Marcelo Henrique Barbosa Membro Ana K",
+    "sugestao": null,
+    "auto": false
+   },
+   {
+    "id": "2770-2-0",
+    "numero": "PORTARIA Nº 2068/2026-GDPG/DPE/AM",
+    "categorias": [
+     "designacao",
+     "plantao"
+    ],
+    "resumo": "Designar envolvendo Rachel Phanuelly Marinho e Silva",
+    "trecho": "designar os membros da Defensoria Pública para o desempenho de tarefas especiais no âmbito da Defensoria Pública do Estado do Amazonas, na forma do art. 9º, inciso XI da Lei Complementar Estadual nº 01, de 30 de março de 1990; CONSIDERANDO a atribuição do Defensor Público Geral para praticar atos de gestão administrati",
+    "sugestao": null,
+    "auto": false
+   },
+   {
+    "id": "2770-3-0-5-0",
+    "numero": "PORTARIA Nº 1210/2026-GSPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designa Camila Assunção Cavalcante para a 5ª DP do Polo do Baixo Amazonas, de 18/11/2026 a 19/11/2026",
+    "trecho": "I - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Camila Assunção Cavalcante para atuar na 5ª Defensoria Pública do Polo do Baixo Amazonas, nos dias 18 e 19 de novembro de 2026;",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp5",
+     "defensor": "Camila Assunção Cavalcante",
+     "inicio": "2026-11-18",
+     "fim": "2026-11-19"
+    },
+    "auto": true
+   },
+   {
+    "id": "2770-3-1-12-0",
+    "numero": "PORTARIA Nº 1210/2026-GSPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designa Monalysa Helena Lima Façanha para a 12ª DP do Polo do Baixo Amazonas, de 18/11/2026 a 19/11/2026",
+    "trecho": "II - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Monalysa Helena Lima Façanha para atuar na 12ª Defensoria Pública do Polo Baixo Amazonas (Barreirinha), nos dias 18 e 19 de novembro de 2026; III - ATRIBUIR a contraprestação na forma do Ato Normativo nº 3/2025-GDPG/DPE/AM, de 22 de maio de 2025, em compl",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp12",
+     "defensor": "Monalysa Helena Lima Façanha",
+     "inicio": "2026-11-18",
+     "fim": "2026-11-19"
+    },
+    "auto": true
+   }
+  ]
  }
 ]
