@@ -1356,5 +1356,114 @@
     "auto": false
    }
   ]
+ },
+ {
+  "edicao": 2773,
+  "data": "2026-11-16",
+  "url": "https://diario.defensoria.am.def.br/wp-content/uploads/2026/11/Edicao_2773-2026__publicada_em_16_novembro_de_2026.pdf",
+  "atos": [
+   {
+    "id": "2773-1-0-3-0",
+    "numero": "PORTARIA Nº 1218/2026-GSPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designa Stefany Coimbra Schmidt para a 3ª DP do Polo do Baixo Amazonas, de 23/11/2026 a 03/12/2026",
+    "trecho": "I - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Stefany Coimbra Schmidt para atuar na 3ª Defensoria Pública do Polo do Baixo Amazonas, no período de 23 de novembro de 2026 a 02 de dezembro de 2026 e nos dias 03 e 09 de dezembro de 2026;",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp3",
+     "defensor": "Stefany Coimbra Schmidt",
+     "inicio": "2026-11-23",
+     "fim": "2026-12-03"
+    },
+    "auto": true
+   },
+   {
+    "id": "2773-1-0-3-1",
+    "numero": "PORTARIA Nº 1218/2026-GSPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designa Stefany Coimbra Schmidt para a 3ª DP do Polo do Baixo Amazonas, em 09/12/2026",
+    "trecho": "I - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Stefany Coimbra Schmidt para atuar na 3ª Defensoria Pública do Polo do Baixo Amazonas, no período de 23 de novembro de 2026 a 02 de dezembro de 2026 e nos dias 03 e 09 de dezembro de 2026;",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp3",
+     "defensor": "Stefany Coimbra Schmidt",
+     "inicio": "2026-12-09",
+     "fim": "2026-12-09"
+    },
+    "auto": true
+   },
+   {
+    "id": "2773-1-1-8-0",
+    "numero": "PORTARIA Nº 1218/2026-GSPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designa Stefany Coimbra Schmidt para a 8ª DP do Polo do Baixo Amazonas, de 23/11/2026 a 03/12/2026",
+    "trecho": "II - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Stefany Coimbra Schmidt para atuar na 8ª Defensoria Pública do Polo do Baixo Amazonas (Nhamundá), no período de 23 de novembro de 2026 a 02 de dezembro de 2026 e nos dias 03 e 09 de dezembro de 2026;",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp8",
+     "defensor": "Stefany Coimbra Schmidt",
+     "inicio": "2026-11-23",
+     "fim": "2026-12-03"
+    },
+    "auto": true
+   },
+   {
+    "id": "2773-1-1-8-1",
+    "numero": "PORTARIA Nº 1218/2026-GSPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designa Stefany Coimbra Schmidt para a 8ª DP do Polo do Baixo Amazonas, em 09/12/2026",
+    "trecho": "II - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Stefany Coimbra Schmidt para atuar na 8ª Defensoria Pública do Polo do Baixo Amazonas (Nhamundá), no período de 23 de novembro de 2026 a 02 de dezembro de 2026 e nos dias 03 e 09 de dezembro de 2026;",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp8",
+     "defensor": "Stefany Coimbra Schmidt",
+     "inicio": "2026-12-09",
+     "fim": "2026-12-09"
+    },
+    "auto": true
+   },
+   {
+    "id": "2773-1-2-9-0",
+    "numero": "PORTARIA Nº 1218/2026-GSPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designa Camila Assunção Cavalcante para a 9ª DP do Polo do Baixo Amazonas, de 23/11/2026 a 03/12/2026",
+    "trecho": "III - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Camila Assunção Cavalcante para atuar na 9ª Defensoria Pública do Polo do Baixo Amazonas (Nhamundá), no período de 23 de novembro de 2026 a 02 de dezembro de 2026 e nos dias 03 e 09 de dezembro de 2026; IV - ATRIBUIR a contraprestação na forma do Ato Nor",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp9",
+     "defensor": "Camila Assunção Cavalcante",
+     "inicio": "2026-11-23",
+     "fim": "2026-12-03"
+    },
+    "auto": true
+   },
+   {
+    "id": "2773-1-2-9-1",
+    "numero": "PORTARIA Nº 1218/2026-GSPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designa Camila Assunção Cavalcante para a 9ª DP do Polo do Baixo Amazonas, em 09/12/2026",
+    "trecho": "III - DESIGNAR, cumulativamente, a Defensora Pública de 4ª Classe Camila Assunção Cavalcante para atuar na 9ª Defensoria Pública do Polo do Baixo Amazonas (Nhamundá), no período de 23 de novembro de 2026 a 02 de dezembro de 2026 e nos dias 03 e 09 de dezembro de 2026; IV - ATRIBUIR a contraprestação na forma do Ato Nor",
+    "sugestao": {
+     "tipo": "designacao",
+     "dp": "dp9",
+     "defensor": "Camila Assunção Cavalcante",
+     "inicio": "2026-12-09",
+     "fim": "2026-12-09"
+    },
+    "auto": true
+   }
+  ]
  }
 ]
