@@ -1465,5 +1465,35 @@
     "auto": true
    }
   ]
+ },
+ {
+  "edicao": 2776,
+  "data": "2026-11-19",
+  "url": "https://diario.defensoria.am.def.br/wp-content/uploads/2026/11/Edicao_2776-2026__publicada_em_19_novembro_de_2026.pdf",
+  "atos": [
+   {
+    "id": "2776-0-0",
+    "numero": "PORTARIA Nº 2128/2026-GDPG/DPE/AM",
+    "categorias": [
+     "designacao"
+    ],
+    "resumo": "Designar",
+    "trecho": "I - DESIGNAR, em conformidade com o disposto no art.140, inciso I, alínea b, da Lei n.º 14.133/2021, o servidor THIAGO PIMENTEL DA SILVA, matrícula n.º 000.237-2 B, para, sem prejuízo de suas atribuições, atuar como gestor dos contratos indicados no quadro desta Portaria, pelo período de 16 de novembro a 05 de dezembro",
+    "sugestao": null,
+    "auto": false
+   },
+   {
+    "id": "2776-2-4",
+    "numero": "PORTARIA Nº 1225/2026-GSPG/DPE/AM",
+    "categorias": [
+     "designacao",
+     "plantao"
+    ],
+    "resumo": "Autorizar envolvendo Rachel Phanuelly Marinho e Silva, Stefany Coimbra Schmidt",
+    "trecho": "V - AUTORIZAR a substituição do Defensor Público Thiago Torres Cordeiro, designado para a semana 10 do Plantão do Polo de Coari, correspondente ao período de 30/11 a 06/12, pelo Defensor Público Karleno José Pereira; VI - DETERMINAR a seguinte escala de substituição entre os Polos e Unidades do Interior para atuarem re",
+    "sugestao": null,
+    "auto": false
+   }
+  ]
  }
 ]
