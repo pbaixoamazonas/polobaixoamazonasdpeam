@@ -1495,5 +1495,35 @@
     "auto": false
    }
   ]
+ },
+ {
+  "edicao": 2777,
+  "data": "2026-11-23",
+  "url": "https://diario.defensoria.am.def.br/wp-content/uploads/2026/11/Edicao_2777-2026__publicada_em_23_novembro_de_2026.pdf",
+  "atos": [
+   {
+    "id": "2777-0-1",
+    "numero": "PORTARIA Nº 1237/2026-GSPG/DPE/AM",
+    "categorias": [
+     "designacao",
+     "plantao"
+    ],
+    "resumo": "Autorizar envolvendo Rachel Phanuelly Marinho e Silva, Stefany Coimbra Schmidt",
+    "trecho": "II - AUTORIZAR a substituição da Defensora Pública Emilly Bianca Ferreira dos Santos, designada para a semana 09 do Plantão do Polo Rio Negro-Solimões, correspondente ao período de 23/11 a 29/11, pelo Defensor Público Miguel Eduardo de Azevedo Martins Filho; III - DETERMINAR a seguinte escala de substituição entre os P",
+    "sugestao": null,
+    "auto": false
+   },
+   {
+    "id": "2777-1-0",
+    "numero": "PORTARIA Nº 122/2026-ESUDPAM/DPE/AM",
+    "categorias": [
+     "coordenacao"
+    ],
+    "resumo": "Ato envolvendo Rachel Phanuelly Marinho e Silva",
+    "trecho": "PORTARIA Nº 122/2026-ESUDPAM/DPE/AM A DIRETORA DA ESCOLA SUPERIOR E A COORDENAÇÃO DA UNIDADE DE IRANDUBA DA DEFENSORIA PÚBLICA DO ESTADO DO AMAZONAS, no uso de suas atribuições, e considerando as disposições da Resolução nº 10/2019 – CSDPE/AM (estágio); RESOLVEM: I – TORNAR PÚBLICO o Resultado Preliminar dos(as) candid",
+    "sugestao": null,
+    "auto": false
+   }
+  ]
  }
 ]
