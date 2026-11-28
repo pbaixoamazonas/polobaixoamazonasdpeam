@@ -1544,5 +1544,37 @@
     "auto": false
    }
   ]
+ },
+ {
+  "edicao": 2781,
+  "data": "2026-11-27",
+  "url": "https://diario.defensoria.am.def.br/wp-content/uploads/2026/11/Edicao_2781-2026__publicada_em_27_novembro_de_2026.pdf",
+  "atos": [
+   {
+    "id": "2781-0-1",
+    "numero": "PORTARIA Nº 2185/2026-GDPG/DPE/AM",
+    "categorias": [
+     "designacao",
+     "afastamento",
+     "coordenacao"
+    ],
+    "resumo": "Designar envolvendo Christiano Pinheiro da Costa",
+    "trecho": "DESIGNAR os(as) Defensores(as) Públicos(as) e Servidores(as) abaixo relacionados(as) para atuarem no projeto institucional “Defensoria Tá na Área”, prevista para o dia 28 de novembro de 2026, no Mercado de Origem, em Manaus/AM, das 7h às 16h, atribuindo-lhes as contraprestações indicadas no Anexo Único. Cientifique-se,",
+    "sugestao": null,
+    "auto": false
+   },
+   {
+    "id": "2781-1-1",
+    "numero": "PORTARIA Nº 1237/2026-GSPG/DPE/AM",
+    "categorias": [
+     "designacao",
+     "plantao"
+    ],
+    "resumo": "Autorizar envolvendo Rachel Phanuelly Marinho e Silva, Stefany Coimbra Schmidt",
+    "trecho": "II - AUTORIZAR a substituição da Defensora Pública Emilly Bianca Ferreira dos Santos, designada para a semana 09 do Plantão do Polo Rio Negro-Solimões, correspondente ao período de 23/11 a 29/11, pelo Defensor Público Miguel Eduardo de Azevedo Martins Filho; III - DETERMINAR a seguinte escala de substituição entre os P",
+    "sugestao": null,
+    "auto": false
+   }
+  ]
  }
 ]
